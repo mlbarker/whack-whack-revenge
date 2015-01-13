@@ -13,18 +13,7 @@ namespace Assets.Scripts.Mole
     {
         #region Private Members
 
-        private Vector2 fromPosition;
-        private Vector2 toPosition;
-
-        #endregion
-
-        #region Public Properties
-
-        public bool GoIntoHole
-        {
-            get;
-            private set;
-        }
+        private Animator moleAnimator;
 
         #endregion
 
@@ -38,15 +27,7 @@ namespace Assets.Scripts.Mole
 
         void Start()
         {
-            moleController.Initialize();
-
-            moleController.SetMovementController(this);
-            moleController.SetHealthController(this);
-
-            fromPosition = new Vector2(0.0f, 2.0f);
-            toPosition = new Vector2(0.0f, -2.0f);
-
-            transform.position = toPosition;
+            
         }
 
         void Update()
@@ -61,13 +42,18 @@ namespace Assets.Scripts.Mole
         public void MoveIntoHole()
         {
             // do visual logic here...
-            GoIntoHole = true;
+            //GoIntoHole = true;
+            Debug.Log("In Hole");
+            moleController.RestoreHealth();
+            moleController.ToggleUp();
         }
 
         public void MoveOutOfHole()
         {
             // do visual logic here...
-            GoIntoHole = false;
+            //GoIntoHole = false;
+            Debug.Log("Out Hole");
+            moleController.ToggleUp();
         }
 
         #endregion
@@ -81,20 +67,31 @@ namespace Assets.Scripts.Mole
 
         #endregion
 
+        #region Public Methods
+
+        public void Initialize()
+        {
+            moleController.Initialize();
+
+            moleController.SetMovementController(this);
+            moleController.SetHealthController(this);
+
+            moleAnimator = GetComponent<Animator>();
+            if (moleAnimator == null)
+            {
+                throw new UnassignedReferenceException();
+            }
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void UpdateMole()
         {
             moleController.UpdateStatus();
 
-            if (GoIntoHole)
-            {
-                transform.position = Vector2.Lerp(fromPosition, toPosition, 1.0f);
-            }
-            else
-            {
-                transform.position = Vector2.Lerp(toPosition, fromPosition, 1.0f);
-            }
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
         }
 
         #endregion

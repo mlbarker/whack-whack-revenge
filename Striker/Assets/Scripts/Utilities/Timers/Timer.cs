@@ -12,7 +12,6 @@ namespace Assets.Scripts.Utilities.Timers
 
         private Stopwatch m_stopwatch;
         private TimerElapsedEvent m_elapsedEvent;
-        private int m_intervalInSeconds;
 
         #endregion
 
@@ -24,17 +23,29 @@ namespace Assets.Scripts.Utilities.Timers
 
         #region Public Properties
 
-        public int IntervalInSeconds
+        public int IntervalInSecondsLeft
         {
             get
             {
-                return m_intervalInSeconds - m_stopwatch.Elapsed.Seconds;
+                return IntervalInSeconds - m_stopwatch.Elapsed.Seconds;
             }
+        }
+
+        public int IntervalInSeconds
+        {
+            get;
+            private set;
         }
 
         public bool AutoResetEnabled
         {
             get;
+            private set;
+        }
+
+        public bool TimeHasElapsed
+        { 
+            get; 
             private set;
         }
 
@@ -48,7 +59,7 @@ namespace Assets.Scripts.Utilities.Timers
 
         public Timer(int intervalInSeconds, TimerElapsedEvent timerElapsedEvent)
         {
-            m_intervalInSeconds = intervalInSeconds;
+            IntervalInSeconds = intervalInSeconds;
             m_elapsedEvent = timerElapsedEvent;
 
             m_stopwatch = new Stopwatch();
@@ -65,12 +76,14 @@ namespace Assets.Scripts.Utilities.Timers
 
         public void SetTimer(int timeInSeconds)
         {
-            m_intervalInSeconds = timeInSeconds;
+            IntervalInSeconds = timeInSeconds;
+            TimeHasElapsed = false;
         }
 
         public void StartTimer()
         {
             m_stopwatch.Start();
+            TimeHasElapsed = false;
         }
 
         public void StopTimer()
@@ -88,9 +101,19 @@ namespace Assets.Scripts.Utilities.Timers
             AutoResetEnabled = autoReset;
         }
 
+        public void ClearTimeElapsedNotification()
+        {
+            TimeHasElapsed = false;
+        }
+
         public void Update()
         {
-            if(IntervalInSeconds > 0)
+            if(!Active())
+            {
+                return;
+            }
+
+            if(IntervalInSecondsLeft > 0)
             {
                 return;
             }
@@ -118,6 +141,7 @@ namespace Assets.Scripts.Utilities.Timers
             if(Active())
             {
                 m_elapsedEvent();
+                TimeHasElapsed = true;
             }
         }
 

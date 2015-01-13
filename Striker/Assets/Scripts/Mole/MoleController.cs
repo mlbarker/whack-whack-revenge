@@ -15,8 +15,8 @@ namespace Assets.Scripts.Mole
 
         private IMovementController m_movementController;
         private IHealthController m_healthController;
-        private Timer m_inHoleTimer;
-        private Timer m_outOfHoleTimer;
+        private Timer m_upTimer;
+        private Timer m_downTimer;
 
         #endregion
 
@@ -40,13 +40,13 @@ namespace Assets.Scripts.Mole
             set;
         }
 
-        public int MaxSecondsInHole
+        public int MaxSecondsDown
         {
             get;
             private set;
         }
 
-        public int MaxSecondsOutOfHole
+        public int MaxSecondsUp
         {
             get;
             private set;
@@ -65,8 +65,8 @@ namespace Assets.Scripts.Mole
         #region Editor Values
 
         public int health = 1;
-        public int maxSecondsInHole;
-        public int maxSecondsOutOfHole;
+        public int maxSecondsDown;
+        public int maxSecondsUp;
 
         #endregion
 
@@ -75,8 +75,31 @@ namespace Assets.Scripts.Mole
         public void Initialize()
         {
             Health = health;
-            MaxSecondsInHole = maxSecondsInHole;
-            MaxSecondsOutOfHole = maxSecondsOutOfHole;
+            MaxSecondsDown = maxSecondsDown;
+            MaxSecondsUp = maxSecondsUp;
+
+            if(m_movementController == null)
+            {
+                return;
+            }
+
+            if(m_upTimer == null)
+            {
+                m_upTimer = new Timer(MaxSecondsUp, m_movementController.MoveIntoHole);
+            }
+            else
+            {
+                m_upTimer.SetTimer(MaxSecondsUp);
+            }
+
+            if (m_downTimer == null)
+            {
+                m_downTimer = new Timer(MaxSecondsDown, m_movementController.MoveOutOfHole);
+            }
+            else
+            {
+                m_downTimer.SetTimer(MaxSecondsDown);
+            }
         }
 
         public void UpdateStatus()
@@ -93,6 +116,11 @@ namespace Assets.Scripts.Mole
         public void DecrementHealth(int amount)
         {
             Health -= amount;
+        }
+
+        public void RestoreHealth()
+        {
+            Health = health;
         }
 
         public void SetMovementController(IMovementController movementController)
@@ -122,56 +150,87 @@ namespace Assets.Scripts.Mole
 
         private void InitializeTimers()
         {
-            m_inHoleTimer = new Timer(MaxSecondsInHole, m_movementController.MoveOutOfHole);
-            m_outOfHoleTimer = new Timer(MaxSecondsOutOfHole, m_movementController.MoveIntoHole);
+            if (m_upTimer == null)
+            {
+                m_upTimer = new Timer(MaxSecondsUp, m_movementController.MoveIntoHole);
+            }
+
+            if (m_downTimer == null)
+            {
+                m_downTimer = new Timer(MaxSecondsDown, m_movementController.MoveOutOfHole);
+            }
 
             if(IsUp)
             {
-                m_outOfHoleTimer.StartTimer();
+                m_upTimer.StartTimer();
             }
             else
             {
-                m_inHoleTimer.StartTimer();
+                m_downTimer.StartTimer();
             }
         }
 
         private void UpdateHealth()
         {
-            if(Hit && Health == 0)
-            {
-                m_healthController.AdjustHealth();
-
-                Hit = false;
-                IsUp = false;
-
-                m_inHoleTimer.StartTimer();
-            }
-
             if(Hit && Health > 0)
             {
                 m_healthController.AdjustHealth();
 
                 Hit = false;
             }
+
+            if (Health == 0)
+            {
+                Hit = false;
+                IsUp = false;
+
+                m_movementController.MoveIntoHole();
+                m_upTimer.StopTimer();
+                m_upTimer.ResetTimer();
+                m_downTimer.StartTimer();
+            }
         }
 
         private void UpdateTimers()
         {
-            if(IsUp && !m_outOfHoleTimer.Active())
+            if(IsUp && !m_upTimer.Active())
             {
-                m_inHoleTimer.StartTimer();
+                m_downTimer.StartTimer();
 
                 ToggleUp();
             }
-            else if(!IsUp && !m_inHoleTimer.Active())
+            else if(!IsUp && !m_downTimer.Active())
             {
-                m_outOfHoleTimer.StartTimer();
+                m_upTimer.StartTimer();
 
                 ToggleUp();
             }
 
-            m_inHoleTimer.Update();
-            m_outOfHoleTimer.Update();
+            m_upTimer.Update();
+            m_downTimer.Update();
+            CheckIntervalsForTimers();
+        }
+
+        private void CheckIntervalsForTimers()
+        {
+            if(m_downTimer.TimeHasElapsed)
+            {
+                IsUp = true;
+                m_downTimer.ClearTimeElapsedNotification();
+
+                // comment out the below code for unit test
+                m_upTimer.StartTimer();
+                return;
+            }
+
+            if(m_upTimer.TimeHasElapsed)
+            {
+                IsUp = false;
+                m_upTimer.ClearTimeElapsedNotification();
+
+                // comment out the below code for unit test
+                m_downTimer.StartTimer();
+            }
         }
 
         #endregion
