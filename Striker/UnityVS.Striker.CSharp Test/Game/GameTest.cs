@@ -202,11 +202,9 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int score = 0;
             float actualHitPercentage = 0.0f;
             int attempts = 0;
-            int successfulHits = 0;
             var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
             m_scoreSubstitute.When(x => x.HitPercentageUpdate()).Do(x => ++attempts);
-            m_moleSubstitute.When(x => x.DecrementHealth(Arg.Any<int>())).Do(x => ++successfulHits);
 
             game.ClearReceivedCalls();
             game.Initialize();
@@ -220,10 +218,10 @@ namespace UnityVS.Striker.CSharp_Test.Game
             Assert.AreEqual(expectedScore, actualScore);
 
             float expectedHitPercentage = 1.0f;
-            actualHitPercentage = successfulHits / attempts;
+            actualHitPercentage = score / attempts;
             Assert.AreEqual(expectedHitPercentage, actualHitPercentage);
 
-            int expectedHealth = 1;
+            int expectedHealth = 0;
             int actualHealth = m_moleSubstitute.Health;
             Assert.AreEqual(expectedHealth, actualHealth);
         }

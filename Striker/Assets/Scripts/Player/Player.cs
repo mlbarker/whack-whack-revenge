@@ -19,6 +19,26 @@ namespace Assets.Scripts.Player
             private set;
         }
 
+        public int WhackAttempts
+        {
+            get;
+            private set;
+        }
+
+        public int Whacks
+        {
+            get;
+            private set;
+        }
+
+        public float WhackPercentage
+        {
+            get
+            {
+                return (float)(Whacks / WhackAttempts);
+            }
+        }
+
         #endregion
 
         #region Editor Values
@@ -75,11 +95,14 @@ namespace Assets.Scripts.Player
                 return false;
             }
 
+            ++WhackAttempts;
+
             if(!IsInputOverMole())
             {
                 return false;
             }
 
+            ++Whacks;
             return true;
         }
 

@@ -10,11 +10,27 @@ namespace Assets.Scripts.Game
     using Assets.Scripts.Player;
     using Assets.Scripts.Utilities.Timers;
 
-    public class Game : MonoBehaviour, IGameTimeController
+    public class Game : MonoBehaviour, IGameTimeController, IScoreController
     {
         #region Private Members
 
         private Timer m_gameTimer;
+
+        #endregion
+
+        #region Public Properties
+
+        public int Score
+        {
+            get;
+            private set;
+        }
+
+        public float WhackPercentage
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
@@ -70,6 +86,20 @@ namespace Assets.Scripts.Game
 
         #endregion
 
+        #region IScoreController Methods
+
+        public void ScoreUpdate()
+        {
+            ++Score;
+        }
+
+        public void HitPercentageUpdate()
+        {
+            WhackPercentage = player.WhackPercentage;
+        }
+
+        #endregion
+
         #region Unity Methods
 
         void Start()
@@ -112,6 +142,7 @@ namespace Assets.Scripts.Game
             mole.Initialize();
             player.Initialize();
             gameController.SetGameTimeController(this);
+            gameController.SetScoreController(this);
             gameController.SetMoleController(mole.moleController);
             gameController.SetPlayerController(player.playerController);
             gameController.Initialize();
