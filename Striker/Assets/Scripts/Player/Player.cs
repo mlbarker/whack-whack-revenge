@@ -35,7 +35,7 @@ namespace Assets.Scripts.Player
         {
             get
             {
-                return (float)(Whacks / WhackAttempts);
+                return (float)Whacks / (float)WhackAttempts;
             }
         }
 

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Utilities.Random
 {
     using System.Collections.Generic;
 
-    class RandomTester : IRandom
+    public class RandomTester : IRandom
     {
         private int m_currentIndex;
         private List<int> m_randomNumbers = new List<int>();

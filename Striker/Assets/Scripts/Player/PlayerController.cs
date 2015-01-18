@@ -41,6 +41,12 @@ namespace Assets.Scripts.Player
             }
         }
 
+        public bool MoleHit
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region Editor Values

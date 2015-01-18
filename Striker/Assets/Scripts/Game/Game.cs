@@ -76,6 +76,11 @@ namespace Assets.Scripts.Game
 
         public void UpdateTime()
         {
+            if(!m_gameTimer.Active() && !m_gameTimer.TimeHasElapsed)
+            {
+                m_gameTimer.StartTimer();
+            }
+
             m_gameTimer.Update();
         }
 

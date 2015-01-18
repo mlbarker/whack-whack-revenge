@@ -51,12 +51,12 @@ M:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\
 M:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache
 M:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.dll
 M:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.pdb
+H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityVS.Striker.CSharp Test.dll
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityVS.Striker.CSharp Test.pdb
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.dll
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-UnityScript.dll
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\NSubstitute.dll
-H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb
-H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.dll
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.pdb
+H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb

@@ -5,11 +5,14 @@
 namespace UnityVS.Striker.CSharp_Test.Mole
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using NSubstitute;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
+    using Assets.Scripts.Utilities.Random;
+    using Assets.Scripts.Utilities.Timers;
 
     [TestClass]
     public class MoleTest
@@ -45,6 +48,9 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             int health = 1;
             int holeTime = 1;
             var mole = GetMoleWithHoleTimes(health, false, holeTime, holeTime * 120);
+            RandomTester randomTester = new RandomTester();
+            randomTester.SetTestNumbers(new List<int> { 1, 1 });
+            mole.SetRandomObject(randomTester);
             mole.SetMovementController(m_movementSubstitute);
 
             mole.ClearReceivedCalls();

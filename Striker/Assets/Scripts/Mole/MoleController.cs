@@ -6,6 +6,7 @@ namespace Assets.Scripts.Mole
 {
     using System;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Utilities.Random;
     using Assets.Scripts.Utilities.Timers;
 
     [Serializable]
@@ -17,6 +18,7 @@ namespace Assets.Scripts.Mole
         private IHealthController m_healthController;
         private Timer m_upTimer;
         private Timer m_downTimer;
+        private IRandom m_random;
 
         #endregion
 
@@ -78,6 +80,8 @@ namespace Assets.Scripts.Mole
             MaxSecondsDown = maxSecondsDown;
             MaxSecondsUp = maxSecondsUp;
 
+            InitializeRandom();
+
             if(m_movementController == null)
             {
                 return;
@@ -85,20 +89,24 @@ namespace Assets.Scripts.Mole
 
             if(m_upTimer == null)
             {
-                m_upTimer = new Timer(MaxSecondsUp, m_movementController.MoveIntoHole);
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
+                m_upTimer = new Timer(intervalInSeconds, m_movementController.MoveIntoHole);
             }
             else
             {
-                m_upTimer.SetTimer(MaxSecondsUp);
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
+                m_upTimer.SetTimer(intervalInSeconds);
             }
 
             if (m_downTimer == null)
             {
-                m_downTimer = new Timer(MaxSecondsDown, m_movementController.MoveOutOfHole);
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
+                m_downTimer = new Timer(intervalInSeconds, m_movementController.MoveOutOfHole);
             }
             else
             {
-                m_downTimer.SetTimer(MaxSecondsDown);
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
+                m_downTimer.SetTimer(intervalInSeconds);
             }
         }
 
@@ -121,6 +129,16 @@ namespace Assets.Scripts.Mole
         public void RestoreHealth()
         {
             Health = health;
+        }
+
+        public void SetRandomObject(IRandom random)
+        {
+            if(random == null)
+            {
+                return;
+            }
+
+            m_random = random;
         }
 
         public void SetMovementController(IMovementController movementController)
@@ -148,16 +166,28 @@ namespace Assets.Scripts.Mole
 
         #region Private Methods
 
+        private void InitializeRandom()
+        {
+            if(m_random == null)
+            {
+                m_random = new Utilities.Random.Random();
+            }
+        }
+
         private void InitializeTimers()
         {
+            InitializeRandom();
+
             if (m_upTimer == null)
             {
-                m_upTimer = new Timer(MaxSecondsUp, m_movementController.MoveIntoHole);
+                int intervalInSeconds = m_random.RandomInt(1, MaxSecondsUp);
+                m_upTimer = new Timer(intervalInSeconds, m_movementController.MoveIntoHole);
             }
 
             if (m_downTimer == null)
             {
-                m_downTimer = new Timer(MaxSecondsDown, m_movementController.MoveOutOfHole);
+                int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
+                m_downTimer = new Timer(intervalInSeconds, m_movementController.MoveOutOfHole);
             }
 
             if(IsUp)
@@ -185,8 +215,11 @@ namespace Assets.Scripts.Mole
                 IsUp = false;
 
                 m_movementController.MoveIntoHole();
+
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
                 m_upTimer.StopTimer();
                 m_upTimer.ResetTimer();
+                m_upTimer.SetTimer(intervalInSeconds);
                 m_downTimer.StartTimer();
             }
         }
@@ -216,9 +249,11 @@ namespace Assets.Scripts.Mole
             if(m_downTimer.TimeHasElapsed)
             {
                 IsUp = true;
+                
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
                 m_downTimer.ClearTimeElapsedNotification();
+                m_downTimer.SetTimer(intervalInSeconds);
 
-                // comment out the below code for unit test
                 m_upTimer.StartTimer();
                 return;
             }
@@ -226,9 +261,11 @@ namespace Assets.Scripts.Mole
             if(m_upTimer.TimeHasElapsed)
             {
                 IsUp = false;
-                m_upTimer.ClearTimeElapsedNotification();
 
-                // comment out the below code for unit test
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
+                m_upTimer.ClearTimeElapsedNotification();
+                m_upTimer.SetTimer(intervalInSeconds);
+
                 m_downTimer.StartTimer();
             }
         }
