@@ -9,7 +9,7 @@ namespace Assets.Scripts.Player
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Player;
 
-    public class Player : MonoBehaviour, IInputController
+    public class Player : MonoBehaviour, IInputController, IHitController
     {
         #region Public Properties
 
@@ -31,13 +31,13 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        public float WhackPercentage
-        {
-            get
-            {
-                return (float)Whacks / (float)WhackAttempts;
-            }
-        }
+        //public float WhackPercentage
+        //{
+        //    get
+        //    {
+        //        return (float)Whacks / (float)WhackAttempts;
+        //    }
+        //}
 
         #endregion
 
@@ -52,6 +52,15 @@ namespace Assets.Scripts.Player
         public bool AttackButton()
         {
             return AttackButtonPressed();
+        }
+
+        #endregion
+
+        #region IHitController Methods
+
+        public bool HitDetected()
+        {
+            return MoleWasHit();
         }
 
         #endregion
@@ -81,6 +90,7 @@ namespace Assets.Scripts.Player
 
             playerController.Initialize();
             playerController.SetInputController(this);
+            playerController.SetHitController(this);
             HitCollisionId = -1;
         }
 
@@ -96,13 +106,6 @@ namespace Assets.Scripts.Player
             }
 
             ++WhackAttempts;
-
-            if(!IsInputOverMole())
-            {
-                return false;
-            }
-
-            ++Whacks;
             return true;
         }
 
@@ -119,6 +122,17 @@ namespace Assets.Scripts.Player
             }
 
             return false;
+        }
+
+        private bool MoleWasHit()
+        {
+            if (!IsInputOverMole())
+            {
+                return false;
+            }
+
+            ++Whacks;
+            return true;
         }
 
         private bool IsInputOverMole()

@@ -81,6 +81,8 @@ namespace Assets.Scripts.Mole
             {
                 throw new UnassignedReferenceException();
             }
+
+            moleAnimator.Play("MoveDown", 0, 6.0f);
         }
 
         #endregion

@@ -13,6 +13,7 @@ namespace Assets.Scripts.Player
     {
         #region Private Members
 
+        private IHitController m_hitController;
         private IInputController m_inputController;
         private Timer m_buttonDelayTimer;
         private int m_buttonDelaySeconds = 1;
@@ -67,6 +68,7 @@ namespace Assets.Scripts.Player
         public void Update()
         {
             UpdateInput();
+            UpdateHit();
             UpdateTimer();
         }
 
@@ -76,6 +78,15 @@ namespace Assets.Scripts.Player
             if(m_inputController == null)
             {
                 throw new InputControllerException();
+            }
+        }
+
+        public void SetHitController(IHitController hitController)
+        {
+            m_hitController = hitController;
+            if(m_hitController == null)
+            {
+                throw new HitControllerException();
             }
         }
 
@@ -100,6 +111,17 @@ namespace Assets.Scripts.Player
                 CanWhack = false;
                 m_buttonDelayTimer.StartTimer();
             }
+        }
+
+        private void UpdateHit()
+        {
+            if(!WhackTriggered)
+            {
+                MoleHit = false;
+                return;
+            }
+
+            MoleHit = m_hitController.HitDetected();
         }
 
         private void UpdateTimer()

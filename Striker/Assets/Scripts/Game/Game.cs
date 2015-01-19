@@ -100,7 +100,7 @@ namespace Assets.Scripts.Game
 
         public void HitPercentageUpdate()
         {
-            WhackPercentage = player.WhackPercentage;
+            WhackPercentage = (float)Score / (float)player.WhackAttempts;
         }
 
         #endregion

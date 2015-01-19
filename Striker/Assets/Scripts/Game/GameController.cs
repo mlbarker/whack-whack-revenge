@@ -121,10 +121,22 @@ namespace Assets.Scripts.Game
 
         private void UpdateGameStatus()
         {
-            if(m_playerController.WhackTriggered && m_moleController.IsUp)
+            if(!m_playerController.WhackTriggered)
             {
-                m_moleController.Hit = true;
+                return;
             }
+
+            if(!m_playerController.MoleHit)
+            {
+                return;
+            }
+
+            if(!m_moleController.IsUp)
+            {
+                return;
+            }
+
+            m_moleController.Hit = true;
         }
 
         private void UpdateScore()
