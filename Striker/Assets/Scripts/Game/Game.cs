@@ -37,7 +37,7 @@ namespace Assets.Scripts.Game
         #region Editor Values
 
         public GameController gameController;
-        public Mole mole;
+        public Mole [] moles;
         public Player player;
 
         #endregion
@@ -128,11 +128,6 @@ namespace Assets.Scripts.Game
                 throw new GameControllerException();
             }
 
-            if(mole == null)
-            {
-                throw new MoleException();
-            }
-
             if(player == null)
             {
                 throw new PlayerException();
@@ -144,13 +139,28 @@ namespace Assets.Scripts.Game
                 throw new TimerException();
             }
 
-            mole.Initialize();
+            //moles.Initialize();
             player.Initialize();
             gameController.SetGameTimeController(this);
             gameController.SetScoreController(this);
-            gameController.SetMoleController(mole.moleController);
+            InitializeMoles();
+            //gameController.SetMoleController(moles.moleController);
             gameController.SetPlayerController(player.playerController);
             gameController.Initialize();
+        }
+
+        private void InitializeMoles()
+        {
+            if (moles == null)
+            {
+                throw new MoleException();
+            }
+
+            foreach(Mole mole in moles)
+            {
+                mole.Initialize();
+                gameController.SetMoleController(mole.moleController);
+            }
         }
 
         private void UpdateGame()
@@ -166,15 +176,28 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            if(mole.collider == null)
+            foreach(Mole mole in moles)
             {
-                return;
+                if(mole.collider == null)
+                {
+                    continue;
+                }
+
+                if(player.HitCollisionId == mole.collider.GetInstanceID())
+                {
+                    mole.moleController.Hit = true;
+                }
             }
 
-            if(player.HitCollisionId == mole.collider.GetInstanceID())
-            {
-                mole.moleController.Hit = true;
-            }
+            //if(moles.collider == null)
+            //{
+            //    return;
+            //}
+
+            //if(player.HitCollisionId == moles.collider.GetInstanceID())
+            //{
+            //    moles.moleController.Hit = true;
+            //}
         }
 
         private void GameIsOver()
