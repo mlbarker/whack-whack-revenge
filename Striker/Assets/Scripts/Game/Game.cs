@@ -159,6 +159,9 @@ namespace Assets.Scripts.Game
             foreach(Mole mole in moles)
             {
                 mole.Initialize();
+
+                // because I have an array of moles, I need to send that
+                // to the game controller as it needs an array of mole controllers.
                 gameController.SetMoleController(mole.moleController);
             }
         }
@@ -178,16 +181,22 @@ namespace Assets.Scripts.Game
 
             foreach(Mole mole in moles)
             {
-                if(mole.collider == null)
+                if(mole.collider2D == null)
                 {
                     continue;
                 }
 
-                if(player.HitCollisionId == mole.collider.GetInstanceID())
+                int hitCollisionId = mole.collider.GetInstanceID();
+                int hitCollision2dId = mole.collider2D.GetInstanceID();
+                if(player.HitCollisionId == hitCollisionId ||
+                   player.HitCollisionId == hitCollision2dId)
                 {
                     mole.moleController.Hit = true;
+                    break;
                 }
             }
+
+            player.ClearHitCollisionId();
 
             //if(moles.collider == null)
             //{

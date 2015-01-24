@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Game
 {
     using System;
+    using System.Collections.Generic;
     using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
@@ -18,8 +19,7 @@ namespace Assets.Scripts.Game
         private IGameTimeController m_gameTimeController;
         private IScoreController m_scoreController;
 
-        // TODO: in the future, these need to be interfaces
-        private MoleController m_moleController;
+        private List<MoleController> m_moleControllers;
         private PlayerController m_playerController;
 
         #endregion
@@ -27,6 +27,12 @@ namespace Assets.Scripts.Game
         #region Public Properties
 
         public bool IsTimeUp
+        {
+            get;
+            private set;
+        }
+
+        public int CurrentScore
         {
             get;
             private set;
@@ -54,11 +60,6 @@ namespace Assets.Scripts.Game
                 throw new ScoreControllerException();
             }
 
-            if(m_moleController == null)
-            {
-                throw new MoleControllerException();
-            }
-
             if(m_playerController == null)
             {
                 throw new PlayerControllerException();
@@ -67,7 +68,7 @@ namespace Assets.Scripts.Game
             m_gameTimeController.SetGameTime(gameTimeSeconds);
 
             m_playerController.Initialize();
-            m_moleController.Initialize();
+            InitializeMoleControllers();
         }
 
         public void Update()
@@ -92,7 +93,12 @@ namespace Assets.Scripts.Game
 
         public void SetMoleController(MoleController moleController)
         {
-            m_moleController = moleController;
+            if(m_moleControllers == null)
+            {
+                m_moleControllers = new List<MoleController>();
+            }
+
+            m_moleControllers.Add(moleController);
         }
 
         public void SetPlayerController(PlayerController playerController)
@@ -104,6 +110,19 @@ namespace Assets.Scripts.Game
 
         #region Private Methods
 
+        private void InitializeMoleControllers()
+        {
+            foreach(MoleController moleController in m_moleControllers)
+            {
+                if (moleController == null)
+                {
+                    throw new MoleControllerException();
+                }
+
+                moleController.Initialize();
+            }
+        }
+
         private void UpdateTime()
         {
             m_gameTimeController.UpdateTime();
@@ -111,7 +130,10 @@ namespace Assets.Scripts.Game
 
         private void UpdateMole()
         {
-            m_moleController.UpdateStatus();
+            foreach(MoleController moleController in m_moleControllers)
+            {
+                moleController.UpdateStatus();
+            }
         }
 
         private void UpdatePlayer()
@@ -131,20 +153,12 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            if(!m_moleController.IsUp)
-            {
-                return;
-            }
-
-            m_moleController.Hit = true;
+            DetermineWhackedMole();
         }
 
         private void UpdateScore()
         {
-            if(m_moleController.Hit)
-            {
-                m_scoreController.ScoreUpdate();
-            }
+            CurrentScore += IncrementScoreOnHits();
 
             if(m_playerController.WhackTriggered)
             {
@@ -161,6 +175,34 @@ namespace Assets.Scripts.Game
 
             m_gameTimeController.TimeUpCallback();
             IsTimeUp = true;
+        }
+
+        private int IncrementScoreOnHits()
+        {
+            int score = 0;
+            foreach (MoleController moleController in m_moleControllers)
+            {
+                if (!moleController.Hit)
+                {
+                    continue;
+                }
+
+                m_scoreController.ScoreUpdate();
+                ++score;
+            }
+
+            return score;
+        }
+
+        private void DetermineWhackedMole()
+        {
+            foreach (MoleController moleController in m_moleControllers)
+            {
+                if (!moleController.IsUp && moleController.Hit)
+                {
+                    moleController.Hit = false;
+                }
+            }
         }
 
         #endregion

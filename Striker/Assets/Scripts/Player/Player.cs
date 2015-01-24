@@ -41,6 +41,16 @@ namespace Assets.Scripts.Player
 
         #endregion
 
+        #region Private Properties
+
+        private int FingerCount
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
         #region Editor Values
 
         public PlayerController playerController;
@@ -91,6 +101,11 @@ namespace Assets.Scripts.Player
             playerController.Initialize();
             playerController.SetInputController(this);
             playerController.SetHitController(this);
+            HitCollisionId = -1;
+        }
+
+        public void ClearHitCollisionId()
+        {
             HitCollisionId = -1;
         }
 
@@ -202,13 +217,19 @@ namespace Assets.Scripts.Player
                 return false;
             }
 
-            int fingerCount = 0;
             foreach (Touch touch in Input.touches)
             {
-                if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+                if (touch.phase != TouchPhase.Ended && 
+                    touch.phase != TouchPhase.Canceled &&
+                    FingerCount == 0)
                 {
-                    fingerCount++;
+                    FingerCount++;
                     return true;
+                }
+                else if(FingerCount == 1)
+                {
+                    FingerCount = 0;
+                    return false;
                 }
             }
 
