@@ -41,8 +41,6 @@ namespace Assets.Scripts.Mole
 
         public void MoveIntoHole()
         {
-            // do visual logic here...
-            //GoIntoHole = true;
             Debug.Log("In Hole");
             moleController.RestoreHealth();
             moleController.ToggleUp();
@@ -50,8 +48,6 @@ namespace Assets.Scripts.Mole
 
         public void MoveOutOfHole()
         {
-            // do visual logic here...
-            //GoIntoHole = false;
             Debug.Log("Out Hole");
             moleController.ToggleUp();
         }
@@ -82,7 +78,7 @@ namespace Assets.Scripts.Mole
                 throw new UnassignedReferenceException();
             }
 
-            //moleAnimator.Play("MoveDown", 0, 6.0f);
+            moleAnimator.Play("MoveDown", 0, 6.0f);
         }
 
         #endregion

@@ -31,19 +31,11 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        //public float WhackPercentage
-        //{
-        //    get
-        //    {
-        //        return (float)Whacks / (float)WhackAttempts;
-        //    }
-        //}
-
         #endregion
 
         #region Private Properties
 
-        private int FingerCount
+        private bool FingerCount
         {
             get;
             set;
@@ -170,7 +162,8 @@ namespace Assets.Scripts.Player
                 HitCollisionId = hit.collider.GetInstanceID();
                 return true;
             }
-            else if (PlatformSupportsTouchInput())
+            else
+                if (PlatformSupportsTouchInput())
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
 
@@ -190,12 +183,12 @@ namespace Assets.Scripts.Player
 
         private bool MouseInputReceived()
         {
-            if(!PlatformSupportsMouseInput())
+            if (!PlatformSupportsMouseInput())
             {
                 return false;
             }
 
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("WHACK!");
                 return true;
@@ -219,20 +212,21 @@ namespace Assets.Scripts.Player
 
             foreach (Touch touch in Input.touches)
             {
+                if(FingerCount && touch.phase != TouchPhase.Ended)
+                {
+                    return false;
+                }
+
                 if (touch.phase != TouchPhase.Ended && 
                     touch.phase != TouchPhase.Canceled &&
-                    FingerCount == 0)
+                    !FingerCount)
                 {
-                    FingerCount++;
+                    FingerCount = true;
                     return true;
-                }
-                else if(FingerCount == 1)
-                {
-                    FingerCount = 0;
-                    return false;
                 }
             }
 
+            FingerCount = false;
             return false;
         }
 

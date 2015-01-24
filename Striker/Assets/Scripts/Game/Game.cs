@@ -139,12 +139,10 @@ namespace Assets.Scripts.Game
                 throw new TimerException();
             }
 
-            //moles.Initialize();
             player.Initialize();
             gameController.SetGameTimeController(this);
             gameController.SetScoreController(this);
             InitializeMoles();
-            //gameController.SetMoleController(moles.moleController);
             gameController.SetPlayerController(player.playerController);
             gameController.Initialize();
         }
@@ -159,9 +157,6 @@ namespace Assets.Scripts.Game
             foreach(Mole mole in moles)
             {
                 mole.Initialize();
-
-                // because I have an array of moles, I need to send that
-                // to the game controller as it needs an array of mole controllers.
                 gameController.SetMoleController(mole.moleController);
             }
         }
@@ -186,10 +181,8 @@ namespace Assets.Scripts.Game
                     continue;
                 }
 
-                int hitCollisionId = mole.collider.GetInstanceID();
                 int hitCollision2dId = mole.collider2D.GetInstanceID();
-                if(player.HitCollisionId == hitCollisionId ||
-                   player.HitCollisionId == hitCollision2dId)
+                if(player.HitCollisionId == hitCollision2dId)
                 {
                     mole.moleController.Hit = true;
                     break;
@@ -197,16 +190,6 @@ namespace Assets.Scripts.Game
             }
 
             player.ClearHitCollisionId();
-
-            //if(moles.collider == null)
-            //{
-            //    return;
-            //}
-
-            //if(player.HitCollisionId == moles.collider.GetInstanceID())
-            //{
-            //    moles.moleController.Hit = true;
-            //}
         }
 
         private void GameIsOver()
