@@ -37,63 +37,6 @@ namespace UnityVS.Striker.CSharp_Test.Player
         }
 
         [TestMethod]
-        public void PlayerAttackButtonPressedCanWhackTest()
-        {
-            var player = Substitute.For<PlayerController>();
-            player.SetInputController(m_inputSubstitute);
-            m_inputSubstitute.AttackButton().Returns(true);
-
-            player.ClearReceivedCalls();
-            player.Initialize();
-            player.Update();
-
-            m_inputSubstitute.Received().AttackButton();
-            Assert.IsFalse(player.CanWhack);
-            Assert.IsTrue(player.WhackTriggered);
-            Assert.IsTrue(player.WhackCooldown);
-        }
-
-        [TestMethod]
-        public void PlayerAttackButtonPressedCannotWhackTest()
-        {
-            var player = Substitute.For<PlayerController>();
-            player.SetInputController(m_inputSubstitute);
-            m_inputSubstitute.AttackButton().Returns(true);
-
-            player.ClearReceivedCalls();
-            player.Initialize();
-            player.Update();
-            player.Update();
-
-            m_inputSubstitute.Received().AttackButton();
-            Assert.IsFalse(player.CanWhack);
-            Assert.IsTrue(player.WhackCooldown);
-        }
-
-        [TestMethod]
-        public void PlayerAttackButtonPressedWhackCooldownElaspedTest()
-        {
-            int milliseconds = 1200;
-            AutoResetEvent resetEvent = new AutoResetEvent(false);
-            var player = Substitute.For<PlayerController>();
-            player.SetInputController(m_inputSubstitute);
-            player.buttonDelayMilliseconds = 1;
-            m_inputSubstitute.AttackButton().Returns(true);
-
-            player.ClearReceivedCalls();
-            player.Initialize();
-            player.Update();
-            resetEvent.WaitOne(milliseconds);
-
-            Assert.IsFalse(player.CanWhack);
-
-            player.Update();
-
-            Assert.IsTrue(player.CanWhack);
-            Assert.IsFalse(player.WhackCooldown);
-        }
-
-        [TestMethod]
         public void PlayerSuccessfulHitTest()
         {
             var player = Substitute.For<PlayerController>();

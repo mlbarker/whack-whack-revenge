@@ -15,31 +15,15 @@ namespace Assets.Scripts.Player
 
         private IHitController m_hitController;
         private IInputController m_inputController;
-        private Timer m_buttonDelayTimer;
-        private int m_buttonDelaySeconds = 1;
         
         #endregion
 
         #region Public Properties
 
-        public bool CanWhack
-        {
-            get;
-            private set;
-        }
-
         public bool WhackTriggered
         {
             get;
             private set;
-        }
-
-        public bool WhackCooldown
-        {
-            get
-            {
-                return m_buttonDelayTimer.Active();
-            }
         }
 
         public bool MoleHit
@@ -52,24 +36,18 @@ namespace Assets.Scripts.Player
 
         #region Editor Values
 
-        public int buttonDelayMilliseconds;
-
         #endregion
 
         #region Public Methods
 
         public void Initialize()
         {
-            CanWhack = true;
-            m_buttonDelayTimer = new Timer(m_buttonDelaySeconds, ButtonDelayTimeElapsed);
-            m_buttonDelayTimer.AutoResetTimer(false);
         }
 
         public void Update()
         {
             UpdateInput();
             UpdateHit();
-            UpdateTimer();
         }
 
         public void SetInputController(IInputController inputController)
@@ -94,23 +72,9 @@ namespace Assets.Scripts.Player
 
         #region Private Methods
 
-        private void ButtonDelayTimeElapsed()
-        {
-            CanWhack = true;
-        }
-
         private void UpdateInput()
         {
             WhackTriggered = m_inputController.AttackButton();
-            if (WhackTriggered && !CanWhack)
-            {
-                return;
-            }
-            else if (WhackTriggered && CanWhack)
-            {
-                CanWhack = false;
-                m_buttonDelayTimer.StartTimer();
-            }
         }
 
         private void UpdateHit()
@@ -122,11 +86,6 @@ namespace Assets.Scripts.Player
             }
 
             MoleHit = m_hitController.HitDetected();
-        }
-
-        private void UpdateTimer()
-        {
-            m_buttonDelayTimer.Update();
         }
 
         #endregion

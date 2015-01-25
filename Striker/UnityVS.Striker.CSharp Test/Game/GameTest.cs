@@ -23,6 +23,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
         private IMovementController m_movementSubstitute;
         private IInputController m_inputSubstitute;
         private IScoreController m_scoreSubstitute;
+        private IHitController m_hitSubstitute;
         private MoleController m_moleSubstitute;
         private PlayerController m_playerSubstitute;
 
@@ -38,6 +39,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
             m_movementSubstitute = Substitute.For<IMovementController>();
             m_inputSubstitute = Substitute.For<IInputController>();
             m_scoreSubstitute = Substitute.For<IScoreController>();
+            m_hitSubstitute = Substitute.For<IHitController>();
             m_moleSubstitute = Substitute.For<MoleController>();
             m_playerSubstitute = Substitute.For<PlayerController>();
         }
@@ -50,6 +52,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
             m_movementSubstitute = null;
             m_inputSubstitute = null;
             m_scoreSubstitute = null;
+            m_hitSubstitute = null;
             m_moleSubstitute = null;
             m_playerSubstitute = null;
         }
@@ -92,6 +95,8 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int upTime = 120;
             int downTime = 120;
             var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            m_hitSubstitute.HitDetected().Returns(true);
+            m_hitSubstitute.When(x => x.HitDetected()).Do(x => m_moleSubstitute.Hit = true);
 
             game.ClearReceivedCalls();
             game.Initialize();
@@ -103,7 +108,6 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int expectedHealth = 0;
             int actualHealth = m_moleSubstitute.Health;
             m_movementSubstitute.Received().MoveIntoHole();
-            Assert.IsFalse(m_playerSubstitute.CanWhack);
             Assert.IsFalse(m_moleSubstitute.IsUp);
             Assert.IsFalse(game.IsTimeUp);
             Assert.AreEqual(expectedHealth, actualHealth);
@@ -128,8 +132,6 @@ namespace UnityVS.Striker.CSharp_Test.Game
             m_movementSubstitute.DidNotReceive().MoveIntoHole();
             m_movementSubstitute.DidNotReceive().MoveOutOfHole();
             m_inputSubstitute.Received().AttackButton();
-            Assert.IsFalse(m_playerSubstitute.CanWhack);
-            Assert.IsTrue(m_playerSubstitute.WhackCooldown);
             Assert.IsFalse(m_moleSubstitute.IsUp);
             Assert.IsFalse(game.IsTimeUp);
         }
@@ -145,6 +147,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int downTime = 120;
             int score = 0;
             var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            m_moleSubstitute.Hit = true;
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
 
             game.ClearReceivedCalls();
@@ -202,7 +205,10 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int score = 0;
             float actualHitPercentage = 0.0f;
             int attempts = 0;
+
             var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            m_moleSubstitute.Hit = true;
+            m_hitSubstitute.HitDetected().Returns(true);
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
             m_scoreSubstitute.When(x => x.HitPercentageUpdate()).Do(x => ++attempts);
 
@@ -250,6 +256,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
         {
             m_inputSubstitute.AttackButton().Returns(attackButtonHit);
             m_playerSubstitute.SetInputController(m_inputSubstitute);
+            m_playerSubstitute.SetHitController(m_hitSubstitute);
         }
 
         private void SetUpMole(bool moleIsUp, int health, int downTime, int upTime)
