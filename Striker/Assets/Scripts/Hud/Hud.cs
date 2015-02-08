@@ -41,6 +41,11 @@ namespace Assets.Scripts.Hud
 
         #region Public Methods
 
+        public void BackToMainMenu()
+        {
+            Application.LoadLevel(0);
+        }
+
         #endregion
 
         #region Private Methods

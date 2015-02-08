@@ -64,8 +64,13 @@
     <Compile Include="Assets\Scripts\Interfaces\IHealthController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHitController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IInputController.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IMenuNavigationController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMovementController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IScoreController.cs" />
+    <Compile Include="Assets\Scripts\Menu\Menu.cs" />
+    <Compile Include="Assets\Scripts\Menu\MenuController.cs" />
+    <Compile Include="Assets\Scripts\Menu\MenuNavigationException.cs" />
+    <Compile Include="Assets\Scripts\Menu\MenuState.cs" />
     <Compile Include="Assets\Scripts\Mole\Mole.cs" />
     <Compile Include="Assets\Scripts\Mole\MoleController.cs" />
     <Compile Include="Assets\Scripts\Mole\MoleControllerException.cs" />

@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Game\GameTest.cs" />
+    <Compile Include="Menu\MenuTest.cs" />
     <Compile Include="Mole\MoleTest.cs" />
     <Compile Include="Player\PlayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

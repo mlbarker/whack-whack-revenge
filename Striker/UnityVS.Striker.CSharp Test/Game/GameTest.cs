@@ -1,5 +1,5 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014
+// ImperfectlyCoded © 2014-2015
 //-----------------------------
 
 namespace UnityVS.Striker.CSharp_Test.Game

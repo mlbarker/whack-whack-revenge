@@ -44,12 +44,14 @@ namespace Assets.Scripts.Mole
             Debug.Log("In Hole");
             moleController.RestoreHealth();
             moleController.ToggleUp();
+            renderer.material.color = Color.green;
         }
 
         public void MoveOutOfHole()
         {
             Debug.Log("Out Hole");
             moleController.ToggleUp();
+            renderer.material.color = Color.red;
         }
 
         #endregion
