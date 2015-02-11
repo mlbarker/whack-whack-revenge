@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Mole
 {
     using System;
+    using System.Collections.Generic;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Utilities.Random;
     using Assets.Scripts.Utilities.Timers;
@@ -14,10 +15,11 @@ namespace Assets.Scripts.Mole
     {
         #region Fields
 
+        private Dictionary<MoleStatus, bool> m_status = new Dictionary<MoleStatus,bool>();
         private IMovementController m_movementController;
         private IHealthController m_healthController;
-        private Timer m_upTimer;
-        private Timer m_downTimer;
+        private Timer m_timer;
+        private Timer m_recoveryTimer;
         private IRandom m_random;
 
         #endregion
@@ -40,6 +42,24 @@ namespace Assets.Scripts.Mole
         {
             get;
             set;
+        }
+
+        public bool IsMoving
+        {
+            get;
+            private set;
+        }
+
+        public int HealthTickInSeconds
+        {
+            get;
+            private set;
+        }
+
+        public int HealthPerTick
+        {
+            get;
+            private set;
         }
 
         public int MaxSecondsDown
@@ -66,7 +86,9 @@ namespace Assets.Scripts.Mole
 
         #region Editor Values
 
-        public int health = 1;
+        public int health;
+        public int healthTickInSeconds;
+        public int healthPerTick;
         public int maxSecondsDown;
         public int maxSecondsUp;
 
@@ -77,43 +99,28 @@ namespace Assets.Scripts.Mole
         public void Initialize()
         {
             Health = health;
+            HealthTickInSeconds = healthTickInSeconds;
+            HealthPerTick = healthPerTick;
             MaxSecondsDown = maxSecondsDown;
             MaxSecondsUp = maxSecondsUp;
 
             InitializeRandom();
+            InitializeTimers();
+            InitializeStatus();
 
             if(m_movementController == null)
             {
                 return;
             }
-
-            if(m_upTimer == null)
-            {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
-                m_upTimer = new Timer(intervalInSeconds, m_movementController.MoveIntoHole);
-            }
-            else
-            {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
-                m_upTimer.SetTimer(intervalInSeconds);
-            }
-
-            if (m_downTimer == null)
-            {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
-                m_downTimer = new Timer(intervalInSeconds, m_movementController.MoveOutOfHole);
-            }
-            else
-            {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
-                m_downTimer.SetTimer(intervalInSeconds);
-            }
         }
 
-        public void UpdateStatus()
+        public void Update()
         {
             UpdateHealth();
-            UpdateTimers();
+            UpdateStatus();
+            UpdateMoveTimer();
+            UpdateRecoveryTimer();
+            ClearHit();
         }
 
         public void ToggleUp()
@@ -131,14 +138,14 @@ namespace Assets.Scripts.Mole
             Health = health;
         }
 
-        public void SetRandomObject(IRandom random)
+        public bool GetMoleStatus(MoleStatus status)
         {
-            if(random == null)
-            {
-                return;
-            }
+            return m_status[status];
+        }
 
-            m_random = random;
+        public void StoppedMoving()
+        {
+            IsMoving = false;
         }
 
         public void SetMovementController(IMovementController movementController)
@@ -149,7 +156,6 @@ namespace Assets.Scripts.Mole
             }
 
             m_movementController = movementController;
-            InitializeTimers();
         }
 
         public void SetHealthController(IHealthController healthController)
@@ -160,20 +166,6 @@ namespace Assets.Scripts.Mole
             }
 
             m_healthController = healthController;
-        }
-
-        public void StartMoleTimer(bool UpTimer)
-        {
-            if(UpTimer)
-            {
-                m_upTimer.StartTimer();
-                m_downTimer.StopTimer();
-            }
-            else
-            {
-                m_downTimer.StartTimer();
-                m_upTimer.StopTimer();
-            }
         }
 
         #endregion
@@ -190,97 +182,151 @@ namespace Assets.Scripts.Mole
 
         private void InitializeTimers()
         {
-            InitializeRandom();
-
-            if (m_upTimer == null)
+            if(m_recoveryTimer == null)
             {
-                int intervalInSeconds = m_random.RandomInt(1, MaxSecondsUp);
-                m_upTimer = new Timer(intervalInSeconds, m_movementController.MoveIntoHole);
+                m_recoveryTimer = new Timer(HealthTickInSeconds, RecoverHealth);
             }
 
-            if (m_downTimer == null)
+            if(m_timer == null)
             {
                 int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
-                m_downTimer = new Timer(intervalInSeconds, m_movementController.MoveOutOfHole);
+                m_timer = new Timer(intervalInSeconds, TriggerMoleMovement);
             }
 
+            m_timer.StartTimer();
+        }
+
+        private void InitializeStatus()
+        {
+            if(m_status.Count == (int)MoleStatus.Total)
+            {
+                return;
+            }
+
+            m_status.Add(MoleStatus.Healthy, true);
+            m_status.Add(MoleStatus.Injured, false);
+            m_status.Add(MoleStatus.Recovering, false);
+        }
+
+        private void TriggerMoleMovement()
+        {
             if(IsUp)
             {
-                m_upTimer.StartTimer();
+                m_movementController.MoveIntoHole();
+                IsUp = false;
+                IsMoving = true;
             }
             else
             {
-                m_downTimer.StartTimer();
+                m_movementController.MoveOutOfHole();
+                IsUp = true;
+                IsMoving = true;
             }
+        }
+
+        private void RecoverHealth()
+        {
+            //m_healthController.AdjustHealthPerTick();
+            if(Health >= health)
+            {
+                Health = health;
+                return;
+            }
+
+            Health += HealthPerTick;
         }
 
         private void UpdateHealth()
         {
-            if(Hit && Health > 0)
+            if(Hit)
             {
                 m_healthController.AdjustHealth();
-
-                Hit = false;
-            }
-
-            if (Health == 0)
-            {
-                Hit = false;
-                //IsUp = false;
-
-                m_movementController.MoveIntoHole();
-
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
-                m_upTimer.StopTimer();
-                m_upTimer.ResetTimer();
-                m_upTimer.SetTimer(intervalInSeconds);
-                m_downTimer.StartTimer();
             }
         }
 
-        private void UpdateTimers()
+        private void UpdateStatus()
         {
-            if(IsUp && !m_upTimer.Active())
+            if(Hit)
             {
-                m_downTimer.StartTimer();
-
-                ToggleUp();
-            }
-            else if(!IsUp && !m_downTimer.Active())
-            {
-                m_upTimer.StartTimer();
-
-                ToggleUp();
+                m_status[MoleStatus.Healthy] = false;
+                m_status[MoleStatus.Injured] = true;
             }
 
-            m_upTimer.Update();
-            m_downTimer.Update();
-            CheckIntervalsForTimers();
+            if(Health <= 0 || !IsUp)
+            {
+                m_status[MoleStatus.Recovering] = true;
+            }
+
+            if(Health == health)
+            {
+                m_status[MoleStatus.Healthy] = true;
+                m_status[MoleStatus.Injured] = false;
+            }
+
+            if(IsUp)
+            {
+                m_status[MoleStatus.Recovering] = false;
+            }
         }
 
-        private void CheckIntervalsForTimers()
+        private void UpdateMoveTimer()
         {
-            if(m_downTimer.TimeHasElapsed)
+            if(GetMoleStatus(MoleStatus.Recovering) &&
+               GetMoleStatus(MoleStatus.Injured))
             {
-                IsUp = true;
-                
+                m_timer.StopTimer();
+                m_timer.ResetTimer();
+            }
+
+            if(GetMoleStatus(MoleStatus.Healthy) &&
+               GetMoleStatus(MoleStatus.Recovering) &&
+               !m_timer.Active())
+            {
                 int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
-                m_downTimer.ClearTimeElapsedNotification();
-                m_downTimer.SetTimer(intervalInSeconds);
+                m_timer.SetTimer(intervalInSeconds);
+                m_timer.StartTimer();
+            }
 
-                m_upTimer.StartTimer();
+            if(IsMoving)
+            {
+                m_timer.StopTimer();
+                m_timer.ResetTimer();
+            }
+
+            if (IsUp && !m_timer.Active())
+            {
+                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
+                m_timer.SetTimer(intervalInSeconds);
+                m_timer.StartTimer();
+            }
+        }
+
+        private void UpdateRecoveryTimer()
+        {
+            if (GetMoleStatus(MoleStatus.Healthy))
+            {
+                m_recoveryTimer.StopTimer();
+                m_recoveryTimer.ResetTimer();
                 return;
             }
 
-            if(m_upTimer.TimeHasElapsed)
+            if(GetMoleStatus(MoleStatus.Recovering) && !m_recoveryTimer.Active())
             {
-                IsUp = false;
+                m_recoveryTimer.StartTimer();
+            }
 
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsUp);
-                m_upTimer.ClearTimeElapsedNotification();
-                m_upTimer.SetTimer(intervalInSeconds);
+            if(!GetMoleStatus(MoleStatus.Recovering))
+            {
+                m_recoveryTimer.StopTimer();
+                m_recoveryTimer.ResetTimer();
+            }
+        }
 
-                m_downTimer.StartTimer();
+        private void ClearHit()
+        {
+            if(Hit)
+            {
+                Hit = false;
             }
         }
 

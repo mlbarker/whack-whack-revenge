@@ -43,12 +43,6 @@ namespace Assets.Scripts.Mole
         {
             //Debug.Log("In Hole");
 
-            // Has to be a better way...
-            if(moleController.IsUp)
-            {
-                moleController.ToggleUp();
-            }
-
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             renderer.material.color = Color.green;
         }
@@ -57,12 +51,6 @@ namespace Assets.Scripts.Mole
         {
             //Debug.Log("Out Hole");
             moleController.RestoreHealth();
-
-            // Really, there has to be a better way...
-            if(!moleController.IsUp)
-            {
-                moleController.ToggleUp();
-            }
 
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             renderer.material.color = Color.red;
@@ -99,12 +87,12 @@ namespace Assets.Scripts.Mole
 
         public void OnUpAnimationFinished()
         {
-            moleController.StartMoleTimer(true);
+            moleController.StoppedMoving();
         }
 
         public void OnDownAnimationFinished()
         {
-            moleController.StartMoleTimer(false);
+            moleController.StoppedMoving();
         }
 
         #endregion
@@ -113,7 +101,7 @@ namespace Assets.Scripts.Mole
 
         private void UpdateMole()
         {
-            moleController.UpdateStatus();
+            moleController.Update();
         }
 
         #endregion

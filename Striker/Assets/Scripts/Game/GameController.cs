@@ -132,7 +132,7 @@ namespace Assets.Scripts.Game
         {
             foreach(MoleController moleController in m_moleControllers)
             {
-                moleController.UpdateStatus();
+                moleController.Update();
             }
         }
 
