@@ -172,6 +172,25 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             Assert.AreEqual(expectedHealth, actualHealth);
         }
 
+        [TestMethod]
+        public void MoleUpTimerStartTest()
+        {
+            // setup
+            int hp = 5;
+            int holeTime = 1;
+            bool upTime = true;
+            var mole = GetMoleWithHoleTimes(hp, upTime, holeTime * 100, holeTime);
+            mole.SetMovementController(m_movementSubstitute);
+            mole.SetHealthController(m_healthSubstitute);
+
+            AutoResetEvent resetEvent = new AutoResetEvent(false);
+            mole.StartMoleTimer(upTime);
+            resetEvent.WaitOne(2000);
+            mole.UpdateStatus();
+
+            Assert.IsFalse(mole.IsUp);
+        }
+
         #endregion
 
         #region Helper Methods

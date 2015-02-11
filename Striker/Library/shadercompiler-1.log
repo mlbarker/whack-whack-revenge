@@ -1,0 +1,15 @@
+Base path: C:/Users/marcus.barker/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-4392
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=1072 outsize=260 ok=1
+Cmd: preprocess
+  insize=4462 outsize=1030 ok=1
+Cmd: preprocess
+  insize=3165 outsize=779 ok=1
+Cmd: preprocess
+  insize=4282 outsize=954 ok=1
+Cmd: preprocess
+  insize=3077 outsize=782 ok=1
+Cmd: preprocess
+  insize=844 outsize=358 ok=1

@@ -190,7 +190,6 @@ namespace Assets.Scripts.Player
 
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("WHACK!");
                 return true;
             }
 

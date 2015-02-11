@@ -41,16 +41,30 @@ namespace Assets.Scripts.Mole
 
         public void MoveIntoHole()
         {
-            Debug.Log("In Hole");
-            moleController.RestoreHealth();
-            moleController.ToggleUp();
+            //Debug.Log("In Hole");
+
+            // Has to be a better way...
+            if(moleController.IsUp)
+            {
+                moleController.ToggleUp();
+            }
+
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
             renderer.material.color = Color.green;
         }
 
         public void MoveOutOfHole()
         {
-            Debug.Log("Out Hole");
-            moleController.ToggleUp();
+            //Debug.Log("Out Hole");
+            moleController.RestoreHealth();
+
+            // Really, there has to be a better way...
+            if(!moleController.IsUp)
+            {
+                moleController.ToggleUp();
+            }
+
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
             renderer.material.color = Color.red;
         }
 
@@ -83,6 +97,16 @@ namespace Assets.Scripts.Mole
             moleAnimator.Play("MoveDown", 0, 6.0f);
         }
 
+        public void OnUpAnimationFinished()
+        {
+            moleController.StartMoleTimer(true);
+        }
+
+        public void OnDownAnimationFinished()
+        {
+            moleController.StartMoleTimer(false);
+        }
+
         #endregion
 
         #region Private Methods
@@ -90,8 +114,6 @@ namespace Assets.Scripts.Mole
         private void UpdateMole()
         {
             moleController.UpdateStatus();
-
-            moleAnimator.SetBool("IsUp", moleController.IsUp);
         }
 
         #endregion

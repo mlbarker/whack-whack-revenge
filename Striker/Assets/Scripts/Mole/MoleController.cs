@@ -162,6 +162,20 @@ namespace Assets.Scripts.Mole
             m_healthController = healthController;
         }
 
+        public void StartMoleTimer(bool UpTimer)
+        {
+            if(UpTimer)
+            {
+                m_upTimer.StartTimer();
+                m_downTimer.StopTimer();
+            }
+            else
+            {
+                m_downTimer.StartTimer();
+                m_upTimer.StopTimer();
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -212,7 +226,7 @@ namespace Assets.Scripts.Mole
             if (Health == 0)
             {
                 Hit = false;
-                IsUp = false;
+                //IsUp = false;
 
                 m_movementController.MoveIntoHole();
 
