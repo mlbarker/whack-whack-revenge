@@ -7,8 +7,10 @@ namespace Assets.Scripts.Mole
     using System;
     using System.Collections.Generic;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Utilities.Logger;
     using Assets.Scripts.Utilities.Random;
     using Assets.Scripts.Utilities.Timers;
+    using System.IO;
 
     [Serializable]
     public class MoleController
@@ -205,21 +207,21 @@ namespace Assets.Scripts.Mole
 
             m_status.Add(MoleStatus.Healthy, true);
             m_status.Add(MoleStatus.Injured, false);
-            m_status.Add(MoleStatus.Recovering, false);
+            m_status.Add(MoleStatus.Recovering, true);
         }
 
         private void TriggerMoleMovement()
         {
             if(IsUp)
             {
-                m_movementController.MoveIntoHole();
                 IsUp = false;
+                m_movementController.MoveIntoHole();
                 IsMoving = true;
             }
             else
             {
-                m_movementController.MoveOutOfHole();
                 IsUp = true;
+                m_movementController.MoveOutOfHole();
                 IsMoving = true;
             }
         }
@@ -252,7 +254,16 @@ namespace Assets.Scripts.Mole
                 m_status[MoleStatus.Injured] = true;
             }
 
-            if(Health <= 0 || !IsUp)
+            if(Health <= 0 && IsUp)
+            {
+                TriggerMoleMovement();
+            }
+
+            if(IsUp)
+            {
+                m_status[MoleStatus.Recovering] = false;
+            }
+            else
             {
                 m_status[MoleStatus.Recovering] = true;
             }
@@ -261,11 +272,6 @@ namespace Assets.Scripts.Mole
             {
                 m_status[MoleStatus.Healthy] = true;
                 m_status[MoleStatus.Injured] = false;
-            }
-
-            if(IsUp)
-            {
-                m_status[MoleStatus.Recovering] = false;
             }
         }
 
@@ -293,12 +299,14 @@ namespace Assets.Scripts.Mole
                 m_timer.ResetTimer();
             }
 
-            if (IsUp && !m_timer.Active())
+            if (IsUp && !m_timer.Active() && !IsMoving)
             {
                 int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
                 m_timer.SetTimer(intervalInSeconds);
                 m_timer.StartTimer();
             }
+
+            m_timer.Update();
         }
 
         private void UpdateRecoveryTimer()
@@ -307,11 +315,13 @@ namespace Assets.Scripts.Mole
             {
                 m_recoveryTimer.StopTimer();
                 m_recoveryTimer.ResetTimer();
-                return;
             }
 
-            if(GetMoleStatus(MoleStatus.Recovering) && !m_recoveryTimer.Active())
+            if(GetMoleStatus(MoleStatus.Recovering) && 
+               !m_recoveryTimer.Active() && 
+               !GetMoleStatus(MoleStatus.Healthy))
             {
+                Logger.Log(LogLevel.INFO, this.ToString(), "Starting Recovery Timer");
                 m_recoveryTimer.StartTimer();
             }
 
@@ -320,6 +330,8 @@ namespace Assets.Scripts.Mole
                 m_recoveryTimer.StopTimer();
                 m_recoveryTimer.ResetTimer();
             }
+
+            m_recoveryTimer.Update();
         }
 
         private void ClearHit()

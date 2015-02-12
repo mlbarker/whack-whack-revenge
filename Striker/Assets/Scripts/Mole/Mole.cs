@@ -41,19 +41,12 @@ namespace Assets.Scripts.Mole
 
         public void MoveIntoHole()
         {
-            //Debug.Log("In Hole");
-
             moleAnimator.SetBool("IsUp", moleController.IsUp);
-            renderer.material.color = Color.green;
         }
 
         public void MoveOutOfHole()
         {
-            //Debug.Log("Out Hole");
-            moleController.RestoreHealth();
-
             moleAnimator.SetBool("IsUp", moleController.IsUp);
-            renderer.material.color = Color.red;
         }
 
         #endregion

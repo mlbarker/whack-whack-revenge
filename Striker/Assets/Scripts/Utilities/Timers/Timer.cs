@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Utilities.Timers
 {
     using System.Diagnostics;
+    using Assets.Scripts.Utilities.Logger;
 
     public class Timer : ITimer
     {
