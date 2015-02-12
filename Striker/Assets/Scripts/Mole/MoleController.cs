@@ -10,7 +10,6 @@ namespace Assets.Scripts.Mole
     using Assets.Scripts.Utilities.Logger;
     using Assets.Scripts.Utilities.Random;
     using Assets.Scripts.Utilities.Timers;
-    using System.IO;
 
     [Serializable]
     public class MoleController
@@ -123,11 +122,6 @@ namespace Assets.Scripts.Mole
             UpdateMoveTimer();
             UpdateRecoveryTimer();
             ClearHit();
-        }
-
-        public void ToggleUp()
-        {
-            IsUp = !IsUp;
         }
 
         public void DecrementHealth(int amount)

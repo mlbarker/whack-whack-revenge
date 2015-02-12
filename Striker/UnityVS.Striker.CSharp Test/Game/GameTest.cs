@@ -63,11 +63,10 @@ namespace UnityVS.Striker.CSharp_Test.Game
             int waitTime = 2;
             int actualTimeLeft = 0;
             bool attackButtonHit = true;
-            bool moleIsUp = true;
             int health = 1;
             int upTime = 1;
             int downTime = 1;
-            var game = SetUpGame(waitTime, attackButtonHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(waitTime, attackButtonHit, health, upTime, downTime);
 
             m_gameTimeSubstitute.GameTimeSeconds.Returns(x => game.gameTimeSeconds);
             m_gameTimeSubstitute.GameTimeSecondsLeft.Returns(x => --waitTime);
@@ -89,12 +88,11 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameSuccessfulMoleHitTest()
         {
             bool attackButtonWasHit = true;
-            bool moleIsUp = true;
             int gameTimeSeconds = 1;
             int health = 1;
             int upTime = 120;
             int downTime = 120;
-            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, health, upTime, downTime);
             m_hitSubstitute.HitDetected().Returns(true);
             m_hitSubstitute.When(x => x.HitDetected()).Do(x => m_moleSubstitute.Hit = true);
 
@@ -117,12 +115,11 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameUnsuccessfulMoleHitTest()
         {
             bool attackButtonWasHit = true;
-            bool moleIsUp = false;
             int gameTimeSeconds = 1;
             int health = 1;
             int upTime = 10;
             int downTime = 10;
-            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, health, upTime, downTime);
 
             game.ClearReceivedCalls();
             game.Initialize();
@@ -140,13 +137,12 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameScoreOnSuccesfulHitTest()
         {
             bool attackButtonWasHit = true;
-            bool moleIsUp = true;
             int gameTimeSeconds = 99;
             int health = 1;
             int upTime = 120;
             int downTime = 120;
             int score = 0;
-            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, health, upTime, downTime);
             m_moleSubstitute.Hit = true;
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
 
@@ -169,13 +165,12 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameNoScoreOnUnsuccesfulHitTest()
         {
             bool attackButtonWasHit = true;
-            bool moleIsUp = false;
             int gameTimeSeconds = 99;
             int health = 1;
             int upTime = 120;
             int downTime = 120;
             int score = 0;
-            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, health, upTime, downTime);
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
 
             game.ClearReceivedCalls();
@@ -197,7 +192,6 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameScore100HitPercentageOnSuccesfulHitTest()
         {
             bool attackButtonWasHit = true;
-            bool moleIsUp = true;
             int gameTimeSeconds = 99;
             int health = 1;
             int upTime = 120;
@@ -206,7 +200,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
             float actualHitPercentage = 0.0f;
             int attempts = 0;
 
-            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, moleIsUp, health, upTime, downTime);
+            var game = SetUpGame(gameTimeSeconds, attackButtonWasHit, health, upTime, downTime);
             m_moleSubstitute.Hit = true;
             m_hitSubstitute.HitDetected().Returns(true);
             m_scoreSubstitute.When(x => x.ScoreUpdate()).Do(x => ++score);
@@ -236,7 +230,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
 
         #region Helper Methods
 
-        private GameController SetUpGame(int gameTimeSeconds, bool attackButtonHit, bool isMoleUp, int health, int upTimeSeconds, int downTimeSeconds)
+        private GameController SetUpGame(int gameTimeSeconds, bool attackButtonHit, int health, int upTimeSeconds, int downTimeSeconds)
         {
             GameController game = Substitute.For<GameController>();
             m_gameTimeSubstitute.GameTimeSecondsLeft.Returns(gameTimeSeconds);
@@ -246,7 +240,7 @@ namespace UnityVS.Striker.CSharp_Test.Game
             SetUpPlayer(attackButtonHit);
             game.SetPlayerController(m_playerSubstitute);
 
-            SetUpMole(isMoleUp, health, downTimeSeconds, upTimeSeconds);
+            SetUpMole(health, downTimeSeconds, upTimeSeconds);
             game.SetMoleController(m_moleSubstitute);
 
             return game;
@@ -259,16 +253,11 @@ namespace UnityVS.Striker.CSharp_Test.Game
             m_playerSubstitute.SetHitController(m_hitSubstitute);
         }
 
-        private void SetUpMole(bool moleIsUp, int health, int downTime, int upTime)
+        private void SetUpMole(int health, int downTime, int upTime)
         {
             m_moleSubstitute.health = health;
             m_moleSubstitute.maxSecondsDown = downTime;
             m_moleSubstitute.maxSecondsUp = upTime;
-
-            if(moleIsUp)
-            {
-                m_moleSubstitute.ToggleUp();
-            }
 
             m_healthSubstitute.When(x => x.AdjustHealth()).Do(x => m_moleSubstitute.DecrementHealth(1));
 
