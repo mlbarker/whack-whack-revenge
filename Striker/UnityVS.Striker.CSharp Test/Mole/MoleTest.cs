@@ -134,6 +134,54 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             Assert.AreEqual(expectedInjuredStatus, actualInjuredStatus);
         }
 
+        [TestMethod]
+        public void MoleIsHealthyTest()
+        {
+            var mole = new MoleController();
+            mole.health = 1;
+            mole.maxSecondsDown = 15;
+            mole.maxSecondsUp = 15;
+            bool expectedHealthyStatus = true;
+
+            mole.Initialize();
+            mole.Update();
+
+            bool actualHealthyStatus = mole.GetMoleStatus(MoleStatus.Healthy);
+            Assert.AreEqual(expectedHealthyStatus, actualHealthyStatus);
+        }
+
+        [TestMethod]
+        public void MoleGetHealthTickTest()
+        {
+            var mole = new MoleController();
+            mole.health = 2;
+            mole.maxSecondsDown = 1;
+            mole.maxSecondsUp = 15;
+            int amount = 1;
+            m_healthSubstitute.When(x => x.AdjustHealth()).Do(x => mole.DecrementHealth(amount));
+            m_healthSubstitute.When(x => x.RecoverHealth()).Do(x => mole.IncrementHealth(amount));
+            mole.SetHealthController(m_healthSubstitute);
+            mole.SetMovementController(m_movementSubstitute);
+            AutoResetEvent resetEvent = new AutoResetEvent(false);
+            int wait = 1200;
+            int expectedHealth = 2;
+
+            mole.Initialize();
+            resetEvent.WaitOne(wait);
+            mole.Update();
+            mole.Hit = true;
+            mole.Update();
+            mole.Hit = true;
+            mole.Update();
+            resetEvent.WaitOne(wait);
+            mole.Update();
+            resetEvent.WaitOne(wait);
+            mole.Update();
+
+            int actualHealth = mole.Health;
+            Assert.AreEqual(expectedHealth, actualHealth);
+        }
+
         //[TestMethod]
         //public void MoleMoveOutOfHoleTimeElapsedTest()
         //{

@@ -12,5 +12,6 @@ namespace Assets.Scripts.Interfaces
     public interface IHealthController
     {
         void AdjustHealth();
+        void RecoverHealth();
     }
 }

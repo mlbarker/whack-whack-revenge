@@ -58,6 +58,11 @@ namespace Assets.Scripts.Mole
             moleController.DecrementHealth(1);
         }
 
+        public void RecoverHealth()
+        {
+            moleController.IncrementHealth(1);
+        }
+
         #endregion
 
         #region Public Methods

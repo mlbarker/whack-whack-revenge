@@ -129,6 +129,11 @@ namespace Assets.Scripts.Mole
             Health -= amount;
         }
 
+        public void IncrementHealth(int amount)
+        {
+            Health += amount;
+        }
+
         public void RestoreHealth()
         {
             Health = health;
@@ -223,13 +228,14 @@ namespace Assets.Scripts.Mole
         private void RecoverHealth()
         {
             //m_healthController.AdjustHealthPerTick();
-            if(Health >= health)
-            {
-                Health = health;
-                return;
-            }
+            //if(Health >= health)
+            //{
+            //    Health = health;
+            //    return;
+            //}
 
-            Health += HealthPerTick;
+            //Health += HealthPerTick;
+            m_healthController.RecoverHealth();
         }
 
         private void UpdateHealth()
