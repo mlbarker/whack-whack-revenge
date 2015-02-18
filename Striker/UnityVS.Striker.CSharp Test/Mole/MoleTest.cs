@@ -143,8 +143,10 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             mole.maxSecondsUp = 15;
             bool expectedHealthyStatus = true;
 
+
             mole.Initialize();
             mole.Update();
+
 
             bool actualHealthyStatus = mole.GetMoleStatus(MoleStatus.Healthy);
             Assert.AreEqual(expectedHealthyStatus, actualHealthyStatus);
@@ -166,6 +168,7 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             int wait = 1200;
             int expectedHealth = 2;
 
+
             mole.Initialize();
             resetEvent.WaitOne(wait);
             mole.Update();
@@ -178,189 +181,52 @@ namespace UnityVS.Striker.CSharp_Test.Mole
             resetEvent.WaitOne(wait);
             mole.Update();
 
+
             int actualHealth = mole.Health;
             Assert.AreEqual(expectedHealth, actualHealth);
         }
 
-        //[TestMethod]
-        //public void MoleMoveOutOfHoleTimeElapsedTest()
-        //{
-        //    AutoResetEvent resetEvent = new AutoResetEvent(false);
-        //    bool actual;
-        //    int health = 1;
-        //    int holeTime = 1;
-        //    var mole = GetMoleWithHoleTimes(health, false, holeTime, holeTime * 120);
-        //    RandomTester randomTester = new RandomTester();
-        //    randomTester.SetTestNumbers(new List<int> { 1, 1 });
-        //    mole.SetRandomObject(randomTester);
-        //    mole.SetMovementController(m_movementSubstitute);
+        [TestMethod]
+        public void MoleHealthControllerIsNullTest()
+        {
+            var mole = new MoleController();
+            m_healthSubstitute = null;
 
-        //    mole.ClearReceivedCalls();
-        //    mole.Initialize();
-        //    mole.UpdateStatus();
-        //    resetEvent.WaitOne(holeTime * 1500);
-        //    mole.UpdateStatus();
-        //    actual = mole.IsUp;
+            mole.SetHealthController(m_healthSubstitute);
 
-        //    m_movementSubstitute.Received().MoveOutOfHole();
-        //    Assert.IsTrue(actual);
-        //}
+            Assert.IsNull(m_healthSubstitute);
+        }
 
-        //[TestMethod]
-        //public void MoleMoveIntoHoleTimeElapsedTest()
-        //{
-        //    // setup
-        //    AutoResetEvent resetEvent = new AutoResetEvent(false);
-        //    bool actual;
-        //    int health = 1;
-        //    int holeTime = 1;
-        //    var mole = GetMoleWithHoleTimes(health, true, holeTime * 120, holeTime);
-        //    mole.SetMovementController(m_movementSubstitute);
+        [TestMethod]
+        public void MoleMovementControllerIsNullTest()
+        {
+            var mole = new MoleController();
+            m_movementSubstitute = null;
 
-        //    // test
-        //    mole.ClearReceivedCalls();
-        //    mole.Initialize();
-        //    mole.UpdateStatus();
-        //    resetEvent.WaitOne(holeTime * 1500);
-        //    mole.UpdateStatus();
-        //    actual = mole.IsUp;
+            mole.SetMovementController(m_movementSubstitute);
 
-        //    // result
-        //    m_movementSubstitute.Received().MoveIntoHole();
-        //    Assert.IsFalse(actual);
-        //}
+            Assert.IsNull(m_movementSubstitute);
+        }
 
-        //[TestMethod]
-        //public void MoleMoveIntoHoleNoHealthAfterHitTest()
-        //{
-        //    int hp = 1;
-        //    int decrementAmount = 1;
-        //    int holeTime = 5;
-        //    var mole = GetMoleWithHoleTimes(hp, true, holeTime, holeTime);
+        [TestMethod]
+        public void MoleGetScoreValueTest()
+        {
+            int expectedScoreValue = 2;
+            var mole = new MoleController();
+            mole.health = 1;
+            mole.maxSecondsDown = 15;
+            mole.maxSecondsUp = 15;
+            mole.scoreValue = 2;
 
-        //    mole.SetMovementController(m_movementSubstitute);
-        //    mole.SetHealthController(m_healthSubstitute);
-        //    mole.Hit = true;
-        //    m_healthSubstitute.When(x => x.AdjustHealth()).Do(x => mole.DecrementHealth(decrementAmount));
+            mole.Initialize();
 
-        //    // test
-        //    mole.ClearReceivedCalls();
-        //    mole.Initialize();
-        //    mole.UpdateStatus();
-        //    mole.UpdateStatus();
-
-        //    // result
-        //    int expectedHealth = hp - decrementAmount;
-        //    int actualHealth = mole.Health;
-        //    bool actual = mole.IsUp;
-
-        //    m_healthSubstitute.Received().AdjustHealth();
-        //    Assert.IsFalse(actual);
-        //    Assert.AreEqual(expectedHealth, actualHealth);
-        //}
-
-        //[TestMethod]
-        //public void MoleStayOutOfHoleWhenHitTest()
-        //{
-        //    int hp = 5;
-        //    int holeTime = 5;
-        //    int decrementAmount = 1;
-        //    var mole = GetMoleWithHoleTimes(hp, true, holeTime, holeTime);
-        //    mole.SetMovementController(m_movementSubstitute);
-        //    mole.SetHealthController(m_healthSubstitute);
-        //    mole.Hit = true;
-        //    m_healthSubstitute.When(x => x.AdjustHealth()).Do(x => mole.DecrementHealth(decrementAmount));
-
-        //    // test
-        //    mole.ClearReceivedCalls();
-        //    mole.Initialize();
-        //    mole.UpdateStatus();
-
-        //    // result
-        //    int expectedHp = hp - decrementAmount;
-        //    int actualHp = mole.Health;
-        //    bool actual = mole.IsUp;
-
-        //    m_healthSubstitute.Received().AdjustHealth();
-        //    Assert.IsTrue(actual);
-        //    Assert.AreEqual(expectedHp, actualHp);
-        //}
-
-        //[TestMethod]
-        //public void MoleHealthIs4Test()
-        //{
-        //    // setup
-        //    int hp = 5;
-        //    int holeTime = 5;
-        //    int decrementAmount = 1;
-        //    var mole = GetMoleWithHoleTimes(hp, true, holeTime, holeTime);
-        //    mole.SetMovementController(m_movementSubstitute);
-        //    mole.SetHealthController(m_healthSubstitute);
-        //    mole.Hit = true;
-        //    m_healthSubstitute.When(x => x.AdjustHealth()).Do(x => mole.DecrementHealth(decrementAmount));
-
-        //    // test
-        //    mole.ClearReceivedCalls();
-        //    mole.Initialize();
-        //    mole.UpdateStatus();
-
-        //    // result
-        //    int expectedHealth = hp - 1;
-        //    int actualHealth = mole.Health;
-        //    bool actual = mole.IsUp;
-
-        //    m_healthSubstitute.Received().AdjustHealth();
-        //    Assert.IsTrue(actual);
-        //    Assert.AreEqual(expectedHealth, actualHealth);
-        //}
-
-        //[TestMethod]
-        //public void MoleUpTimerStartTest()
-        //{
-        //    // setup
-        //    int hp = 5;
-        //    int holeTime = 1;
-        //    bool upTime = true;
-        //    var mole = GetMoleWithHoleTimes(hp, upTime, holeTime * 100, holeTime);
-        //    mole.SetMovementController(m_movementSubstitute);
-        //    mole.SetHealthController(m_healthSubstitute);
-
-        //    AutoResetEvent resetEvent = new AutoResetEvent(false);
-        //    mole.StartMoleTimer(upTime);
-        //    resetEvent.WaitOne(2000);
-        //    mole.UpdateStatus();
-
-        //    Assert.IsFalse(mole.IsUp);
-        //}
+            int actualScoreValue = mole.ScoreValue;
+            Assert.AreEqual(expectedScoreValue, actualScoreValue);
+        }
 
         #endregion
 
         #region Helper Methods
-
-        private MoleController GetMoleWithNoHoleTimes(int health)
-        {
-            var mole = Substitute.For<MoleController>();
-            mole.health = health;
-            SetHoleTimes(mole, 0, 0);
-
-            return mole;
-        }
-
-        private MoleController GetMoleWithHoleTimes(int health, int downTime, int upTime)
-        {
-            var mole = Substitute.For<MoleController>();
-            mole.health = health;
-            SetHoleTimes(mole, downTime, upTime);
-
-            return mole;
-        }
-
-        private void SetHoleTimes(MoleController mole, int downTime, int upTime)
-        {
-            mole.maxSecondsDown = downTime;
-            mole.maxSecondsUp = upTime;
-        }
-
         #endregion
     }
 }

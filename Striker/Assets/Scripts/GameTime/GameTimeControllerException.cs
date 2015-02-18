@@ -2,7 +2,7 @@
 // ImperfectlyCoded © 2015
 //-----------------------------
 
-namespace Assets.Scripts.Game
+namespace Assets.Scripts.GameTime
 {
     using System;
     using System.Runtime.Serialization;

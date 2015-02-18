@@ -61,15 +61,16 @@ namespace UnityVS.Striker.CSharp_Test.Player
             var player = Substitute.For<PlayerController>();
             player.SetInputController(m_inputSubstitute);
             player.SetHitController(m_hitSubstitute);
-            m_inputSubstitute.AttackButton().Returns(false);
+            m_inputSubstitute.AttackButton().Returns(true);
+            m_hitSubstitute.HitDetected().Returns(false);
 
             player.ClearReceivedCalls();
             player.Initialize();
             player.Update();
 
             m_inputSubstitute.Received().AttackButton();
-            m_hitSubstitute.DidNotReceive().HitDetected();
-            Assert.IsFalse(player.WhackTriggered);
+            m_hitSubstitute.Received().HitDetected();
+            Assert.IsTrue(player.WhackTriggered);
             Assert.IsFalse(player.MoleHit);
         }
     }

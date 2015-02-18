@@ -60,7 +60,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GameTime\GameTimeTest.cs" />
     <Compile Include="Game\GameTest.cs" />
+    <Compile Include="Score\ScoreTest.cs" />
     <Compile Include="Menu\MenuTest.cs" />
     <Compile Include="Mole\MoleTest.cs" />
     <Compile Include="Player\PlayerTest.cs" />

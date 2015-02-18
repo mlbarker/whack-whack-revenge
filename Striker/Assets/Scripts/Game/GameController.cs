@@ -7,9 +7,11 @@ namespace Assets.Scripts.Game
     using System;
     using System.Collections.Generic;
     using Assets.Scripts.Game;
+    using Assets.Scripts.GameTime;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
     using Assets.Scripts.Player;
+    using Assets.Scripts.Score;
 
     [Serializable]
     public class GameController
@@ -42,7 +44,10 @@ namespace Assets.Scripts.Game
 
         #region Editor Values
 
-        public int gameTimeSeconds;
+        public IGameTimeController gameTimeController;
+        public IScoreController scoreController;
+        public PlayerController playerController;
+        public MoleController[] moleControllers;
 
         #endregion
 
@@ -50,25 +55,10 @@ namespace Assets.Scripts.Game
 
         public void Initialize()
         {
-            if(m_gameTimeController == null)
-            {
-                throw new GameControllerException();
-            }
-
-            if(m_scoreController == null)
-            {
-                throw new ScoreControllerException();
-            }
-
-            if(m_playerController == null)
-            {
-                throw new PlayerControllerException();
-            }
-
-            m_gameTimeController.SetGameTime(gameTimeSeconds);
-
-            m_playerController.Initialize();
-            InitializeMoleControllers();
+            InitializeGameTime();
+            InitializeScore();
+            InitializePlayer();
+            InitializeMoles();
         }
 
         public void Update()
@@ -81,38 +71,45 @@ namespace Assets.Scripts.Game
             GameTimeIsUp();
         }
 
-        public void SetGameTimeController(IGameTimeController gameTimeController)
-        {
-            m_gameTimeController = gameTimeController;
-        }
-
-        public void SetScoreController(IScoreController scoreController)
-        {
-            m_scoreController = scoreController;
-        }
-
-        public void SetMoleController(MoleController moleController)
-        {
-            if(m_moleControllers == null)
-            {
-                m_moleControllers = new List<MoleController>();
-            }
-
-            m_moleControllers.Add(moleController);
-        }
-
-        public void SetPlayerController(PlayerController playerController)
-        {
-            m_playerController = playerController;
-        }
-
         #endregion
 
         #region Private Methods
 
-        private void InitializeMoleControllers()
+        private void InitializeGameTime()
         {
-            foreach(MoleController moleController in m_moleControllers)
+            m_gameTimeController = gameTimeController;
+            if (m_gameTimeController == null)
+            {
+                throw new GameTimeControllerException();
+            }
+
+            m_gameTimeController.Initialize();
+        }
+
+        private void InitializeScore()
+        {
+            m_scoreController = scoreController;
+            if (m_scoreController == null)
+            {
+                throw new ScoreControllerException();
+            }
+        }
+
+        private void InitializePlayer()
+        {
+            m_playerController = playerController;
+            if(m_playerController == null)
+            {
+                throw new PlayerControllerException();
+            }
+
+            m_playerController.Initialize();
+        }
+
+        private void InitializeMoles()
+        {
+            m_moleControllers = new List<MoleController>(moleControllers);
+            foreach (MoleController moleController in m_moleControllers)
             {
                 if (moleController == null)
                 {
@@ -162,7 +159,7 @@ namespace Assets.Scripts.Game
 
             if(m_playerController.WhackTriggered)
             {
-                m_scoreController.HitPercentageUpdate();
+                //m_scoreController.HitPercentageUpdate();
             }
         }
 
@@ -187,7 +184,7 @@ namespace Assets.Scripts.Game
                     continue;
                 }
 
-                m_scoreController.ScoreUpdate();
+                //m_scoreController.ScoreUpdate();
                 ++score;
             }
 

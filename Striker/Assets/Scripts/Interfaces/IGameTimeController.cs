@@ -9,6 +9,7 @@ namespace Assets.Scripts.Interfaces
         int GameTimeSeconds { get; }
         int GameTimeSecondsLeft { get; }
 
+        void Initialize();
         void SetGameTime(int seconds);
         void UpdateTime();
         void TimeUpCallback();

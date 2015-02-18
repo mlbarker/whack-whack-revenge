@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4C3E695C-9E3E-C882-D507-D12777AE8425}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>4.6.0b17</UnityVersion>
@@ -54,11 +56,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameTime\GameTimeController.cs" />
     <Compile Include="Assets\Scripts\Game\Game.cs" />
     <Compile Include="Assets\Scripts\Game\GameController.cs" />
     <Compile Include="Assets\Scripts\Game\GameControllerException.cs" />
-    <Compile Include="Assets\Scripts\Game\GameTimeControllerException.cs" />
-    <Compile Include="Assets\Scripts\Game\ScoreControllerException.cs" />
+    <Compile Include="Assets\Scripts\GameTime\GameTimeControllerException.cs" />
+    <Compile Include="Assets\Scripts\Score\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Score\ScoreControllerException.cs" />
     <Compile Include="Assets\Scripts\Hud\Hud.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IGameTimeController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHealthController.cs" />
@@ -156,5 +160,6 @@
     <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

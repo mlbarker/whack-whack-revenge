@@ -33,6 +33,12 @@ namespace Assets.Scripts.Mole
             private set;
         }
 
+        public int ScoreValue
+        {
+            get;
+            private set;
+        }
+
         public bool IsUp
         {
             get;
@@ -88,6 +94,7 @@ namespace Assets.Scripts.Mole
         #region Editor Values
 
         public int health;
+        public int scoreValue;
         public int healthTickInSeconds;
         public int healthPerTick;
         public int maxSecondsDown;
@@ -100,6 +107,7 @@ namespace Assets.Scripts.Mole
         public void Initialize()
         {
             Health = health;
+            ScoreValue = scoreValue;
             HealthTickInSeconds = healthTickInSeconds;
             HealthPerTick = healthPerTick;
             MaxSecondsDown = maxSecondsDown;
@@ -132,11 +140,6 @@ namespace Assets.Scripts.Mole
         public void IncrementHealth(int amount)
         {
             Health += amount;
-        }
-
-        public void RestoreHealth()
-        {
-            Health = health;
         }
 
         public bool GetMoleStatus(MoleStatus status)
