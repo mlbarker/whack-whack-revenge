@@ -61,9 +61,6 @@ M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\Assem
 M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEditor.dll
 M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEngine.dll
 M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
-M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEngine.xml
-M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEditor.xml
-M:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
 H:\Development\GitRepos\whack-whack-revenge\Striker\obj\Debug\UnityVS.Striker.CSharp.csprojResolveAssemblyReference.cache
 H:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
 H:\Development\GitRepos\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb

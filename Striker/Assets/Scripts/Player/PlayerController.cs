@@ -1,11 +1,12 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014
+// ImperfectlyCoded © 2014-2015
 //-----------------------------
 
 namespace Assets.Scripts.Player
 {
     using System;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Score;
     using Assets.Scripts.Utilities.Timers;
 
     [Serializable]
@@ -15,6 +16,8 @@ namespace Assets.Scripts.Player
 
         private IHitController m_hitController;
         private IInputController m_inputController;
+
+        private ScoreController m_scoreController;
         
         #endregion
 
@@ -32,6 +35,38 @@ namespace Assets.Scripts.Player
             private set;
         }
 
+        public int TotalScore
+        {
+            get
+            {
+                return m_scoreController.Score;
+            }
+        }
+
+        public int TotalWhacks
+        {
+            get
+            {
+                return m_scoreController.Whacks;
+            }
+        }
+
+        public int TotalWhackAttempts
+        {
+            get
+            {
+                return m_scoreController.WhackAttempts;
+            }
+        }
+
+        public float TotalWhackPercentage
+        {
+            get
+            {
+                return m_scoreController.WhackPercentage;
+            }
+        }
+
         #endregion
 
         #region Editor Values
@@ -42,12 +77,19 @@ namespace Assets.Scripts.Player
 
         public void Initialize()
         {
+            InitializeScore();
         }
 
         public void Update()
         {
             UpdateInput();
             UpdateHit();
+        }
+
+        public void UpdateStats(int score, bool successfulWhack)
+        {
+            m_scoreController.IncreaseScore(score);
+            m_scoreController.RecordWhackAttempt(successfulWhack);
         }
 
         public void SetInputController(IInputController inputController)
@@ -71,6 +113,11 @@ namespace Assets.Scripts.Player
         #endregion
 
         #region Private Methods
+
+        private void InitializeScore()
+        {
+            m_scoreController = new ScoreController();
+        }
 
         private void UpdateInput()
         {

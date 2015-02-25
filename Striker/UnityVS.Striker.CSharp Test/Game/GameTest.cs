@@ -95,6 +95,30 @@ namespace UnityVS.Striker.CSharp_Test.Game
             Assert.IsNotNull(gameControllerAccessor.GetField(moleControllersField));
         }
 
+        [TestMethod]
+        public void GameSetGameTimeTo60Test()
+        {
+            int expectedGameTime = 60;
+
+            m_gameController.SetGameTime(expectedGameTime);
+
+            int actualGameTime = m_gameController.GameTimeSeconds;
+            Assert.AreEqual(expectedGameTime, actualGameTime);
+        }
+
+        [TestMethod]
+        public void GameTimeUpCallbackIsNotNullTest()
+        {
+            PrivateObject gameControllerAccessor = new PrivateObject(m_gameController);
+            string gameEndCallback = "m_elapsedEvent";
+            GameTimeController.TimeElapsedEvent expectedElapsedEvent = new GameTimeController.TimeElapsedEvent(GameEndCallback);
+
+            m_gameController.SetOnGameEndCallback(GameEndCallback);
+
+            GameTimeController.TimeElapsedEvent actualElapsedEvent = (GameTimeController.TimeElapsedEvent)gameControllerAccessor.GetField(gameEndCallback);
+            Assert.IsNotNull(actualElapsedEvent);
+        }
+
         //[TestMethod]
         //public void GameTimeUpTest()
         //{
@@ -268,6 +292,9 @@ namespace UnityVS.Striker.CSharp_Test.Game
 
         #region Helper Methods
 
+        private void GameEndCallback()
+        {
+        }
 
         //private GameController SetUpGame(int gameTimeSeconds, bool attackButtonHit, int health, int upTimeSeconds, int downTimeSeconds)
         //{

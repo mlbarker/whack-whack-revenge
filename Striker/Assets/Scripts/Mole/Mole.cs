@@ -69,8 +69,6 @@ namespace Assets.Scripts.Mole
 
         public void Initialize()
         {
-            moleController.Initialize();
-
             moleController.SetMovementController(this);
             moleController.SetHealthController(this);
 

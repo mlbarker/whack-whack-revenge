@@ -5,198 +5,157 @@
 namespace Assets.Scripts.Game
 {
     using UnityEngine;
-    using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
     using Assets.Scripts.Player;
+    using Assets.Scripts.Score;
     using Assets.Scripts.Utilities.Timers;
 
-    public class Game : MonoBehaviour//, IGameTimeController, IScoreController
+    public class Game : MonoBehaviour
     {
-        //#region Private Members
+        #region Private Members
 
-        //private Timer m_gameTimer;
+        private GameController m_gameController;
 
-        //#endregion
+        #endregion
 
-        //#region Public Properties
+        #region Public Properties
 
-        //public int Score
-        //{
-        //    get;
-        //    private set;
-        //}
+        public int Score
+        {
+            get
+            {
+                return m_gameController.CurrentScore;
+            }
+        }
 
-        //public float WhackPercentage
-        //{
-        //    get;
-        //    private set;
-        //}
+        public float WhackPercentage
+        {
+            get
+            {
+                return m_gameController.CurrentPercentage;
+            }
+        }
 
-        //#endregion
+        public int GameTimeSecondsLeft
+        {
+            get
+            {
+                return m_gameController.GameTimeSecondsLeft;
+            }
+        }
 
-        //#region Editor Values
+        #endregion
 
-        //public GameController gameController;
-        //public Mole [] moles;
-        //public Player player;
+        #region Editor Values
 
-        //#endregion
+        public Mole [] moles;
+        public Player player;
+        public int gameTimeInSeconds;
 
-        //#region IGameTimerController Properties
+        #endregion
 
-        //public int GameTimeSeconds
-        //{
-        //    get
-        //    {
-        //        return m_gameTimer.IntervalInSeconds;
-        //    }
-        //}
+        #region Unity Methods
 
-        //public int GameTimeSecondsLeft
-        //{
-        //    get
-        //    {
-        //        return m_gameTimer.IntervalInSecondsLeft;
-        //    }
-        //}
+        void Start()
+        {
+            Initialize();
+        }
 
-        //#endregion
+        void Update()
+        {
+            UpdateGame();
+        }
 
-        //#region IGameTimeController Methods
+        #endregion
 
-        //public void SetGameTime(int gameTimeSeconds)
-        //{
-        //    if(m_gameTimer == null)
-        //    {
-        //        throw new TimerException();
-        //    }
+        #region Private Methods
 
-        //    m_gameTimer.SetTimer(gameTimeSeconds);
-        //}
+        private void Initialize()
+        {
+            InitializeMoles();
+            InitializePlayer();
+            InitializeGame();
+        }
 
-        //public void UpdateTime()
-        //{
-        //    if(!m_gameTimer.Active() && !m_gameTimer.TimeHasElapsed)
-        //    {
-        //        m_gameTimer.StartTimer();
-        //    }
+        private void InitializeMoles()
+        {
+            if (moles == null)
+            {
+                throw new MoleException();
+            }
 
-        //    m_gameTimer.Update();
-        //}
+            foreach (Mole mole in moles)
+            {
+                mole.Initialize();
+            }
+        }
 
-        //public void TimeUpCallback()
-        //{
-        //    GameIsOver();
-        //}
+        private void InitializePlayer()
+        {
+            if (player == null)
+            {
+                throw new PlayerException();
+            }
 
-        //#endregion
+            player.Initialize();
+        }
 
-        //#region IScoreController Methods
+        private void InitializeGame()
+        {
+            m_gameController = new GameController();
+            m_gameController.SetGameTime(gameTimeInSeconds);
+            m_gameController.SetOnGameEndCallback(GameIsOver);
+            m_gameController.AddPlayerController(player.playerController);
 
-        //public void ScoreUpdate()
-        //{
-        //    ++Score;
-        //}
+            foreach(Mole mole in moles)
+            {
+                m_gameController.AddMoleController(mole.moleController);
+            }
 
-        //public void HitPercentageUpdate()
-        //{
-        //    WhackPercentage = (float)Score / (float)player.WhackAttempts;
-        //}
+            m_gameController.Initialize();
+        }
 
-        //#endregion
+        private void UpdateGame()
+        {
+            UpdateMoleWasWhacked();
+            UpdateGameController();
+        }
 
-        //#region Unity Methods
+        private void UpdateMoleWasWhacked()
+        {
+            if (player.HitCollisionId == -1)
+            {
+                return;
+            }
 
-        //void Start()
-        //{
-        //    Initialize();
-        //}
+            foreach (Mole mole in moles)
+            {
+                if (mole.collider2D == null)
+                {
+                    continue;
+                }
 
-        //void Update()
-        //{
-        //    UpdateGame();
-        //}
+                int hitCollision2dId = mole.collider2D.GetInstanceID();
+                if (player.HitCollisionId == hitCollision2dId)
+                {
+                    mole.moleController.Hit = true;
+                    break;
+                }
+            }
 
-        //#endregion
+            player.ClearHitCollisionId();
+        }
 
-        //#region Private Methods
+        private void UpdateGameController()
+        {
+            m_gameController.Update();
+        }
 
-        //private void Initialize()
-        //{
-        //    if(gameController == null)
-        //    {
-        //        throw new GameControllerException();
-        //    }
+        private void GameIsOver()
+        {
 
-        //    if(player == null)
-        //    {
-        //        throw new PlayerException();
-        //    }
+        }
 
-        //    m_gameTimer = new Timer(gameController.gameTimeSeconds, GameIsOver);
-        //    if(m_gameTimer == null)
-        //    {
-        //        throw new TimerException();
-        //    }
-
-        //    player.Initialize();
-        //    gameController.SetGameTimeController(this);
-        //    gameController.SetScoreController(this);
-        //    InitializeMoles();
-        //    gameController.SetPlayerController(player.playerController);
-        //    gameController.Initialize();
-        //}
-
-        //private void InitializeMoles()
-        //{
-        //    if (moles == null)
-        //    {
-        //        throw new MoleException();
-        //    }
-
-        //    foreach(Mole mole in moles)
-        //    {
-        //        mole.Initialize();
-        //        gameController.SetMoleController(mole.moleController);
-        //    }
-        //}
-
-        //private void UpdateGame()
-        //{
-        //    MoleWasWhacked();
-        //    gameController.Update();
-        //}
-
-        //private void MoleWasWhacked()
-        //{            
-        //    if(player.HitCollisionId == -1)
-        //    {
-        //        return;
-        //    }
-
-        //    foreach(Mole mole in moles)
-        //    {
-        //        if(mole.collider2D == null)
-        //        {
-        //            continue;
-        //        }
-
-        //        int hitCollision2dId = mole.collider2D.GetInstanceID();
-        //        if(player.HitCollisionId == hitCollision2dId)
-        //        {
-        //            mole.moleController.Hit = true;
-        //            break;
-        //        }
-        //    }
-
-        //    player.ClearHitCollisionId();
-        //}
-
-        //private void GameIsOver()
-        //{
-
-        //}
-
-        //#endregion
+        #endregion
     }
 }

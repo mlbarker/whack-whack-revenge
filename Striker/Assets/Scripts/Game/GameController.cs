@@ -18,9 +18,8 @@ namespace Assets.Scripts.Game
     {
         #region Private Members
 
-        private IGameTimeController m_gameTimeController;
-        private IScoreController m_scoreController;
-
+        private GameTimeController m_gameTimeController;
+        private ScoreController m_scoreController;
         private List<MoleController> m_moleControllers;
         private PlayerController m_playerController;
 
@@ -40,15 +39,31 @@ namespace Assets.Scripts.Game
             private set;
         }
 
+        public float CurrentPercentage
+        {
+            get
+            {
+                return m_scoreController.WhackPercentage;
+            }
+        }
+
+        public int GameTimeSeconds
+        {
+            get;
+            private set;
+        }
+
+        public int GameTimeSecondsLeft
+        {
+            get
+            {
+                return m_gameTimeController.GameTimeSecondsLeft;
+            }
+        }
+
         #endregion
 
         #region Editor Values
-
-        public IGameTimeController gameTimeController;
-        public IScoreController scoreController;
-        public PlayerController playerController;
-        public MoleController[] moleControllers;
-
         #endregion
 
         #region Public Methods
@@ -71,13 +86,50 @@ namespace Assets.Scripts.Game
             GameTimeIsUp();
         }
 
+        public void SetGameTime(int seconds)
+        {
+            if(m_gameTimeController == null)
+            {
+                m_gameTimeController = new GameTimeController();
+                m_gameTimeController.Initialize();
+            }
+
+            GameTimeSeconds = seconds;
+            m_gameTimeController.SetGameTime(GameTimeSeconds);
+        }
+
+        public void SetOnGameEndCallback(GameTimeController.TimeElapsedEvent gameEndCallback)
+        {
+            if (m_gameTimeController == null)
+            {
+                m_gameTimeController = new GameTimeController();
+                m_gameTimeController.Initialize();
+            }
+
+            m_gameTimeController.SetTimeElapsedCallback(gameEndCallback);
+        }
+
+        public void AddPlayerController(PlayerController playerController)
+        {
+            m_playerController = playerController;
+        }
+
+        public void AddMoleController(MoleController moleController)
+        {
+            if (m_moleControllers == null)
+            {
+                m_moleControllers = new List<MoleController>();
+            }
+
+            m_moleControllers.Add(moleController);
+        }
+
         #endregion
 
         #region Private Methods
 
         private void InitializeGameTime()
         {
-            m_gameTimeController = gameTimeController;
             if (m_gameTimeController == null)
             {
                 throw new GameTimeControllerException();
@@ -88,7 +140,7 @@ namespace Assets.Scripts.Game
 
         private void InitializeScore()
         {
-            m_scoreController = scoreController;
+            m_scoreController = new ScoreController();
             if (m_scoreController == null)
             {
                 throw new ScoreControllerException();
@@ -97,7 +149,6 @@ namespace Assets.Scripts.Game
 
         private void InitializePlayer()
         {
-            m_playerController = playerController;
             if(m_playerController == null)
             {
                 throw new PlayerControllerException();
@@ -108,7 +159,6 @@ namespace Assets.Scripts.Game
 
         private void InitializeMoles()
         {
-            m_moleControllers = new List<MoleController>(moleControllers);
             foreach (MoleController moleController in m_moleControllers)
             {
                 if (moleController == null)
@@ -155,12 +205,19 @@ namespace Assets.Scripts.Game
 
         private void UpdateScore()
         {
-            CurrentScore += IncrementScoreOnHits();
-
-            if(m_playerController.WhackTriggered)
+            foreach (MoleController moleController in m_moleControllers)
             {
-                //m_scoreController.HitPercentageUpdate();
+                if (!moleController.Hit)
+                {
+                    continue;
+                }
+
+                m_scoreController.IncreaseScore(moleController.ScoreValue);
+                m_scoreController.RecordWhackAttempt(true);
+                return;
             }
+
+            m_scoreController.RecordWhackAttempt(false);
         }
 
         private void GameTimeIsUp()
@@ -172,23 +229,6 @@ namespace Assets.Scripts.Game
 
             m_gameTimeController.TimeUpCallback();
             IsTimeUp = true;
-        }
-
-        private int IncrementScoreOnHits()
-        {
-            int score = 0;
-            foreach (MoleController moleController in m_moleControllers)
-            {
-                if (!moleController.Hit)
-                {
-                    continue;
-                }
-
-                //m_scoreController.ScoreUpdate();
-                ++score;
-            }
-
-            return score;
         }
 
         private void DetermineWhackedMole()

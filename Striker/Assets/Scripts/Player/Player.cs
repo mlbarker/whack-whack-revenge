@@ -1,5 +1,5 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014
+// ImperfectlyCoded © 2014-2015
 //-----------------------------
 
 namespace Assets.Scripts.Player
@@ -90,7 +90,6 @@ namespace Assets.Scripts.Player
                 throw new PlayerControllerException();
             }
 
-            playerController.Initialize();
             playerController.SetInputController(this);
             playerController.SetHitController(this);
             HitCollisionId = -1;

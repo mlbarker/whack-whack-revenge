@@ -73,5 +73,15 @@ namespace UnityVS.Striker.CSharp_Test.Player
             Assert.IsTrue(player.WhackTriggered);
             Assert.IsFalse(player.MoleHit);
         }
+
+        [TestMethod]
+        public void PlayerScoreIsNotNullTest()
+        {
+            var player = Substitute.For<PlayerController>();
+
+            player.Initialize();
+
+            Assert.IsNotNull(player.TotalScore);
+        }
     }
 }
