@@ -110,12 +110,13 @@ namespace UnityVS.Striker.CSharp_Test.Game
         public void GameTimeUpCallbackIsNotNullTest()
         {
             PrivateObject gameControllerAccessor = new PrivateObject(m_gameController);
-            string gameEndCallback = "m_elapsedEvent";
+            string gameTimeControllerField = "m_gameTimeController";
             GameTimeController.TimeElapsedEvent expectedElapsedEvent = new GameTimeController.TimeElapsedEvent(GameEndCallback);
 
             m_gameController.SetOnGameEndCallback(GameEndCallback);
+            GameTimeController gameTimeController = (GameTimeController)gameControllerAccessor.GetField(gameTimeControllerField);
 
-            GameTimeController.TimeElapsedEvent actualElapsedEvent = (GameTimeController.TimeElapsedEvent)gameControllerAccessor.GetField(gameEndCallback);
+            GameTimeController.TimeElapsedEvent actualElapsedEvent = (GameTimeController.TimeElapsedEvent)gameTimeController.TimeUpCallback;
             Assert.IsNotNull(actualElapsedEvent);
         }
 

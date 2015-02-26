@@ -30,7 +30,7 @@ namespace Assets.Scripts.Score
             get
             {
                 m_whackPercentage = (float)(Whacks) / (float)(WhackAttempts) * 100.0f;
-                return m_whackPercentage;
+                return float.IsNaN(m_whackPercentage) ? 0 : m_whackPercentage;
             }
         }
 

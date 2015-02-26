@@ -35,8 +35,10 @@ namespace Assets.Scripts.Game
 
         public int CurrentScore
         {
-            get;
-            private set;
+            get
+            {
+                return m_scoreController.Score;
+            }
         }
 
         public float CurrentPercentage
@@ -70,10 +72,10 @@ namespace Assets.Scripts.Game
 
         public void Initialize()
         {
-            InitializeGameTime();
             InitializeScore();
             InitializePlayer();
             InitializeMoles();
+            InitializeGameTime();
         }
 
         public void Update()
@@ -135,7 +137,7 @@ namespace Assets.Scripts.Game
                 throw new GameTimeControllerException();
             }
 
-            m_gameTimeController.Initialize();
+            m_gameTimeController.Start();
         }
 
         private void InitializeScore()
@@ -217,7 +219,10 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            m_scoreController.RecordWhackAttempt(false);
+            if (m_playerController.WhackTriggered)
+            {
+                m_scoreController.RecordWhackAttempt(false);
+            }
         }
 
         private void GameTimeIsUp()
@@ -228,6 +233,7 @@ namespace Assets.Scripts.Game
             }
 
             m_gameTimeController.TimeUpCallback();
+            m_gameTimeController.Stop();
             IsTimeUp = true;
         }
 

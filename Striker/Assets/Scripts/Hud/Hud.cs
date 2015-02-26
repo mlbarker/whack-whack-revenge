@@ -72,7 +72,7 @@ namespace Assets.Scripts.Hud
 
         private void UpdateWhackPercentage()
         {
-            float percent = m_game.WhackPercentage * 100;
+            float percent = m_game.WhackPercentage;
             m_whackPercentage = (int)percent;
             m_whackPercentageText.text = m_whackPercentage.ToString() + "%";
         }
