@@ -60,3 +60,12 @@ H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.pdb
 H:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb
 M:\Development\GitRepos\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityVS.Striker.CSharp Test.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityVS.Striker.CSharp Test.pdb
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-UnityScript.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\NSubstitute.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.pdb

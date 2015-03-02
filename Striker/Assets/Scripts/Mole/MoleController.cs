@@ -230,14 +230,6 @@ namespace Assets.Scripts.Mole
 
         private void RecoverHealth()
         {
-            //m_healthController.AdjustHealthPerTick();
-            //if(Health >= health)
-            //{
-            //    Health = health;
-            //    return;
-            //}
-
-            //Health += HealthPerTick;
             m_healthController.RecoverHealth();
         }
 
@@ -324,7 +316,6 @@ namespace Assets.Scripts.Mole
                !m_recoveryTimer.Active() && 
                !GetMoleStatus(MoleStatus.Healthy))
             {
-                Logger.Log(LogLevel.INFO, this.ToString(), "Starting Recovery Timer");
                 m_recoveryTimer.StartTimer();
             }
 

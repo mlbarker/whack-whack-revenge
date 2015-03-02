@@ -44,6 +44,12 @@ namespace Assets.Scripts.Game
             }
         }
 
+        public bool DisplayGameResults
+        { 
+            get; 
+            private set; 
+        }
+
         #endregion
 
         #region Editor Values
@@ -102,6 +108,8 @@ namespace Assets.Scripts.Game
 
         private void InitializeGame()
         {
+            DisplayGameResults = false;
+
             m_gameController = new GameController();
             m_gameController.SetGameTime(gameTimeInSeconds);
             m_gameController.SetOnGameEndCallback(GameIsOver);
@@ -123,6 +131,11 @@ namespace Assets.Scripts.Game
 
         private void UpdateMoleWasWhacked()
         {
+            if(DisplayGameResults)
+            {
+                return;
+            }
+
             if (player.HitCollisionId == -1)
             {
                 return;
@@ -148,12 +161,17 @@ namespace Assets.Scripts.Game
 
         private void UpdateGameController()
         {
+            if (DisplayGameResults)
+            {
+                return;
+            }
+
             m_gameController.Update();
         }
 
         private void GameIsOver()
         {
-
+            DisplayGameResults = true;
         }
 
         #endregion

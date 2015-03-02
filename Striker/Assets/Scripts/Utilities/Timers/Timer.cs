@@ -28,7 +28,7 @@ namespace Assets.Scripts.Utilities.Timers
         {
             get
             {
-                return IntervalInSeconds - m_stopwatch.Elapsed.Seconds;
+                return IntervalInSeconds - (int)m_stopwatch.Elapsed.TotalSeconds;
             }
         }
 
