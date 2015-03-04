@@ -37,17 +37,17 @@ namespace Assets.Scripts.Menu
 
         public void RunStartGame()
         {
+            Application.LoadLevel(3);
+        }
+
+        public void RunStats()
+        {
             Application.LoadLevel(1);
         }
 
         public void RunOptions()
         {
-
-        }
-
-        public void RunStats()
-        {
-            //Application.LoadLevel(1);
+            Application.LoadLevel(2);
         }
 
         public void RunExit()
