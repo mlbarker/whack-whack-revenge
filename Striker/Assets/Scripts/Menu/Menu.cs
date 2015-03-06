@@ -6,11 +6,16 @@ namespace Assets.Scripts.Menu
 {
     using System;
     using UnityEngine;
+    using UnityEngine.UI;
     using Assets.Scripts.Interfaces;
 
     public class Menu : MonoBehaviour, IMenuNavigationController
     {
         #region Private Members
+
+        private GameObject m_statsMenu;
+        private GameObject m_optionsMenu;
+
         #endregion
 
         #region Editor Values
@@ -42,7 +47,12 @@ namespace Assets.Scripts.Menu
 
         public void RunStats()
         {
-            Application.LoadLevel(1);
+            if(MenuState.Stats == m_menuController.CurrentMenuState)
+            {
+                return;
+            }
+
+
         }
 
         public void RunOptions()
@@ -71,6 +81,11 @@ namespace Assets.Scripts.Menu
 
             m_menuController.SetMenuNavigationController(this);
             m_menuController.Initialize();
+        }
+
+        private void InitializeStatsPanel()
+        {
+
         }
 
         #endregion

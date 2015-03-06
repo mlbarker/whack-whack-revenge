@@ -143,12 +143,12 @@ namespace Assets.Scripts.Game
 
             foreach (Mole mole in moles)
             {
-                if (mole.collider2D == null)
+                if (mole.GetComponent<Collider2D>() == null)
                 {
                     continue;
                 }
 
-                int hitCollision2dId = mole.collider2D.GetInstanceID();
+                int hitCollision2dId = mole.GetComponent<Collider2D>().GetInstanceID();
                 if (player.HitCollisionId == hitCollision2dId)
                 {
                     mole.moleController.Hit = true;
