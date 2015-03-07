@@ -136,6 +136,21 @@ namespace UnityVS.Striker.CSharp_Test.Menu
             Assert.AreEqual(expectedResult, result);
         }
 
+        [TestMethod]
+        public void MenuCheckIfCurrentMenuStateIsStatsMenu()
+        {
+            MenuController testMenuController = new MenuController();
+            testMenuController.SetMenuNavigationController(m_subMenuNavigation);
+
+            testMenuController.Initialize();
+            testMenuController.StatsMenu();
+            testMenuController.BackToPreviousMenu();
+            testMenuController.StatsMenu();
+
+            bool result = testMenuController.CheckCurrentMenuState(MenuState.Stats);
+            Assert.IsTrue(result);
+        }
+
         #endregion
 
         #region Helper Methods

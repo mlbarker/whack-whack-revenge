@@ -214,14 +214,20 @@ namespace Assets.Scripts.Game
                     continue;
                 }
 
+                bool whackSuccessful = true;
                 m_scoreController.IncreaseScore(moleController.ScoreValue);
-                m_scoreController.RecordWhackAttempt(true);
+                m_scoreController.RecordWhackAttempt(whackSuccessful);
+
+                m_playerController.UpdateStats(moleController.ScoreValue, whackSuccessful);
                 return;
             }
 
             if (m_playerController.WhackTriggered)
             {
-                m_scoreController.RecordWhackAttempt(false);
+                bool whackSuccessful = false;
+                m_scoreController.RecordWhackAttempt(whackSuccessful);
+
+                m_playerController.UpdateStats(0, whackSuccessful);
             }
         }
 

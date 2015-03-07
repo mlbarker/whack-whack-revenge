@@ -94,6 +94,11 @@ namespace Assets.Scripts.Menu
             CurrentMenuState = MenuState.Exit;
         }
 
+        public bool CheckCurrentMenuState(MenuState menuState)
+        {
+            return CurrentMenuState == menuState;
+        }
+
         #endregion
 
         #region Private Methods

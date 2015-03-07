@@ -15,6 +15,8 @@ namespace Assets.Scripts.Menu
 
         private GameObject m_statsMenu;
         private GameObject m_optionsMenu;
+        private Text m_totalScoreText;
+        private Text m_totalWhackPercentageText;
 
         #endregion
 
@@ -35,6 +37,13 @@ namespace Assets.Scripts.Menu
 
         #region IMenuNavigationController Methods
 
+        public void BackToPreviousMenu()
+        {
+            DeactivateStatsMenu();
+            DeactivateOptionsMenu();
+            m_menuController.BackToPreviousMenu();
+        }
+
         public void RunMainMenu()
         {
             Application.LoadLevel(0);
@@ -42,22 +51,17 @@ namespace Assets.Scripts.Menu
 
         public void RunStartGame()
         {
-            Application.LoadLevel(3);
+            Application.LoadLevel(1);
         }
 
         public void RunStats()
         {
-            if(MenuState.Stats == m_menuController.CurrentMenuState)
-            {
-                return;
-            }
-
-
+            UpdateStatsMenu();
         }
 
         public void RunOptions()
         {
-            Application.LoadLevel(2);
+            UpdateOptionsMenu();
         }
 
         public void RunExit()
@@ -74,7 +78,14 @@ namespace Assets.Scripts.Menu
 
         private void Initialize()
         {
-            if(m_menuController == null)
+            InitializeMenuController();
+            InitializeStatsPanel();
+            InitializeOptionsPanel();
+        }
+
+        private void InitializeMenuController()
+        {
+            if (m_menuController == null)
             {
                 m_menuController = new MenuController();
             }
@@ -85,7 +96,40 @@ namespace Assets.Scripts.Menu
 
         private void InitializeStatsPanel()
         {
+            m_statsMenu = GameObject.FindGameObjectWithTag("StatsMenuPanel");
+            m_totalScoreText = GameObject.FindGameObjectWithTag("TotalWhackScore").GetComponent<Text>();
+            m_totalWhackPercentageText = GameObject.FindGameObjectWithTag("TotalWhackPercentage").GetComponent<Text>();
 
+            m_statsMenu.SetActive(false);
+        }
+
+        private void InitializeOptionsPanel()
+        {
+            m_optionsMenu = GameObject.FindGameObjectWithTag("OptionsMenuPanel");
+
+            m_optionsMenu.SetActive(false);
+        }
+
+        private void UpdateStatsMenu()
+        {
+            m_totalScoreText.text = "Total Score: ";
+            m_totalWhackPercentageText.text = "Total Whack %: ";
+            m_statsMenu.SetActive(true);
+        }
+
+        private void UpdateOptionsMenu()
+        {
+            m_optionsMenu.SetActive(true);
+        }
+
+        private void DeactivateStatsMenu()
+        {
+            m_statsMenu.SetActive(false);
+        }
+
+        private void DeactivateOptionsMenu()
+        {
+            m_optionsMenu.SetActive(false);
         }
 
         #endregion
