@@ -4,8 +4,10 @@
 
 namespace Assets.Scripts.Score
 {
+    using System;
     using Assets.Scripts.Interfaces;
 
+    [Serializable]
     public class ScoreController : IScoreController
     {
         #region Private Members
@@ -34,6 +36,12 @@ namespace Assets.Scripts.Score
             }
         }
 
+        public int MolesWhacked
+        {
+            get;
+            private set;
+        }
+
         public int Whacks
         {
             get;
@@ -46,9 +54,46 @@ namespace Assets.Scripts.Score
             private set;
         }
 
+        public bool StarScoreAchieved
+        {
+            get
+            {
+                return m_score >= scoreNeedForStar;
+            }
+        }
+
+        public bool StarPercentageAchieved
+        {
+            get
+            {
+                return WhackPercentage >= whackPercentNeedForStar;
+            }
+        }
+
+        public bool StarMolesWhackedAchieved
+        {
+            get
+            {
+                return MolesWhacked >= molesWhackedNeedForStar;
+            }
+        }
+
+        #endregion
+
+        #region Editor Values
+
+        public int scoreNeedForStar;
+        public float whackPercentNeedForStar;
+        public int molesWhackedNeedForStar;
+
         #endregion
 
         #region Public Methods
+
+        public void IncrementMolesWhacked()
+        {
+            ++MolesWhacked;
+        }
 
         public void IncreaseScore(int points)
         {

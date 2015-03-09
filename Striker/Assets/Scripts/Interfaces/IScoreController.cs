@@ -6,9 +6,6 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IScoreController
     {
-        //void ScoreUpdate();
-        //void WhackPercentageUpdate();
-
         int Score
         {
             get;

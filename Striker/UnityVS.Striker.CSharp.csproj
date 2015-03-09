@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IHealthController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHitController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IInputController.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\ILevelController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMenuNavigationController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMovementController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IScoreController.cs" />
