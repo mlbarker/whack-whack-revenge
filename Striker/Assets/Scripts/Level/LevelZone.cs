@@ -2,10 +2,11 @@
 // ImperfectlyCoded © 2015
 //-----------------------------
 
-namespace UnityVS.Striker.CSharp_Test.Level
+namespace Assets.Scripts.Level
 {
     using System;
     using System.Collections.Generic;
+    using Assets.Scripts.Interfaces;
 
     [Serializable]
     public class LevelZone : ILevelZone
@@ -31,6 +32,16 @@ namespace UnityVS.Striker.CSharp_Test.Level
         public bool ContainsLevel(LevelId levelId)
         {
             return m_levels.ContainsKey(levelId);
+        }
+
+        public int GetStarRequirements(LevelId levelId, LevelStarId starId)
+        {
+            if(!ContainsLevel(levelId))
+            {
+                return -1;
+            }
+
+            return m_levels[levelId].GetStarRequirements(starId);
         }
 
         #endregion

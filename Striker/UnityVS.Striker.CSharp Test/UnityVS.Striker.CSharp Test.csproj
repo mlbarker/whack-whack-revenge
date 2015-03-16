@@ -62,15 +62,8 @@
   <ItemGroup>
     <Compile Include="GameTime\GameTimeTest.cs" />
     <Compile Include="Game\GameTest.cs" />
-    <Compile Include="Level\ILevel.cs" />
-    <Compile Include="Level\ILevelManager.cs" />
-    <Compile Include="Level\ILevelZone.cs" />
     <Compile Include="Level\Level.cs" />
-    <Compile Include="Level\LevelId.cs" />
-    <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Level\LevelTest.cs" />
-    <Compile Include="Level\LevelZone.cs" />
-    <Compile Include="Level\LevelZoneId.cs" />
     <Compile Include="Score\ScoreTest.cs" />
     <Compile Include="Menu\MenuTest.cs" />
     <Compile Include="Mole\MoleTest.cs" />

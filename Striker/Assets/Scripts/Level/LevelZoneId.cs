@@ -2,7 +2,10 @@
 // ImperfectlyCoded © 2015
 //-----------------------------
 
-public enum LevelZoneId
+namespace Assets.Scripts.Level
 {
-    Plain = 0
+    public enum LevelZoneId
+    {
+        Plain = 0
+    }
 }
