@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IScoreController.cs" />
     <Compile Include="Assets\Scripts\Level\Level.cs" />
     <Compile Include="Assets\Scripts\Level\LevelId.cs" />
+    <Compile Include="Assets\Scripts\Level\LeveZoneIndices.cs" />
     <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Level\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\Level\LevelStarId.cs" />
