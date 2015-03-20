@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Interfaces
 {
     using Assets.Scripts.Level;
+
     public interface ILevel
     {
         #region Public Methods

@@ -16,10 +16,7 @@ namespace Assets.Scripts.Level
 
         private List<Button> m_zoneButtons;
         private List<GameObject> m_levelPanels;
-        private Dictionary<Button, GameObject> m_zonesAndLevels = new Dictionary<Button, GameObject>();
-        private Button level;
-        private GameObject levelPanel;
-        private GameObject levelObject;
+        private List<Button> m_levelButtons;
 
         #endregion
 
@@ -33,11 +30,6 @@ namespace Assets.Scripts.Level
         #endregion
 
         #region Public Methods
-
-        public void OnZoneSelected(GameObject go)
-        {
-            go.SetActive(true);
-        }
 
         public void OnBackButtonPressed()
         {
@@ -53,7 +45,7 @@ namespace Assets.Scripts.Level
 
             if(!panelWasActive)
             {
-                Application.LoadLevel(LeveZoneIndices.MainMenuScene);
+                Application.LoadLevel(LevelZoneIndices.MainMenuScene);
             }
         }
 
@@ -63,12 +55,6 @@ namespace Assets.Scripts.Level
 
         private void Initialize()
         {
-            // I need to grab the zone and a level in the zone.
-            // The issue is that the level name/number (which does not exist as a data member
-            // in the level interface) must correspond to the scene order in the build settings.
-            //zonePlain = GameObject.FindGameObjectWithTag("ZonePlain").GetComponent<Button>();
-            //levelPanel = GameObject.FindGameObjectWithTag("LevelPanel");
-            //levelObject = GameObject.FindGameObjectWithTag("Level");
             m_zoneButtons = new List<Button>();
             GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("Zone");
             foreach (GameObject zoneGameObject in zoneObjects)
@@ -80,35 +66,50 @@ namespace Assets.Scripts.Level
             GameObject[] levelPanelObjects = GameObject.FindGameObjectsWithTag("LevelPanel");
             m_levelPanels.AddRange(levelPanelObjects);
 
-            foreach(GameObject levelPanel in m_levelPanels)
+            m_levelButtons = new List<Button>();
+            GameObject[] levelButtons = GameObject.FindGameObjectsWithTag("Level");
+            foreach (GameObject levelButtonObject in levelButtons)
+            {
+                Button button = levelButtonObject.GetComponent<Button>();
+                m_levelButtons.Add(button);
+            }
+
+            for (int count = 0; count < m_zoneButtons.Count; ++count)
+            {
+                var zoneButton = m_zoneButtons[count];
+                var levelPanel = m_levelPanels[count];
+
+                zoneButton.onClick.AddListener(() => OnZoneSelected(levelPanel));
+            }
+
+            LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
+            foreach (Button levelButton in m_levelButtons)
+            {
+                Level level = levelButton.GetComponent<Level>();
+                LevelManager.Instance.AddLevelToZone(level.zoneId, level.levelId, level);
+
+                var button = levelButton;
+                button.onClick.AddListener(() => OnLevelSelected(button));
+            }
+
+            foreach (GameObject levelPanel in m_levelPanels)
             {
                 levelPanel.SetActive(false);
             }
-            //for (int count = 0; count < m_zoneButtons.Count; ++count)
-            //{
-            //    m_zoneButtons[count].onClick.AddListener(() => OnZoneSelected(m_levelPanels[count]));
-            //}
+        }
 
+        private void OnZoneSelected(GameObject panelObject)
+        {
+            panelObject.SetActive(true);
+        }
 
-            //m_zoneButtons[0]
-            m_zonesAndLevels.Add(m_zoneButtons[0], m_levelPanels[0]);
-            m_zonesAndLevels.Add(m_zoneButtons[1], m_levelPanels[1]);
+        private void OnLevelSelected(Button button)
+        {
+            LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
+            LevelId levelId = button.GetComponent<Level>().levelId;
 
-            //foreach (KeyValuePair<Button, GameObject> zoneAndLevels in m_zonesAndLevels)
-            //{
-            //    zoneAndLevels.Key.onClick.AddListener(() => OnZoneSelected(zoneAndLevels.Value));
-            //}
-
-            // this works.... sigh.... can't loop to set this up... oh well...
-            m_zoneButtons[0].onClick.AddListener(() => OnZoneSelected(m_levelPanels[0]));
-            m_zoneButtons[1].onClick.AddListener(() => OnZoneSelected(m_levelPanels[1]));
-
-            //level = levelPanel.GetComponentInChildren<Button>();
-            //Level levelOne = level.GetComponent<Level>();
-            //LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
-            //LevelManager.Instance.AddLevelToZone(LevelZoneId.Plain, LevelId.One, levelOne);
-
-            //levelPanel.SetActive(false);
+            Debug.Log("Zone Id|" + zoneId);
+            Debug.Log("Level Id|" + levelId);
         }
 
         #endregion

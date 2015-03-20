@@ -6,6 +6,7 @@ namespace Assets.Scripts.Level
 {
     public enum LevelZoneId
     {
-        Plain = 0
+        Plain = 0,
+        Sports
     }
 }

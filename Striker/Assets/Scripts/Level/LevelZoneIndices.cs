@@ -4,7 +4,10 @@
 
 namespace Assets.Scripts.Level
 {
-    public static class LeveZoneIndices
+    using System;
+
+    [Serializable]
+    public static class LevelZoneIndices
     {
         public const int Zone_Plains = 0;
         public const int Zone_Sports = 1;

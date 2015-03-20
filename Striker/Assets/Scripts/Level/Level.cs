@@ -19,6 +19,8 @@ namespace Assets.Scripts.Level
 
         #region Editor Values
 
+        public LevelId levelId;
+        public LevelZoneId zoneId;
         public int levelTimeSeconds;
         public int molesWhackedStar;
         public int whackPercentStar;
