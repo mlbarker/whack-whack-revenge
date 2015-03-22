@@ -6,15 +6,19 @@ namespace Assets.Scripts.Level
 {
     public enum LevelId
     {
-        One = 0,
-        Two,
-        Three,
-        Four,
-        Five,
-        Six,
-        Seven,
-        Eight,
-        Nine,
-        Ten
+        Plains1 = 2,
+        Plains2,
+        Plains3,
+        Plains4,
+        Plains5,
+        Plains6,
+
+        Sports1,
+        Sports2,
+        Sports3,
+        Sports4,
+        Sports5,
+        Sports6,
+        Sports7
     }
 }

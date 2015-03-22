@@ -51,9 +51,9 @@ namespace UnityVS.Striker.CSharp_Test.Level
         public void LevelManagerContainsLevel1Test()
         {
             m_levelManager.AddZone(m_levelZone, LevelZoneId.Plain);
-            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.One, m_level);
+            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.Plains1, m_level);
 
-            bool actualResult = m_levelManager.ContainsLevel(LevelZoneId.Plain, LevelId.One);
+            bool actualResult = m_levelManager.ContainsLevel(LevelZoneId.Plain, LevelId.Plains1);
             Assert.IsTrue(actualResult);
         }
 
@@ -63,9 +63,9 @@ namespace UnityVS.Striker.CSharp_Test.Level
             int expectedRequiredScore = 1000;
             m_level.SetStarRequirements(LevelStarId.Score, expectedRequiredScore);
             m_levelManager.AddZone(m_levelZone, LevelZoneId.Plain);
-            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.One, m_level);
+            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.Plains1, m_level);
 
-            int actualRequiredScore = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.One, LevelStarId.Score);
+            int actualRequiredScore = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.Plains1, LevelStarId.Score);
             Assert.AreEqual(expectedRequiredScore, actualRequiredScore);
         }
 
@@ -75,9 +75,9 @@ namespace UnityVS.Striker.CSharp_Test.Level
             int expectedRequiredMolesWhacked = 13;
             m_level.SetStarRequirements(LevelStarId.Hits, expectedRequiredMolesWhacked);
             m_levelManager.AddZone(m_levelZone, LevelZoneId.Plain);
-            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.One, m_level);
+            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.Plains1, m_level);
 
-            int actualRequiredMolesWhacked = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.One, LevelStarId.Hits);
+            int actualRequiredMolesWhacked = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.Plains1, LevelStarId.Hits);
             Assert.AreEqual(expectedRequiredMolesWhacked, actualRequiredMolesWhacked);
         }
 
@@ -86,10 +86,10 @@ namespace UnityVS.Striker.CSharp_Test.Level
         {
             int expectedRequiredWhackPercent = 50;
             m_level.SetStarRequirements(LevelStarId.HitPercent, expectedRequiredWhackPercent);
-            m_levelZone.AddLevel(LevelId.One, m_level);
+            m_levelZone.AddLevel(LevelId.Plains1, m_level);
             m_levelManager.AddZone(m_levelZone, LevelZoneId.Plain);
 
-            int actualRequiredWhackPercent = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.One, LevelStarId.HitPercent);
+            int actualRequiredWhackPercent = m_levelManager.GetStarRequirements(LevelZoneId.Plain, LevelId.Plains1, LevelStarId.HitPercent);
             Assert.AreEqual(expectedRequiredWhackPercent, actualRequiredWhackPercent);
         }
 
@@ -101,10 +101,45 @@ namespace UnityVS.Striker.CSharp_Test.Level
             m_level.SetStarRequirements(LevelStarId.Score, requiredScore);
 
             m_levelManager.AddZone(m_levelZone, LevelZoneId.Plain);
-            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.One, m_level);
+            m_levelManager.AddLevelToZone(LevelZoneId.Plain, LevelId.Plains1, m_level);
 
-            bool actualResults = m_levelManager.CheckStarRequirement(LevelZoneId.Plain, LevelId.One, LevelStarId.Score, score);
+            bool actualResults = m_levelManager.CheckStarRequirement(LevelZoneId.Plain, LevelId.Plains1, LevelStarId.Score, score);
             Assert.IsFalse(actualResults);
+        }
+
+        [TestMethod]
+        public void LevelManagerSelectedLevelNotNullTest()
+        {
+            int score = 1000;
+            LevelZoneId zoneId = LevelZoneId.Plain;
+            LevelId levelId = LevelId.Plains1;
+            LevelStarId starId = LevelStarId.Score;
+            m_level.SetStarRequirements(starId, score);
+            LevelManager.Instance.AddZone(m_levelZone, zoneId);
+            LevelManager.Instance.AddLevelToZone(zoneId, levelId, m_level);
+
+            LevelManager.Instance.SelectLevel(zoneId, levelId);
+
+            ILevel level = LevelManager.Instance.SelectedLevel;
+            Assert.IsNotNull(level);
+        }
+
+        [TestMethod]
+        public void LevelManagerSelectedLevelIsNullTest()
+        {
+            int score = 1000;
+            LevelZoneId zoneId = LevelZoneId.Plain;
+            LevelId levelId = LevelId.Plains1;
+            LevelStarId starId = LevelStarId.Score;
+            m_level.SetStarRequirements(starId, score);
+            LevelManager.Instance.AddZone(m_levelZone, zoneId);
+            LevelManager.Instance.AddLevelToZone(zoneId, levelId, m_level);
+
+            LevelManager.Instance.SelectLevel(zoneId, levelId);
+            LevelManager.Instance.ClearSelectedLevel();
+
+            ILevel level = LevelManager.Instance.SelectedLevel;
+            Assert.IsNull(level);
         }
     }
 }

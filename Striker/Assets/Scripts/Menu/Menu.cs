@@ -7,6 +7,7 @@ namespace Assets.Scripts.Menu
     using System;
     using UnityEngine;
     using UnityEngine.UI;
+    using Assets.Scripts.Level;
     using Assets.Scripts.Interfaces;
 
     public class Menu : MonoBehaviour, IMenuNavigationController
@@ -46,12 +47,12 @@ namespace Assets.Scripts.Menu
 
         public void RunMainMenu()
         {
-            Application.LoadLevel(0);
+            Application.LoadLevel(SceneIndices.MainMenuScene);
         }
 
         public void RunStartGame()
         {
-            Application.LoadLevel(1);
+            Application.LoadLevel(SceneIndices.LevelSelectScene);
         }
 
         public void RunStats()

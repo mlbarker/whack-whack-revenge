@@ -17,6 +17,16 @@ namespace Assets.Scripts.Level
 
         #endregion
 
+        #region Public Properties
+
+        public int LevelTimeInSeconds 
+        { 
+            get; 
+            private set; 
+        }
+
+        #endregion
+
         #region Editor Values
 
         public LevelId levelId;
@@ -67,11 +77,24 @@ namespace Assets.Scripts.Level
 
         #endregion
 
+        #region ICloneable Methods
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void Initialize()
         {
+            SetStarRequirements(LevelStarId.Score, scoreNeededStar);
+            SetStarRequirements(LevelStarId.Hits, molesWhackedStar);
+            SetStarRequirements(LevelStarId.HitPercent, whackPercentStar);
 
+            LevelTimeInSeconds = levelTimeSeconds;
         }
 
         #endregion

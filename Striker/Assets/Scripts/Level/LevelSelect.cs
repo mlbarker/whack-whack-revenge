@@ -45,7 +45,7 @@ namespace Assets.Scripts.Level
 
             if(!panelWasActive)
             {
-                Application.LoadLevel(LevelZoneIndices.MainMenuScene);
+                Application.LoadLevel(SceneIndices.MainMenuScene);
             }
         }
 
@@ -55,6 +55,8 @@ namespace Assets.Scripts.Level
 
         private void Initialize()
         {
+            //LevelManager.Instance.ClearSelectedLevel();
+
             m_zoneButtons = new List<Button>();
             GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("Zone");
             foreach (GameObject zoneGameObject in zoneObjects)
@@ -83,13 +85,17 @@ namespace Assets.Scripts.Level
             }
 
             LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
+            LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Sports);
             foreach (Button levelButton in m_levelButtons)
             {
-                Level level = levelButton.GetComponent<Level>();
-                LevelManager.Instance.AddLevelToZone(level.zoneId, level.levelId, level);
+                //Level level = levelButton.GetComponent<Level>();
+                
 
                 var button = levelButton;
                 button.onClick.AddListener(() => OnLevelSelected(button));
+                LevelManager.Instance.AddLevelToZone(button.GetComponent<Level>().zoneId,
+                                                     button.GetComponent<Level>().levelId,
+                                                     button.GetComponent<Level>());
             }
 
             foreach (GameObject levelPanel in m_levelPanels)
@@ -110,6 +116,9 @@ namespace Assets.Scripts.Level
 
             Debug.Log("Zone Id|" + zoneId);
             Debug.Log("Level Id|" + levelId);
+
+            LevelManager.Instance.SelectLevel(zoneId, levelId);
+            Application.LoadLevel((int)levelId);
         }
 
         #endregion

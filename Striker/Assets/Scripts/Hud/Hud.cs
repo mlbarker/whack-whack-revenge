@@ -7,6 +7,7 @@ namespace Assets.Scripts.Hud
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using Assets.Scripts.Level;
     using Assets.Scripts.Game;
 
     public class Hud : MonoBehaviour
@@ -45,9 +46,9 @@ namespace Assets.Scripts.Hud
 
         #region Public Methods
 
-        public void BackToMainMenu()
+        public void BackToLevelSelect()
         {
-            Application.LoadLevel(0);
+            Application.LoadLevel(SceneIndices.LevelSelectScene);
         }
 
         #endregion

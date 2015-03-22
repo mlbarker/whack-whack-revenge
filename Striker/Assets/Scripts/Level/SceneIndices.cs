@@ -7,14 +7,9 @@ namespace Assets.Scripts.Level
     using System;
 
     [Serializable]
-    public static class LevelZoneIndices
+    public static class SceneIndices
     {
-        public const int Zone_Plains = 0;
-        public const int Zone_Sports = 1;
-
-        //public const int LoadingScene = 0;
         public const int MainMenuScene = 0;
         public const int LevelSelectScene = 1;
-        public const int Level1_1 = 2;
     }
 }

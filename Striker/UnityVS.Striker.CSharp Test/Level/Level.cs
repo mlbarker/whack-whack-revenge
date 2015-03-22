@@ -45,5 +45,15 @@ namespace UnityVS.Striker.CSharp_Test.Level
         }
 
         #endregion
+
+        #region ICloneable Methods
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        #endregion
+
     }
 }

@@ -29,6 +29,16 @@ namespace Assets.Scripts.Level
             m_levels.Add(levelId, level);
         }
 
+        public ILevel GetLevel(LevelId levelId)
+        {
+            if (!m_levels.ContainsKey(levelId))
+            {
+                return null;
+            }
+
+            return m_levels[levelId];
+        }
+
         public bool ContainsLevel(LevelId levelId)
         {
             return m_levels.ContainsKey(levelId);

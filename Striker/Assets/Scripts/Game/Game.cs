@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Game
 {
     using UnityEngine;
+    using Assets.Scripts.Level;
     using Assets.Scripts.Mole;
     using Assets.Scripts.Player;
     using Assets.Scripts.Score;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Game
         #region Private Members
 
         private GameController m_gameController;
+        private LevelManager m_levelManager;
 
         #endregion
 
@@ -56,7 +58,6 @@ namespace Assets.Scripts.Game
 
         public Mole [] moles;
         public Player player;
-        public int gameTimeInSeconds;
 
         #endregion
 
@@ -109,6 +110,10 @@ namespace Assets.Scripts.Game
         private void InitializeGame()
         {
             DisplayGameResults = false;
+
+            m_levelManager = LevelManager.Instance;
+            Level level = m_levelManager.SelectedLevel as Level;
+            int gameTimeInSeconds = level.LevelTimeInSeconds;
 
             m_gameController = new GameController();
             m_gameController.SetGameTime(gameTimeInSeconds);

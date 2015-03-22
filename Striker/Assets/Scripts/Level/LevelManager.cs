@@ -40,6 +40,12 @@ namespace Assets.Scripts.Level
             }
         }
 
+        public ILevel SelectedLevel 
+        { 
+            get; 
+            private set; 
+        }
+
         #endregion
 
         #region ILevelManager Methods
@@ -100,6 +106,22 @@ namespace Assets.Scripts.Level
         #endregion
 
         #region Public Methods
+
+        public void SelectLevel(LevelZoneId zoneId, LevelId levelId)
+        {
+            if(SelectedLevel != null)
+            {
+                return;
+            }
+
+            SelectedLevel = m_levelZones[zoneId].GetLevel(levelId).Clone() as ILevel;
+        }
+
+        public void ClearSelectedLevel()
+        {
+            // whatever
+            SelectedLevel = null;
+        }
 
         public void Clear()
         {
