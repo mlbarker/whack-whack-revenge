@@ -65,7 +65,8 @@ C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp T
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.dll
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-UnityScript.dll
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\NSubstitute.dll
-C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\Assembly-CSharp.pdb
-C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.dll
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.pdb
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityEngine.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\bin\Debug\UnityEngine.xml
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\UnityVS.Striker.CSharp Test\obj\Debug\UnityVS.Striker.CSharp Test.csprojResolveAssemblyReference.cache

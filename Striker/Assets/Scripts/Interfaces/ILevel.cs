@@ -4,16 +4,14 @@
 
 namespace Assets.Scripts.Interfaces
 {
-    using System;
     using Assets.Scripts.Level;
 
-    public interface ILevel : ICloneable
+    public interface ILevel
     {
         #region Public Methods
 
         int GetStarRequirements(LevelStarId starId);
         bool SetStarRequirements(LevelStarId starId, int requirement);
-        new object Clone();
 
         #endregion
     }

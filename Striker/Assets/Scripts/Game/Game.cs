@@ -112,8 +112,7 @@ namespace Assets.Scripts.Game
             DisplayGameResults = false;
 
             m_levelManager = LevelManager.Instance;
-            Level level = m_levelManager.SelectedLevel as Level;
-            int gameTimeInSeconds = level.LevelTimeInSeconds;
+            int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.levelTimeInSeconds;
 
             m_gameController = new GameController();
             m_gameController.SetGameTime(gameTimeInSeconds);

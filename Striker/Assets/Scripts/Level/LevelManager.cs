@@ -13,6 +13,7 @@ namespace Assets.Scripts.Level
 
         private static LevelManager m_instance;
         private Dictionary<LevelZoneId, ILevelZone> m_levelZones;
+        private LevelInfo m_selectedLevelInfo;
 
         #endregion
 
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Level
         private LevelManager()
         {
             m_levelZones = new Dictionary<LevelZoneId, ILevelZone>();
+            m_selectedLevelInfo = new LevelInfo();
         }
 
         #endregion
@@ -40,10 +42,12 @@ namespace Assets.Scripts.Level
             }
         }
 
-        public ILevel SelectedLevel 
+        public LevelInfo SelectedLevelInfo
         { 
-            get; 
-            private set; 
+            get
+            {
+                return m_selectedLevelInfo;
+            }
         }
 
         #endregion
@@ -107,20 +111,16 @@ namespace Assets.Scripts.Level
 
         #region Public Methods
 
-        public void SelectLevel(LevelZoneId zoneId, LevelId levelId)
+        public void StoreSelectedLevelInfo(LevelZoneId zoneId, LevelId levelId)
         {
-            if(SelectedLevel != null)
-            {
-                return;
-            }
+            Level level = m_levelZones[zoneId].GetLevel(levelId) as Level;
 
-            SelectedLevel = m_levelZones[zoneId].GetLevel(levelId).Clone() as ILevel;
-        }
-
-        public void ClearSelectedLevel()
-        {
-            // whatever
-            SelectedLevel = null;
+            m_selectedLevelInfo.levelId = levelId;
+            m_selectedLevelInfo.zoneId = zoneId;
+            m_selectedLevelInfo.levelTimeInSeconds = level.LevelTimeInSeconds;
+            m_selectedLevelInfo.starMolesWhackedRequirement = level.GetStarRequirements(LevelStarId.Hits);
+            m_selectedLevelInfo.starScoreRequirement = level.GetStarRequirements(LevelStarId.Score);
+            m_selectedLevelInfo.starWhackPercentRequirement = level.GetStarRequirements(LevelStarId.HitPercent);
         }
 
         public void Clear()

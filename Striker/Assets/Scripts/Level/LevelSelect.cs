@@ -117,7 +117,7 @@ namespace Assets.Scripts.Level
             Debug.Log("Zone Id|" + zoneId);
             Debug.Log("Level Id|" + levelId);
 
-            LevelManager.Instance.SelectLevel(zoneId, levelId);
+            LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
             Application.LoadLevel((int)levelId);
         }
 

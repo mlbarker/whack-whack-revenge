@@ -77,19 +77,11 @@ namespace Assets.Scripts.Level
 
         #endregion
 
-        #region ICloneable Methods
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-
-        #endregion
-
         #region Private Methods
 
         private void Initialize()
         {
+            Debug.Log(this.name);
             SetStarRequirements(LevelStarId.Score, scoreNeededStar);
             SetStarRequirements(LevelStarId.Hits, molesWhackedStar);
             SetStarRequirements(LevelStarId.HitPercent, whackPercentStar);
