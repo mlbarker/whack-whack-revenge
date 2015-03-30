@@ -94,6 +94,18 @@ namespace UnityVS.Striker.CSharp_Test.Level
         }
 
         [TestMethod]
+        public void LevelManagerStarAchievedTest()
+        {
+            int requiredScore = 1000;
+            TestLevelStarScore levelScoreStar = new TestLevelStarScore();
+
+            levelScoreStar.SetRequirement(requiredScore);
+            bool actualAchievement = levelScoreStar.RequirementAchieved(requiredScore);
+
+            Assert.IsTrue(actualAchievement);
+        }
+
+        [TestMethod]
         public void LevelManagerScoreStarRequirementFailedTest()
         {
             int score = 1000;
@@ -106,42 +118,20 @@ namespace UnityVS.Striker.CSharp_Test.Level
             bool actualResults = m_levelManager.CheckStarRequirement(LevelZoneId.Plain, LevelId.Plains1, LevelStarId.Score, score);
             Assert.IsFalse(actualResults);
         }
+    }
 
-        //[TestMethod]
-        //public void LevelManagerSelectedLevelNotNullTest()
-        //{
-        //    int score = 1000;
-        //    LevelZoneId zoneId = LevelZoneId.Plain;
-        //    LevelId levelId = LevelId.Plains1;
-        //    LevelStarId starId = LevelStarId.Score;
-        //    m_level.SetStarRequirements(starId, score);
-        //    LevelManager.Instance.AddZone(m_levelZone, zoneId);
-        //    LevelManager.Instance.AddLevelToZone(zoneId, levelId, m_level);
+    public class TestLevelStarScore : ILevelStar
+    {
+        private int m_requirement;
 
-        //    LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
-
-        //    LevelInfo levelInfo = LevelManager.Instance.SelectedLevelInfo;
-        //    Assert.IsNotNull(levelInfo);
-        //    Assert.AreEqual(zoneId, levelInfo.zoneId);
-        //    Assert.AreEqual(levelId, levelInfo.levelId);
-        //}
-
-        [TestMethod]
-        public void LevelManagerSelectedLevelIsNullTest()
+        public void SetRequirement(int requirement)
         {
-            int score = 1000;
-            LevelZoneId zoneId = LevelZoneId.Plain;
-            LevelId levelId = LevelId.Plains1;
-            LevelStarId starId = LevelStarId.Score;
-            m_level.SetStarRequirements(starId, score);
-            LevelManager.Instance.AddZone(m_levelZone, zoneId);
-            LevelManager.Instance.AddLevelToZone(zoneId, levelId, m_level);
+            m_requirement = requirement;
+        }
 
-            //LevelManager.Instance.SelectLevel(zoneId, levelId);
-            //LevelManager.Instance.ClearSelectedLevel();
-
-            //ILevel level = LevelManager.Instance.SelectedLevel;
-            //Assert.IsNull(level);
+        public bool RequirementAchieved(int requirement)
+        {
+            return requirement >= m_requirement;
         }
     }
 }

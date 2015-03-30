@@ -51,7 +51,7 @@ namespace Assets.Scripts.Level
                 return -1;
             }
 
-            return m_levels[levelId].GetStarRequirements(starId);
+            return m_levels[levelId].GetStarRequirement(starId);
         }
 
         #endregion

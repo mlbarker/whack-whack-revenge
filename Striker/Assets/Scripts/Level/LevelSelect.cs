@@ -55,19 +55,32 @@ namespace Assets.Scripts.Level
 
         private void Initialize()
         {
-            //LevelManager.Instance.ClearSelectedLevel();
+            InitializeZoneButtons();
+            InitializeLevelPanels();
+            InitializeLevelButtons();
+            InitializeLevelManager();
+            
+        }
 
+        private void InitializeZoneButtons()
+        {
             m_zoneButtons = new List<Button>();
             GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("Zone");
             foreach (GameObject zoneGameObject in zoneObjects)
             {
                 m_zoneButtons.Add(zoneGameObject.GetComponent<Button>());
             }
+        }
 
+        private void InitializeLevelPanels()
+        {
             m_levelPanels = new List<GameObject>();
             GameObject[] levelPanelObjects = GameObject.FindGameObjectsWithTag("LevelPanel");
             m_levelPanels.AddRange(levelPanelObjects);
+        }
 
+        private void InitializeLevelButtons()
+        {
             m_levelButtons = new List<Button>();
             GameObject[] levelButtons = GameObject.FindGameObjectsWithTag("Level");
             foreach (GameObject levelButtonObject in levelButtons)
@@ -75,7 +88,10 @@ namespace Assets.Scripts.Level
                 Button button = levelButtonObject.GetComponent<Button>();
                 m_levelButtons.Add(button);
             }
+        }
 
+        private void InitializeLevelManager()
+        {
             for (int count = 0; count < m_zoneButtons.Count; ++count)
             {
                 var zoneButton = m_zoneButtons[count];
@@ -88,9 +104,6 @@ namespace Assets.Scripts.Level
             LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Sports);
             foreach (Button levelButton in m_levelButtons)
             {
-                //Level level = levelButton.GetComponent<Level>();
-                
-
                 var button = levelButton;
                 button.onClick.AddListener(() => OnLevelSelected(button));
                 LevelManager.Instance.AddLevelToZone(button.GetComponent<Level>().zoneId,
@@ -113,9 +126,6 @@ namespace Assets.Scripts.Level
         {
             LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
             LevelId levelId = button.GetComponent<Level>().levelId;
-
-            Debug.Log("Zone Id|" + zoneId);
-            Debug.Log("Level Id|" + levelId);
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
             Application.LoadLevel((int)levelId);

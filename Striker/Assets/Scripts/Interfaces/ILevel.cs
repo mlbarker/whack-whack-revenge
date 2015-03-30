@@ -10,8 +10,8 @@ namespace Assets.Scripts.Interfaces
     {
         #region Public Methods
 
-        int GetStarRequirements(LevelStarId starId);
-        bool SetStarRequirements(LevelStarId starId, int requirement);
+        int GetStarRequirement();
+        bool SetStarRequirement(int requirement);
 
         #endregion
     }

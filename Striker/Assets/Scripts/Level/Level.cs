@@ -11,9 +11,16 @@ namespace Assets.Scripts.Level
 
     public class Level : MonoBehaviour, ILevel
     {
+        #region Constants
+
+        public const int MAX_STARS = 3;
+
+        #endregion
+
         #region Private Members
 
-        private Dictionary<LevelStarId, int> m_stars = new Dictionary<LevelStarId, int>();
+        private List<ILevelStar> m_stars = new List<ILevelStar>(MAX_STARS);
+        //private Dictionary<LevelStarId, int> m_stars = new Dictionary<LevelStarId, int>();
 
         #endregion
 
@@ -32,9 +39,9 @@ namespace Assets.Scripts.Level
         public LevelId levelId;
         public LevelZoneId zoneId;
         public int levelTimeSeconds;
-        public int molesWhackedStar;
-        public int whackPercentStar;
-        public int scoreNeededStar;
+        //public int molesWhackedStar;
+        //public int whackPercentStar;
+        //public int scoreNeededStar;
 
         #endregion
 
@@ -59,7 +66,7 @@ namespace Assets.Scripts.Level
             return -1;
         }
 
-        public bool SetStarRequirements(LevelStarId starId, int requirement)
+        public bool SetStarRequirement(LevelStarId starId, int requirement)
         {
             if (m_stars == null)
             {
@@ -82,9 +89,9 @@ namespace Assets.Scripts.Level
         private void Initialize()
         {
             Debug.Log(this.name);
-            SetStarRequirements(LevelStarId.Score, scoreNeededStar);
-            SetStarRequirements(LevelStarId.Hits, molesWhackedStar);
-            SetStarRequirements(LevelStarId.HitPercent, whackPercentStar);
+            SetStarRequirement(LevelStarId.Score, scoreNeededStar);
+            SetStarRequirement(LevelStarId.Hits, molesWhackedStar);
+            SetStarRequirement(LevelStarId.HitPercent, whackPercentStar);
 
             LevelTimeInSeconds = levelTimeSeconds;
         }
