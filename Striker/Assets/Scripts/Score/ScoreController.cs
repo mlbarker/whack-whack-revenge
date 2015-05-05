@@ -36,6 +36,15 @@ namespace Assets.Scripts.Score
             }
         }
 
+        // Might not need this...
+        public int WhackPercentageNumber
+        {
+            get
+            {
+                return Whacks / WhackAttempts * 100;
+            }
+        }
+
         public int MolesWhacked
         {
             get;

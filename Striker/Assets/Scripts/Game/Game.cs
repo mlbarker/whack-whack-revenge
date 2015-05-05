@@ -4,6 +4,8 @@
 
 namespace Assets.Scripts.Game
 {
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
     using Assets.Scripts.Level;
     using Assets.Scripts.Mole;
@@ -17,6 +19,9 @@ namespace Assets.Scripts.Game
 
         private GameController m_gameController;
         private LevelManager m_levelManager;
+        private Dictionary<LevelStarType, List<int>> m_levelStars = new Dictionary<LevelStarType, List<int>>();
+        private Dictionary<LevelStarType, List<int>> m_levelStarStats = new Dictionary<LevelStarType, List<int>>();
+        private Dictionary<LevelStarType, bool> m_levelStarsAchieved = new Dictionary<LevelStarType, bool>();
 
         #endregion
 
@@ -82,6 +87,7 @@ namespace Assets.Scripts.Game
             InitializeMoles();
             InitializePlayer();
             InitializeGame();
+            InitializeStars();
         }
 
         private void InitializeMoles()
@@ -127,10 +133,38 @@ namespace Assets.Scripts.Game
             m_gameController.Initialize();
         }
 
+        private void InitializeStars()
+        {
+            LevelInfo levelInfo = m_levelManager.SelectedLevelInfo;
+
+            foreach (LevelStarInfo starInfo in levelInfo.levelStarInfos)
+            {
+                List<int> requirements = new List<int>();
+
+                foreach (int requirement in starInfo.requirements)
+                {
+                    requirements.Add(requirement);
+                }
+
+                m_levelStars.Add(starInfo.starType, starInfo.requirements);
+            }
+
+            foreach (LevelStarType starType in Enum.GetValues(typeof(LevelStarType)))
+            {
+                m_levelStarStats.Add(starType, new List<int>());
+                m_levelStarStats[starType].Add(0);
+                m_levelStarStats[starType].Add(0);
+
+                m_levelStarsAchieved.Add(starType, false);
+            }
+
+        }
+
         private void UpdateGame()
         {
             UpdateMoleWasWhacked();
             UpdateGameController();
+            UpdateStarsAchievements();
         }
 
         private void UpdateMoleWasWhacked()
@@ -171,6 +205,57 @@ namespace Assets.Scripts.Game
             }
 
             m_gameController.Update();
+        }
+
+        private void UpdateStarsAchievements()
+        {
+            // continue to store the stats even if stars have been achieved
+            m_levelStarStats[LevelStarType.Score][0] = m_gameController.CurrentScore;
+            m_levelStarStats[LevelStarType.HitPercentage][0] = (int)m_gameController.CurrentPercentage;
+            m_levelStarStats[LevelStarType.HitPercentage][1] = m_gameController.CurrentWhackAttempts;
+            m_levelStarStats[LevelStarType.MolesWhacked][0] = m_gameController.CurrentMolesWhacked;
+
+            // all stars have been achieved so leave method
+            int starsAchievedCount = 0;
+            foreach (bool starsAchieved in m_levelStarsAchieved.Values)
+            {
+                if(!starsAchieved)
+                {
+                    break;
+                }
+
+                ++starsAchievedCount;
+            }
+
+            if(starsAchievedCount == m_levelStarsAchieved.Count)
+            {
+                return;
+            }
+
+            foreach (LevelStarType starType in Enum.GetValues(typeof(LevelStarType)))
+            {
+                bool starAchieved = false;
+                if(!m_levelStars.ContainsKey(starType))
+                {
+                    continue;
+                }
+
+                // star has been achieved so continue in loop
+                if (m_levelStarsAchieved[starType])
+                {
+                    continue;
+                }
+
+                starAchieved = m_levelManager.CheckStarRequirement(m_levelManager.SelectedLevelInfo.zoneId,
+                                                                   m_levelManager.SelectedLevelInfo.levelId,
+                                                                   starType,
+                                                                   m_levelStarStats[starType]);
+
+                if (starAchieved)
+                {
+                    m_levelStarsAchieved[starType] = starAchieved;
+                }
+            }
         }
 
         private void GameIsOver()

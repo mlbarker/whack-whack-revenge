@@ -49,6 +49,22 @@ namespace Assets.Scripts.Game
             }
         }
 
+        public int CurrentMolesWhacked
+        {
+            get
+            {
+                return m_scoreController.MolesWhacked;
+            }
+        }
+
+        public int CurrentWhackAttempts
+        {
+            get
+            {
+                return m_scoreController.WhackAttempts;
+            }
+        }
+
         public int GameTimeSeconds
         {
             get;
@@ -230,6 +246,11 @@ namespace Assets.Scripts.Game
 
                 m_playerController.UpdateStats(0, whackSuccessful);
             }
+        }
+
+        private void UpdateStars()
+        {
+
         }
 
         private void GameTimeIsUp()

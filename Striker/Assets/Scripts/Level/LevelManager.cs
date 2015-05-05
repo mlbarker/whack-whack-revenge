@@ -87,24 +87,24 @@ namespace Assets.Scripts.Level
             return false;
         }
 
-        public int GetStarRequirements(LevelZoneId levelZoneId, LevelId levelId, LevelStarId starId)
+        public LevelStarInfo GetStarRequirements(LevelZoneId levelZoneId, LevelId levelId, LevelStarType starType)
         {
             if(!ContainsLevel(levelZoneId, levelId))
             {
-                return -1;
+                return new LevelStarInfo();
             }
 
-            return m_levelZones[levelZoneId].GetStarRequirements(levelId, starId);
+            return m_levelZones[levelZoneId].GetStarRequirements(levelId, starType);
         }
 
-        public bool CheckStarRequirement(LevelZoneId levelZoneId, LevelId levelId, LevelStarId starId, int playerResult)
+        public bool CheckStarRequirement(LevelZoneId levelZoneId, LevelId levelId, LevelStarType starType, List<int> playerResults)
         {
             if(!ContainsLevel(levelZoneId, levelId))
             {
                 return false;
             }
 
-            return playerResult >= m_levelZones[levelZoneId].GetStarRequirements(levelId, starId);
+            return m_levelZones[levelZoneId].CheckStarRequirement(levelId, starType, playerResults);
         }
 
         #endregion
@@ -118,9 +118,8 @@ namespace Assets.Scripts.Level
             m_selectedLevelInfo.levelId = levelId;
             m_selectedLevelInfo.zoneId = zoneId;
             m_selectedLevelInfo.levelTimeInSeconds = level.LevelTimeInSeconds;
-            m_selectedLevelInfo.starMolesWhackedRequirement = level.GetStarRequirements(LevelStarId.Hits);
-            m_selectedLevelInfo.starScoreRequirement = level.GetStarRequirements(LevelStarId.Score);
-            m_selectedLevelInfo.starWhackPercentRequirement = level.GetStarRequirements(LevelStarId.HitPercent);
+
+            m_selectedLevelInfo.levelStarInfos = level.GetStarInfos();
         }
 
         public void Clear()

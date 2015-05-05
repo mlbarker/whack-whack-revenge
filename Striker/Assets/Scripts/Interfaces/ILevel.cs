@@ -4,14 +4,16 @@
 
 namespace Assets.Scripts.Interfaces
 {
+    using System.Collections.Generic;
     using Assets.Scripts.Level;
 
     public interface ILevel
     {
         #region Public Methods
 
-        int GetStarRequirement();
-        bool SetStarRequirement(int requirement);
+        void SetStar(LevelStarBase levelStar);
+        LevelStarInfo GetStarInfo(LevelStarType starType);
+        void UpdateStarAchievement(LevelStarType starType, List<int> requirements);
 
         #endregion
     }

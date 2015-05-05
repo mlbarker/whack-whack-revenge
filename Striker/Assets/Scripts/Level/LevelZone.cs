@@ -44,14 +44,26 @@ namespace Assets.Scripts.Level
             return m_levels.ContainsKey(levelId);
         }
 
-        public int GetStarRequirements(LevelId levelId, LevelStarId starId)
+        public bool CheckStarRequirement(LevelId levelId, LevelStarType starType, List<int> playerResults)
         {
             if(!ContainsLevel(levelId))
             {
-                return -1;
+                return false;
             }
 
-            return m_levels[levelId].GetStarRequirement(starId);
+            m_levels[levelId].UpdateStarAchievement(starType, playerResults);
+            bool achieved = m_levels[levelId].GetStarInfo(starType).requirementAchieved;
+            return achieved;
+        }
+
+        public LevelStarInfo GetStarRequirements(LevelId levelId, LevelStarType starType)
+        {
+            if(!ContainsLevel(levelId))
+            {
+                return new LevelStarInfo();
+            }
+
+            return m_levels[levelId].GetStarInfo(starType);
         }
 
         #endregion

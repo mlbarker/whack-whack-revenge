@@ -19,7 +19,7 @@ namespace Assets.Scripts.Level
 
         #region Private Members
 
-        private List<ILevelStar> m_stars = new List<ILevelStar>(MAX_STARS);
+        private List<LevelStarBase> m_stars = new List<LevelStarBase>(MAX_STARS);
         //private Dictionary<LevelStarId, int> m_stars = new Dictionary<LevelStarId, int>();
 
         #endregion
@@ -38,7 +38,9 @@ namespace Assets.Scripts.Level
 
         public LevelId levelId;
         public LevelZoneId zoneId;
+        public LevelStarBase[] levelStars;
         public int levelTimeSeconds;
+        
         //public int molesWhackedStar;
         //public int whackPercentStar;
         //public int scoreNeededStar;
@@ -56,30 +58,64 @@ namespace Assets.Scripts.Level
 
         #region ILevel Methods
 
-        public int GetStarRequirements(LevelStarId starId)
+        public void SetStar(LevelStarBase levelStar)
         {
-            if (m_stars.ContainsKey(starId))
+            if (m_stars.Count == MAX_STARS)
             {
-                return m_stars[starId];
+                return;
             }
 
-            return -1;
+            if (levelStar == null)
+            {
+                return;
+            }
+
+            levelStar.Initialize();
+            m_stars.Add(levelStar);
         }
 
-        public bool SetStarRequirement(LevelStarId starId, int requirement)
+        public LevelStarInfo GetStarInfo(LevelStarType starType)
         {
-            if (m_stars == null)
+            foreach (LevelStarBase star in m_stars)
             {
-                m_stars = new Dictionary<LevelStarId, int>();
+                if(star.StarType == starType)
+                {
+                    LevelStarInfo starInfo = GetLevelStarInfo(star);
+                    return starInfo;
+                }
             }
 
-            if (m_stars.ContainsKey(starId))
+            // filled with zeros...
+            return new LevelStarInfo();
+        }
+
+        public void UpdateStarAchievement(LevelStarType starType, List<int> requirements)
+        {
+            foreach (LevelStarBase star in m_stars)
             {
-                return false;
+                if(star.StarType == starType)
+                {
+                    star.UpdateStarStatus(requirements);
+                    break;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public LevelStarInfo[] GetStarInfos()
+        {
+            LevelStarInfo[] levelStarInfos = new LevelStarInfo[MAX_STARS];
+
+            for (int index = 0; index < MAX_STARS; ++index)
+            {
+                LevelStarInfo starInfo = GetLevelStarInfo(m_stars[index]);
+                levelStarInfos[index] = starInfo;
             }
 
-            m_stars.Add(starId, requirement);
-            return true;
+            return levelStarInfos;
         }
 
         #endregion
@@ -89,11 +125,26 @@ namespace Assets.Scripts.Level
         private void Initialize()
         {
             Debug.Log(this.name);
-            SetStarRequirement(LevelStarId.Score, scoreNeededStar);
-            SetStarRequirement(LevelStarId.Hits, molesWhackedStar);
-            SetStarRequirement(LevelStarId.HitPercent, whackPercentStar);
+
+            foreach(LevelStarBase levelStar in levelStars)
+            {
+                SetStar(levelStar);
+            }
 
             LevelTimeInSeconds = levelTimeSeconds;
+        }
+
+        private LevelStarInfo GetLevelStarInfo(LevelStarBase star)
+        {
+            LevelStarInfo starInfo = new LevelStarInfo();
+            starInfo.objective = star.Objective;
+            starInfo.requirementAchieved = star.Achieved;
+            starInfo.starType = star.StarType;
+
+            starInfo.requirements = new List<int>();
+            starInfo.requirements.Add(star.Requirement);
+
+            return starInfo;
         }
 
         #endregion

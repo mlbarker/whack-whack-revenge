@@ -83,3 +83,5 @@ C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\U
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\Assembly-CSharp.dll
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\UnityVS.Striker.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Temp\UnityVS_bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml

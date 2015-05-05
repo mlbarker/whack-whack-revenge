@@ -4,6 +4,7 @@
 
 namespace Assets.Scripts.Interfaces
 {
+    using System.Collections.Generic;
     using Assets.Scripts.Level;
 
     public interface ILevelManager
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Interfaces
         bool ContainsZone(LevelZoneId levelZoneId);
         void AddLevelToZone(LevelZoneId levelZoneId, LevelId levelId, ILevel level);
         bool ContainsLevel(LevelZoneId levelZoneId, LevelId levelId);
-        int GetStarRequirements(LevelZoneId levelZoneId, LevelId levelId, LevelStarId starId);
-        bool CheckStarRequirement(LevelZoneId levelZoneId, LevelId levelId, LevelStarId starId, int playerResult);
+        LevelStarInfo GetStarRequirements(LevelZoneId levelZoneId, LevelId levelId, LevelStarType starType);
+        bool CheckStarRequirement(LevelZoneId levelZoneId, LevelId levelId, LevelStarType starType, List<int> playerResults);
     }
 }
