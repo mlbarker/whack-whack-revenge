@@ -57,6 +57,24 @@ namespace Assets.Scripts.Game
             private set; 
         }
 
+        public bool DisplayObjectives
+        {
+            get;
+            set;
+        }
+
+        public List<string> Objectives
+        {
+            get;
+            private set;
+        }
+
+        public int StarsAchievedCount
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region Editor Values
@@ -116,6 +134,7 @@ namespace Assets.Scripts.Game
         private void InitializeGame()
         {
             DisplayGameResults = false;
+            DisplayObjectives = true;
 
             m_levelManager = LevelManager.Instance;
             int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.levelTimeInSeconds;
@@ -139,6 +158,8 @@ namespace Assets.Scripts.Game
 
             foreach (LevelStarInfo starInfo in levelInfo.levelStarInfos)
             {
+                //Objectives.Add(starInfo.objective);
+
                 List<int> requirements = new List<int>();
 
                 foreach (int requirement in starInfo.requirements)
@@ -160,8 +181,19 @@ namespace Assets.Scripts.Game
 
         }
 
+        private void InitialGameUpdate()
+        {
+            if (DisplayObjectives)
+            {
+                return;
+            }
+
+            m_gameController.StartGame();
+        }
+
         private void UpdateGame()
         {
+            //InitialGameUpdate();
             UpdateMoleWasWhacked();
             UpdateGameController();
             UpdateStarsAchievements();
@@ -227,6 +259,7 @@ namespace Assets.Scripts.Game
                 ++starsAchievedCount;
             }
 
+            StarsAchievedCount = starsAchievedCount;
             if(starsAchievedCount == m_levelStarsAchieved.Count)
             {
                 return;

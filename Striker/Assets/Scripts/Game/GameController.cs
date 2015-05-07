@@ -22,6 +22,7 @@ namespace Assets.Scripts.Game
         private ScoreController m_scoreController;
         private List<MoleController> m_moleControllers;
         private PlayerController m_playerController;
+        private bool m_gameStarted;
 
         #endregion
 
@@ -142,6 +143,15 @@ namespace Assets.Scripts.Game
             m_moleControllers.Add(moleController);
         }
 
+        public void StartGame()
+        {
+            if (!m_gameStarted)
+            {
+                m_gameTimeController.Start();
+                m_gameStarted = true;
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -154,6 +164,7 @@ namespace Assets.Scripts.Game
             }
 
             m_gameTimeController.Start();
+            //m_gameStarted = false;
         }
 
         private void InitializeScore()
