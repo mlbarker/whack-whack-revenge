@@ -60,6 +60,7 @@ namespace Assets.Scripts.Hud
         {
             m_objectiveWindow.SetActive(false);
             m_game.DisplayObjectives = false;
+            m_game.StartGameCalled = true;
         }
 
         #endregion

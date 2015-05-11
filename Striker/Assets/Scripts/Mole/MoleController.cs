@@ -12,7 +12,7 @@ namespace Assets.Scripts.Mole
     using Assets.Scripts.Utilities.Timers;
 
     [Serializable]
-    public class MoleController
+    public class MoleController : IPauseController
     {
         #region Fields
 
@@ -83,6 +83,36 @@ namespace Assets.Scripts.Mole
 
         #endregion
 
+        #region IPauseController Properties
+
+        public bool IsPaused
+        {
+            get;
+            private set;
+        }
+
+        #endregion
+
+        #region IPauseController Methods
+
+        public void OnGamePaused()
+        {
+            m_timer.StopTimer();
+            m_recoveryTimer.StopTimer();
+
+            IsPaused = true;
+        }
+
+        public void OnGameResumed()
+        {
+            m_timer.StartTimer();
+            m_recoveryTimer.StartTimer();
+
+            IsPaused = false;
+        }
+
+        #endregion
+
         #region Constructor
 
         public MoleController()
@@ -125,6 +155,11 @@ namespace Assets.Scripts.Mole
 
         public void Update()
         {
+            if(IsPaused)
+            {
+                return;
+            }
+
             UpdateHealth();
             UpdateStatus();
             UpdateMoveTimer();
@@ -172,6 +207,11 @@ namespace Assets.Scripts.Mole
             m_healthController = healthController;
         }
 
+        public void StartMole()
+        {
+            m_timer.StartTimer();
+        }
+
         #endregion
 
         #region Private Methods
@@ -197,7 +237,8 @@ namespace Assets.Scripts.Mole
                 m_timer = new Timer(intervalInSeconds, TriggerMoleMovement);
             }
 
-            m_timer.StartTimer();
+            m_timer.StopTimer();
+            //m_timer.StartTimer();
         }
 
         private void InitializeStatus()

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Player
     using Assets.Scripts.Utilities.Timers;
 
     [Serializable]
-    public class PlayerController
+    public class PlayerController : IPauseController
     {
         #region Private Members
 
@@ -69,6 +69,30 @@ namespace Assets.Scripts.Player
 
         #endregion
 
+        #region IPauseController Properties
+
+        public bool IsPaused
+        {
+            get;
+            private set;
+        }
+
+        #endregion
+
+        #region IPauseController Methods
+
+        public void OnGamePaused()
+        {
+            IsPaused = true;
+        }
+
+        public void OnGameResumed()
+        {
+            IsPaused = false;
+        }
+
+        #endregion
+
         #region Editor Values
 
         #endregion
@@ -82,6 +106,11 @@ namespace Assets.Scripts.Player
 
         public void Update()
         {
+            if(IsPaused)
+            {
+                return;
+            }
+
             UpdateInput();
             UpdateHit();
         }

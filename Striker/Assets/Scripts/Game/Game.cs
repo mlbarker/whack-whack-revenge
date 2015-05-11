@@ -22,6 +22,7 @@ namespace Assets.Scripts.Game
         private Dictionary<LevelStarType, List<int>> m_levelStars = new Dictionary<LevelStarType, List<int>>();
         private Dictionary<LevelStarType, List<int>> m_levelStarStats = new Dictionary<LevelStarType, List<int>>();
         private Dictionary<LevelStarType, bool> m_levelStarsAchieved = new Dictionary<LevelStarType, bool>();
+        private List<string> m_objectives = new List<string>();
 
         #endregion
 
@@ -51,6 +52,12 @@ namespace Assets.Scripts.Game
             }
         }
 
+        public bool StartGameCalled
+        {
+            get;
+            set;
+        }
+
         public bool DisplayGameResults
         { 
             get; 
@@ -65,8 +72,10 @@ namespace Assets.Scripts.Game
 
         public List<string> Objectives
         {
-            get;
-            private set;
+            get
+            {
+                return m_objectives;
+            }
         }
 
         public int StarsAchievedCount
@@ -135,6 +144,7 @@ namespace Assets.Scripts.Game
         {
             DisplayGameResults = false;
             DisplayObjectives = true;
+            StartGameCalled = false;
 
             m_levelManager = LevelManager.Instance;
             int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.levelTimeInSeconds;
@@ -158,7 +168,7 @@ namespace Assets.Scripts.Game
 
             foreach (LevelStarInfo starInfo in levelInfo.levelStarInfos)
             {
-                //Objectives.Add(starInfo.objective);
+                m_objectives.Add(starInfo.objective);
 
                 List<int> requirements = new List<int>();
 
@@ -181,19 +191,51 @@ namespace Assets.Scripts.Game
 
         }
 
-        private void InitialGameUpdate()
+        private bool OnDisplayObjectives()
         {
             if (DisplayObjectives)
             {
-                return;
+                OnGamePaused();
+                return true;
             }
 
-            m_gameController.StartGame();
+            if (StartGameCalled)
+            {
+                OnGameResumed();
+
+                StartGameCalled = false;
+            }
+
+            return false;
+        }
+
+        private void OnGamePaused()
+        {
+            m_gameController.OnGamePaused();
+            player.playerController.OnGamePaused();
+            for (int index = 0; index < moles.Length; ++index)
+            {
+                moles[index].moleController.OnGamePaused();
+            }
+        }
+
+        private void OnGameResumed()
+        {
+            m_gameController.OnGameResumed();
+            player.playerController.OnGameResumed();
+            for (int index = 0; index < moles.Length; ++index)
+            {
+                moles[index].moleController.OnGameResumed();
+            }
         }
 
         private void UpdateGame()
         {
-            //InitialGameUpdate();
+            if(OnDisplayObjectives())
+            {
+                return;
+            }
+
             UpdateMoleWasWhacked();
             UpdateGameController();
             UpdateStarsAchievements();

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Game
     using Assets.Scripts.Score;
 
     [Serializable]
-    public class GameController
+    public class GameController : IPauseController
     {
         #region Private Members
 
@@ -22,7 +22,6 @@ namespace Assets.Scripts.Game
         private ScoreController m_scoreController;
         private List<MoleController> m_moleControllers;
         private PlayerController m_playerController;
-        private bool m_gameStarted;
 
         #endregion
 
@@ -85,6 +84,32 @@ namespace Assets.Scripts.Game
         #region Editor Values
         #endregion
 
+        #region IPauseController Properties
+
+        public bool IsPaused
+        {
+            get;
+            private set;
+        }
+
+        #endregion
+
+        #region IPauseController Methods
+
+        public void OnGamePaused()
+        {
+            m_gameTimeController.Stop();
+            IsPaused = true;
+        }
+
+        public void OnGameResumed()
+        {
+            m_gameTimeController.Start();
+            IsPaused = false;
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void Initialize()
@@ -97,6 +122,11 @@ namespace Assets.Scripts.Game
 
         public void Update()
         {
+            if(IsPaused)
+            {
+                return;
+            }
+
             UpdateGameStatus();
             UpdateScore();
             UpdatePlayer();
@@ -145,11 +175,7 @@ namespace Assets.Scripts.Game
 
         public void StartGame()
         {
-            if (!m_gameStarted)
-            {
-                m_gameTimeController.Start();
-                m_gameStarted = true;
-            }
+            m_gameTimeController.Start();
         }
 
         #endregion
@@ -162,9 +188,6 @@ namespace Assets.Scripts.Game
             {
                 throw new GameTimeControllerException();
             }
-
-            m_gameTimeController.Start();
-            //m_gameStarted = false;
         }
 
         private void InitializeScore()
