@@ -20,7 +20,6 @@ namespace Assets.Scripts.Level
         #region Private Members
 
         private List<LevelStarBase> m_stars = new List<LevelStarBase>(MAX_STARS);
-        //private Dictionary<LevelStarId, int> m_stars = new Dictionary<LevelStarId, int>();
 
         #endregion
 
@@ -40,10 +39,6 @@ namespace Assets.Scripts.Level
         public LevelZoneId zoneId;
         public LevelStarBase[] levelStars;
         public int levelTimeSeconds;
-        
-        //public int molesWhackedStar;
-        //public int whackPercentStar;
-        //public int scoreNeededStar;
 
         #endregion
 

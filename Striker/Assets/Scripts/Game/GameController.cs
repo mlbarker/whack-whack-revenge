@@ -118,6 +118,7 @@ namespace Assets.Scripts.Game
             InitializePlayer();
             InitializeMoles();
             InitializeGameTime();
+            AddToPauseManager();
         }
 
         public void Update()
@@ -220,6 +221,11 @@ namespace Assets.Scripts.Game
 
                 moleController.Initialize();
             }
+        }
+
+        private void AddToPauseManager()
+        {
+            PauseManager.Instance.Add(typeof(GameController), this);
         }
 
         private void UpdateTime()

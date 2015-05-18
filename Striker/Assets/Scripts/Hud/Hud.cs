@@ -155,6 +155,11 @@ namespace Assets.Scripts.Hud
 
         private void UpdateStarAchievements()
         {
+            /*
+             * Determine if the amount of stars changed
+             * -> If changed, determine star gained or lost
+             * --> Fill or empty star based on gain or loss
+             */
             if(GameIsFinished())
             {
                 return;
@@ -165,11 +170,27 @@ namespace Assets.Scripts.Hud
                 return;
             }
 
-            for (int index = 0; index < m_game.StarsAchievedCount; ++index)
+            if(m_starsAchievedCount < m_game.StarsAchievedCount)
             {
-                m_filledStars[index].SetActive(true);
+                m_filledStars[m_starsAchievedCount].SetActive(true);
                 ++m_starsAchievedCount;
+                return;
             }
+
+            if(m_starsAchievedCount > m_game.StarsAchievedCount)
+            {
+                --m_starsAchievedCount;
+                m_filledStars[m_starsAchievedCount].SetActive(false);
+                return;
+            }
+
+
+
+            //for (int index = 0; index < m_game.StarsAchievedCount; ++index)
+            //{
+            //    m_filledStars[index].SetActive(true);
+            //    ++m_starsAchievedCount;
+            //}
         }
 
         private void SetObjectives()

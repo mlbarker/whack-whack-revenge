@@ -27,7 +27,12 @@ namespace Assets.Scripts.Stars
 
         protected override bool RequirementAchieved(List<int> currentAmounts)
         {
-            return currentAmounts[PERCENT_INDEX] >= Requirement && currentAmounts[ATTEMPTS_INDEX] >= whackAttemptsRequired;
+            if (currentAmounts[PERCENT_INDEX] >= Requirement && currentAmounts[ATTEMPTS_INDEX] >= whackAttemptsRequired)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         #endregion

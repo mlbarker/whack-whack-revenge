@@ -6,6 +6,7 @@ namespace Assets.Scripts.Mole
 {
     using System;
     using System.Collections.Generic;
+    using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Utilities.Logger;
     using Assets.Scripts.Utilities.Random;
@@ -151,6 +152,8 @@ namespace Assets.Scripts.Mole
             {
                 return;
             }
+
+            AddToPauseManager();
         }
 
         public void Update()
@@ -251,6 +254,11 @@ namespace Assets.Scripts.Mole
             m_status.Add(MoleStatus.Healthy, true);
             m_status.Add(MoleStatus.Injured, false);
             m_status.Add(MoleStatus.Recovering, true);
+        }
+
+        private void AddToPauseManager()
+        {
+            PauseManager.Instance.Add(typeof(MoleController), this);
         }
 
         private void TriggerMoleMovement()

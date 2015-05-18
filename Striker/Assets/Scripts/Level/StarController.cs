@@ -83,16 +83,14 @@ namespace Assets.Scripts.Level
         {
             InitializeObjectives();
             InitializeStats();
+            AddToPauseManager();
         }
 
         public void UpdateStarsAchievements()
         {
             StoreStatsForStars();
-            if(AllStarsAchieved())
-            {
-                return;
-            }
             CheckStarAchievement();
+            UpdateStarsAchieved();
         }
         
 
@@ -130,6 +128,11 @@ namespace Assets.Scripts.Level
             }
         }
 
+        private void AddToPauseManager()
+        {
+            PauseManager.Instance.Add(typeof(StarController), this);
+        }
+
         private void StoreStatsForStars()
         {
             // continue to store the stats even if stars have been achieved
@@ -139,18 +142,22 @@ namespace Assets.Scripts.Level
             m_levelStarStats[LevelStarType.MolesWhacked][0] = m_gameController.CurrentMolesWhacked;
         }
 
-        private bool AllStarsAchieved()
+        private bool UpdateStarsAchieved()
         {
             // all stars have been achieved so leave method
             int starsAchievedCount = 0;
             foreach (bool starsAchieved in m_levelStarsAchieved.Values)
             {
-                if (!starsAchieved)
+                if (starsAchieved)
                 {
-                    break;
+                    ++starsAchievedCount;
+                    continue;
                 }
 
-                ++starsAchievedCount;
+                if(starsAchievedCount == 0)
+                {
+                    continue;
+                }
             }
 
             StarsAchievedCount = starsAchievedCount;
@@ -172,21 +179,12 @@ namespace Assets.Scripts.Level
                     continue;
                 }
 
-                // star has been achieved so continue in loop
-                if (m_levelStarsAchieved[starType])
-                {
-                    continue;
-                }
-
                 starAchieved = m_levelManager.CheckStarRequirement(m_levelManager.SelectedLevelInfo.zoneId,
                                                                    m_levelManager.SelectedLevelInfo.levelId,
                                                                    starType,
                                                                    m_levelStarStats[starType]);
 
-                if (starAchieved)
-                {
-                    m_levelStarsAchieved[starType] = starAchieved;
-                }
+                m_levelStarsAchieved[starType] = starAchieved;
             }
         }
 

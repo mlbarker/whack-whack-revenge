@@ -69,6 +69,10 @@ namespace Assets.Scripts.Level
             {
                 Achieved = true;
             }
+            else
+            {
+                Achieved = false;
+            }
         }
 
         #endregion

@@ -5,6 +5,7 @@
 namespace Assets.Scripts.Player
 {
     using System;
+    using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Score;
     using Assets.Scripts.Utilities.Timers;
@@ -102,6 +103,7 @@ namespace Assets.Scripts.Player
         public void Initialize()
         {
             InitializeScore();
+            AddToPauseManager();
         }
 
         public void Update()
@@ -146,6 +148,11 @@ namespace Assets.Scripts.Player
         private void InitializeScore()
         {
             m_scoreController = new ScoreController();
+        }
+
+        private void AddToPauseManager()
+        {
+            PauseManager.Instance.Add(typeof(PlayerController), this);
         }
 
         private void UpdateInput()
