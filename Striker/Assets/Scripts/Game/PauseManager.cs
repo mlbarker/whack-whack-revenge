@@ -13,7 +13,7 @@ namespace Assets.Scripts.Game
         #region Fields
 
         private static PauseManager m_instance;
-        private Dictionary<Type, IPauseController> m_pauseControllers = new Dictionary<Type, IPauseController>();
+        private Dictionary<int, IPauseController> m_pauseControllers = new Dictionary<int, IPauseController>();
 
         #endregion
 
@@ -44,40 +44,45 @@ namespace Assets.Scripts.Game
 
         #region Public Methods
 
-        public void Add(Type type, IPauseController pauseController)
+        public void Add(int hashCode, IPauseController pauseController)
         {
-            if(m_pauseControllers.ContainsKey(type))
+            if (m_pauseControllers.ContainsKey(hashCode))
             {
                 return;
             }
 
-            m_pauseControllers.Add(type, pauseController);
+            m_pauseControllers.Add(hashCode, pauseController);
         }
 
-        public void Remove(Type type)
+        public void Remove(int hashCode)
         {
-            if(!m_pauseControllers.ContainsKey(type))
+            if (!m_pauseControllers.ContainsKey(hashCode))
             {
                 return;
             }
 
-            m_pauseControllers.Remove(type);
+            m_pauseControllers.Remove(hashCode);
         }
 
         public void GamePaused()
         {
-            foreach (Type type in m_pauseControllers.Keys)
+            foreach (int hashCode in m_pauseControllers.Keys)
             {
-                m_pauseControllers[type].OnGamePaused();
+                m_pauseControllers[hashCode].OnGamePaused();
             }
         }
 
         public void GameResumed()
         {
-            foreach (Type type in m_pauseControllers.Keys)
+            foreach (int hashCode in m_pauseControllers.Keys)
             {
-                m_pauseControllers[type].OnGameResumed();
+                m_pauseControllers[hashCode].OnGameResumed();
             }
+        }
+
+        public void Clear()
+        {
+            m_pauseControllers.Clear();
         }
 
         #endregion

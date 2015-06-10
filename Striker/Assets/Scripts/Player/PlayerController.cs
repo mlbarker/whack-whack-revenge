@@ -36,37 +36,67 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        public int TotalScore
+        public int LifetimeStars
         {
-            get
-            {
-                return m_scoreController.Score;
-            }
+            get;
+            private set;
         }
 
-        public int TotalWhacks
+        public int LifetimeScore
         {
-            get
-            {
-                return m_scoreController.Whacks;
-            }
+            get;
+            private set;
         }
 
-        public int TotalWhackAttempts
+        public int LifetimeWhacks
         {
-            get
-            {
-                return m_scoreController.WhackAttempts;
-            }
+            get;
+            private set;
         }
 
-        public float TotalWhackPercentage
+        public int LifetimeWhackAttempts
         {
-            get
-            {
-                return m_scoreController.WhackPercentage;
-            }
+            get;
+            private set;
         }
+
+        public float LifetimeWhackPercentage
+        {
+            get;
+            private set;
+        }
+
+        //public int TotalScore
+        //{
+        //    get
+        //    {
+        //        return m_scoreController.Score;
+        //    }
+        //}
+
+        //public int TotalWhacks
+        //{
+        //    get
+        //    {
+        //        return m_scoreController.Whacks;
+        //    }
+        //}
+
+        //public int TotalWhackAttempts
+        //{
+        //    get
+        //    {
+        //        return m_scoreController.WhackAttempts;
+        //    }
+        //}
+
+        //public float TotalWhackPercentage
+        //{
+        //    get
+        //    {
+        //        return m_scoreController.WhackPercentage;
+        //    }
+        //}
 
         #endregion
 
@@ -123,6 +153,13 @@ namespace Assets.Scripts.Player
             m_scoreController.RecordWhackAttempt(successfulWhack);
         }
 
+        public void UpdateLifetimeStats()
+        {
+            LifetimeScore += m_scoreController.Score;
+            LifetimeWhackAttempts += m_scoreController.WhackAttempts;
+            LifetimeWhacks += m_scoreController.Whacks;
+        }
+
         public void SetInputController(IInputController inputController)
         {
             m_inputController = inputController;
@@ -152,7 +189,7 @@ namespace Assets.Scripts.Player
 
         private void AddToPauseManager()
         {
-            PauseManager.Instance.Add(typeof(PlayerController), this);
+            PauseManager.Instance.Add(GetHashCode(), this);
         }
 
         private void UpdateInput()

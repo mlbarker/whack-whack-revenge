@@ -225,7 +225,7 @@ namespace Assets.Scripts.Game
 
         private void AddToPauseManager()
         {
-            PauseManager.Instance.Add(typeof(GameController), this);
+            PauseManager.Instance.Add(GetHashCode(), this);
         }
 
         private void UpdateTime()
@@ -291,6 +291,11 @@ namespace Assets.Scripts.Game
         private void UpdateStars()
         {
 
+        }
+
+        private void UpdatePlayerStats()
+        {
+            m_playerController.UpdateLifetimeStats();
         }
 
         private void GameTimeIsUp()

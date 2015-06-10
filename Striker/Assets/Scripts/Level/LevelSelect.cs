@@ -7,6 +7,7 @@ namespace Assets.Scripts.Level
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Level;
 
@@ -124,6 +125,9 @@ namespace Assets.Scripts.Level
 
         private void OnLevelSelected(Button button)
         {
+            // clear the pause manager of the values collected
+            PauseManager.Instance.Clear();
+
             LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
             LevelId levelId = button.GetComponent<Level>().levelId;
 

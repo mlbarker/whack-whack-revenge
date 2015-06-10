@@ -20,9 +20,6 @@ namespace Assets.Scripts.Game
         private GameController m_gameController;
         private StarController m_starController;
         private LevelManager m_levelManager;
-        private Dictionary<LevelStarType, List<int>> m_levelStars = new Dictionary<LevelStarType, List<int>>();
-        private Dictionary<LevelStarType, List<int>> m_levelStarStats = new Dictionary<LevelStarType, List<int>>();
-        private Dictionary<LevelStarType, bool> m_levelStarsAchieved = new Dictionary<LevelStarType, bool>();
 
         #endregion
 

@@ -130,7 +130,7 @@ namespace Assets.Scripts.Level
 
         private void AddToPauseManager()
         {
-            PauseManager.Instance.Add(typeof(StarController), this);
+            PauseManager.Instance.Add(GetHashCode(), this);
         }
 
         private void StoreStatsForStars()

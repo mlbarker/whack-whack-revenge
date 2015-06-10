@@ -258,7 +258,7 @@ namespace Assets.Scripts.Mole
 
         private void AddToPauseManager()
         {
-            PauseManager.Instance.Add(typeof(MoleController), this);
+            PauseManager.Instance.Add(GetHashCode(), this);
         }
 
         private void TriggerMoleMovement()

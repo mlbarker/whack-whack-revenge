@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4C3E695C-9E3E-C882-D507-D12777AE8425}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.0.1f1</UnityVersion>
@@ -99,12 +101,18 @@
     <Compile Include="Assets\Scripts\Mole\MoleControllerException.cs" />
     <Compile Include="Assets\Scripts\Mole\MoleException.cs" />
     <Compile Include="Assets\Scripts\Mole\MoleStatus.cs" />
+    <Compile Include="Assets\Scripts\Persistence\DataBlock.cs" />
+    <Compile Include="Assets\Scripts\Persistence\PersistenceKey.cs" />
+    <Compile Include="Assets\Scripts\Persistence\PersistentBitMask.cs" />
+    <Compile Include="Assets\Scripts\Persistence\PlayerPrefsManager.cs" />
     <Compile Include="Assets\Scripts\Player\HitControllerException.cs" />
     <Compile Include="Assets\Scripts\Player\InputControllerException.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerControllerException.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerException.cs" />
+    <Compile Include="Assets\Scripts\Persistence\PersistentDataBlock.cs" />
+    <Compile Include="Assets\Scripts\Persistence\PersistentDataManager.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreController.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreControllerException.cs" />
     <Compile Include="Assets\Scripts\Stars\HitPercentStar.cs" />
