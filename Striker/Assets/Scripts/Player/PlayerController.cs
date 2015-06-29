@@ -8,6 +8,7 @@ namespace Assets.Scripts.Player
     using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Score;
+    using Assets.Scripts.Stars;
     using Assets.Scripts.Utilities.Timers;
 
     [Serializable]
@@ -17,8 +18,6 @@ namespace Assets.Scripts.Player
 
         private IHitController m_hitController;
         private IInputController m_inputController;
-
-        private ScoreController m_scoreController;
         
         #endregion
 
@@ -36,7 +35,7 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        public int LifetimeStars
+        public int StarsCollected
         {
             get;
             private set;
@@ -132,7 +131,6 @@ namespace Assets.Scripts.Player
 
         public void Initialize()
         {
-            InitializeScore();
             AddToPauseManager();
         }
 
@@ -147,17 +145,18 @@ namespace Assets.Scripts.Player
             UpdateHit();
         }
 
-        public void UpdateStats(int score, bool successfulWhack)
+        public void UpdateStats(ScoreController scoreController, int score, bool successfulWhack)
         {
-            m_scoreController.IncreaseScore(score);
-            m_scoreController.RecordWhackAttempt(successfulWhack);
+            scoreController.IncreaseScore(score);
+            scoreController.RecordWhackAttempt(successfulWhack);
         }
 
-        public void UpdateLifetimeStats()
+        public void UpdateLifetimeStats(ScoreController scoreController,  int starsAchieved)
         {
-            LifetimeScore += m_scoreController.Score;
-            LifetimeWhackAttempts += m_scoreController.WhackAttempts;
-            LifetimeWhacks += m_scoreController.Whacks;
+            LifetimeScore += scoreController.Score;
+            LifetimeWhackAttempts += scoreController.WhackAttempts;
+            LifetimeWhacks += scoreController.Whacks;
+            StarsCollected += starsAchieved;
         }
 
         public void SetInputController(IInputController inputController)
@@ -181,11 +180,6 @@ namespace Assets.Scripts.Player
         #endregion
 
         #region Private Methods
-
-        private void InitializeScore()
-        {
-            m_scoreController = new ScoreController();
-        }
 
         private void AddToPauseManager()
         {

@@ -92,6 +92,22 @@ namespace Assets.Scripts.Level
             CheckStarAchievement();
             UpdateStarsAchieved();
         }
+
+        public int GetStarStat(LevelStarType starType)
+        {
+            if(starType != LevelStarType.HitPercentage)
+            {
+                return m_levelStarStats[starType][0];
+            }
+
+            // must have certain amount of attempts
+            if (m_levelStarStats[starType][1] >= m_levelStars[starType][1])
+            {
+                return m_levelStarStats[starType][0];
+            }
+
+            return 0;
+        }
         
 
         #endregion

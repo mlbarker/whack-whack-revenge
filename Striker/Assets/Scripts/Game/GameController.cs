@@ -275,7 +275,7 @@ namespace Assets.Scripts.Game
                 m_scoreController.RecordWhackAttempt(whackSuccessful);
                 m_scoreController.IncrementMolesWhacked();
 
-                m_playerController.UpdateStats(moleController.ScoreValue, whackSuccessful);
+                m_playerController.UpdateStats(m_scoreController, moleController.ScoreValue, whackSuccessful);
                 return;
             }
 
@@ -284,7 +284,7 @@ namespace Assets.Scripts.Game
                 bool whackSuccessful = false;
                 m_scoreController.RecordWhackAttempt(whackSuccessful);
 
-                m_playerController.UpdateStats(0, whackSuccessful);
+                m_playerController.UpdateStats(m_scoreController, 0, whackSuccessful);
             }
         }
 
@@ -295,7 +295,7 @@ namespace Assets.Scripts.Game
 
         private void UpdatePlayerStats()
         {
-            m_playerController.UpdateLifetimeStats();
+            m_playerController.UpdateLifetimeStats(m_scoreController, 0);
         }
 
         private void GameTimeIsUp()

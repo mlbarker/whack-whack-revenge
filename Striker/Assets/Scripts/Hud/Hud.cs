@@ -9,6 +9,7 @@ namespace Assets.Scripts.Hud
     using UnityEngine.UI;
     using Assets.Scripts.Level;
     using Assets.Scripts.Game;
+    using Assets.Scripts.Persistence;
 
     public class Hud : MonoBehaviour
     {
@@ -53,6 +54,7 @@ namespace Assets.Scripts.Hud
 
         public void BackToLevelSelect()
         {
+            SavePersistence();
             Application.LoadLevel(SceneIndices.LevelSelectScene);
         }
 
@@ -200,6 +202,16 @@ namespace Assets.Scripts.Hud
         private bool GameIsFinished()
         {
             return m_game.DisplayGameResults;
+        }
+
+        private void SavePersistence()
+        {
+            if(!PersistentManager.ModifiedData)
+            {
+                return;
+            }
+
+            PersistentManager.Instance.Save(Application.persistentDataPath);
         }
 
         #endregion

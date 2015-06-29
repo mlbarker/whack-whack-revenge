@@ -139,6 +139,13 @@ namespace Assets.Scripts.Level
             starInfo.requirements = new List<int>();
             starInfo.requirements.Add(star.Requirement);
 
+            // TODO: the only star with two requirements... need to find a better way to do this
+            Stars.HitPercentStar hitPercentStar = star as Stars.HitPercentStar;
+            if(hitPercentStar != null)
+            {
+                starInfo.requirements.Add(hitPercentStar.whackAttemptsRequired);
+            }
+
             return starInfo;
         }
 

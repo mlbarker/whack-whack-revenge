@@ -9,6 +9,7 @@ namespace Assets.Scripts.Game
     using UnityEngine;
     using Assets.Scripts.Level;
     using Assets.Scripts.Mole;
+    using Assets.Scripts.Persistence;
     using Assets.Scripts.Player;
     using Assets.Scripts.Score;
     using Assets.Scripts.Utilities.Timers;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Game
         private GameController m_gameController;
         private StarController m_starController;
         private LevelManager m_levelManager;
+        private bool m_dataSaved;
 
         #endregion
 
@@ -144,6 +146,7 @@ namespace Assets.Scripts.Game
             DisplayGameResults = false;
             DisplayObjectives = true;
             StartGameCalled = false;
+            m_dataSaved = false;
 
             m_levelManager = LevelManager.Instance;
             int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.levelTimeInSeconds;
@@ -255,6 +258,94 @@ namespace Assets.Scripts.Game
         private void GameIsOver()
         {
             DisplayGameResults = true;
+
+            Save();
+        }
+
+        private void Save()
+        {
+            if(m_dataSaved)
+            {
+                return;
+            }
+
+            int playerKey = PersistentManager.PlayerKey;
+            int zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
+            int levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
+
+            PlayerDataBlock playerDataBlock = new PlayerDataBlock();
+            playerDataBlock.StoreValues(DataIndex.StarsCollected, 0);
+            playerDataBlock.StoreValues(DataIndex.LifetimeScore, player.playerController.LifetimeScore);
+            playerDataBlock.StoreValues(DataIndex.LifetimeWhacks, player.playerController.LifetimeWhacks);
+            playerDataBlock.StoreValues(DataIndex.LifetimeScore, player.playerController.LifetimeScore);
+            PersistentManager.Instance.AddBlock(playerKey, levelId, playerDataBlock);
+
+            LevelDataBlock levelDataBlock = new LevelDataBlock();
+            LevelInfo levelInfo = m_levelManager.SelectedLevelInfo;
+            levelDataBlock.StoreValues(DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
+            levelDataBlock.StoreValues(DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
+            levelDataBlock.StoreValues(DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
+
+            // save the highest values of the stars received
+            for(int n = 0; n < Level.MAX_STARS; ++n)
+            {
+                DataIndex starValueIndex = DataIndex.Star1TypeBest + n;
+                LevelStarType starType = levelInfo.levelStarInfos[n].starType;
+                int value = EvaluateBestValueForStar(starType);
+
+                if(value < 0)
+                {
+                    continue;
+                }
+                
+                levelDataBlock.StoreValues(starValueIndex, value);
+            }
+
+            PersistentManager.Instance.AddBlock(zoneId, levelId, levelDataBlock);
+
+            m_dataSaved = true;
+        }
+
+        private int EvaluateBestValueForStar(LevelStarType starType)
+        {
+            int zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
+            int levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
+            LevelDataBlock block = PersistentManager.Instance.GetDataBlock(zoneId, levelId) as LevelDataBlock;
+
+            if(block == null)
+            {
+                return -1;
+            }
+
+            // check the star type
+            List<int> levelValues = block.GetValues();
+            int first = (int)DataIndex.Star1Type;
+            int last = (int)DataIndex.Star3Type + 1;
+            int indexOffset = 3;  // The offset for the star type value in the DataIndex
+            int starBestValue = 0;
+
+            // get the best star value from persistence
+            for (int n = first; n < last; ++n)
+            {
+                if(levelValues[n] != (int)starType)
+                {
+                    continue;
+                }
+
+                starBestValue = levelValues[n + indexOffset];
+                break;
+            }
+
+            // check if there is a new best value for the star type
+            int currentStarStat = m_starController.GetStarStat(starType);
+            if (starBestValue >= currentStarStat)
+            {
+                return starBestValue;
+            }
+
+            // new best value
+            int newBestValue = currentStarStat;
+            return newBestValue;
         }
 
         #endregion

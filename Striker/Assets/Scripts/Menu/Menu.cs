@@ -9,6 +9,7 @@ namespace Assets.Scripts.Menu
     using UnityEngine.UI;
     using Assets.Scripts.Level;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Persistence;
 
     public class Menu : MonoBehaviour, IMenuNavigationController
     {
@@ -82,6 +83,7 @@ namespace Assets.Scripts.Menu
             InitializeMenuController();
             InitializeStatsPanel();
             InitializeOptionsPanel();
+            LoadSavedData();
         }
 
         private void InitializeMenuController()
@@ -109,6 +111,11 @@ namespace Assets.Scripts.Menu
             m_optionsMenu = GameObject.FindGameObjectWithTag("OptionsMenuPanel");
 
             m_optionsMenu.SetActive(false);
+        }
+
+        private void LoadSavedData()
+        {
+            PersistentManager.Instance.Load(Application.persistentDataPath);
         }
 
         private void UpdateStatsMenu()
