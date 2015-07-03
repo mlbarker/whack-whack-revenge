@@ -124,8 +124,10 @@ namespace Assets.Scripts.Level
 
         public void Clear()
         {
-            // TODO: cannot keep this...
-            m_levelZones.Clear();
+            foreach(LevelZoneId zoneId in m_levelZones.Keys)
+            {
+               m_levelZones[zoneId].Clear();
+            }
         }
 
         #endregion

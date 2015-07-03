@@ -93,6 +93,8 @@ namespace Assets.Scripts.Level
 
         private void InitializeLevelManager()
         {
+            LevelManager.Instance.Clear();
+
             for (int count = 0; count < m_zoneButtons.Count; ++count)
             {
                 var zoneButton = m_zoneButtons[count];
@@ -116,6 +118,11 @@ namespace Assets.Scripts.Level
             {
                 levelPanel.SetActive(false);
             }
+        }
+
+        private void ClearLevels()
+        {
+            LevelManager.Instance.Clear();
         }
 
         private void OnZoneSelected(GameObject panelObject)

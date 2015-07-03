@@ -14,5 +14,6 @@ namespace Assets.Scripts.Interfaces
         bool ContainsLevel(LevelId levelId);
         bool CheckStarRequirement(LevelId levelId, LevelStarType starType, List<int> playerResults);
         LevelStarInfo GetStarRequirements(LevelId levelId, LevelStarType starType);
+        void Clear();
     }
 }

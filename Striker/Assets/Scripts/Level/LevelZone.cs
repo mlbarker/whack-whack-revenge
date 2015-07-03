@@ -21,12 +21,10 @@ namespace Assets.Scripts.Level
 
         public void AddLevel(LevelId levelId, ILevel level)
         {
-            if (m_levels.ContainsKey(levelId))
+            if (!m_levels.ContainsKey(levelId))
             {
-                return;
+                m_levels.Add(levelId, level);
             }
-
-            m_levels.Add(levelId, level);
         }
 
         public ILevel GetLevel(LevelId levelId)
@@ -64,6 +62,14 @@ namespace Assets.Scripts.Level
             }
 
             return m_levels[levelId].GetStarInfo(starType);
+        }
+
+        public void Clear()
+        {
+            // clearing levels due to a weird null issue with
+            // levels inheriting monobehaviour and implementing ILevel...
+            // seems to be a difference between null and "null"
+            m_levels.Clear();
         }
 
         #endregion
