@@ -122,6 +122,19 @@ namespace Assets.Scripts.Level
             m_selectedLevelInfo.levelStarInfos = level.GetStarInfos();
         }
 
+        public LevelInfo GetLevelInfo(LevelZoneId zoneId, LevelId levelId)
+        {
+            Level level = m_levelZones[zoneId].GetLevel(levelId) as Level;
+            LevelInfo levelInfo;
+
+            levelInfo.levelId = levelId;
+            levelInfo.zoneId = zoneId;
+            levelInfo.levelTimeInSeconds = level.LevelTimeInSeconds;
+
+            levelInfo.levelStarInfos = level.GetStarInfos();
+            return levelInfo;
+        }
+
         public void Clear()
         {
             foreach(LevelZoneId zoneId in m_levelZones.Keys)

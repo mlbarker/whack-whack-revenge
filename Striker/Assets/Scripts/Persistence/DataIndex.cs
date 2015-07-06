@@ -5,7 +5,7 @@
 public enum DataIndex
 {
     // player data indices
-    StarsCollected,
+    StarsCollected = 0,
     LifetimeScore,
     LifetimeWhacks,
     LifetimeWhackAttempts,
@@ -20,6 +20,9 @@ public enum DataIndex
     Star1TypeBest,
     Star2TypeBest,
     Star3TypeBest,
+    Star1Achieved,
+    Star2Achieved,
+    Star3Achieved,
     
     MaxAmountLevelData
 }

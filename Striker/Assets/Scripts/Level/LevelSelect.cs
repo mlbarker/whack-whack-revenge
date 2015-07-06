@@ -10,6 +10,7 @@ namespace Assets.Scripts.Level
     using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Level;
+    using Assets.Scripts.Persistence;
 
     public class LevelSelect : MonoBehaviour
     {
@@ -60,7 +61,6 @@ namespace Assets.Scripts.Level
             InitializeLevelPanels();
             InitializeLevelButtons();
             InitializeLevelManager();
-            
         }
 
         private void InitializeZoneButtons()
@@ -135,11 +135,41 @@ namespace Assets.Scripts.Level
             // clear the pause manager of the values collected
             PauseManager.Instance.Clear();
 
+            // need the star types prior to starting the game
+            SaveLevelStarTypes();
+
             LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
             LevelId levelId = button.GetComponent<Level>().levelId;
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
             Application.LoadLevel((int)levelId);
+        }
+
+        private void SaveLevelStarTypes()
+        {
+            for (int zoneIndex = 0; zoneIndex < (int)LevelZoneId.MaxZones; ++zoneIndex)
+            {
+                for (int levelIndex = 0; levelIndex < LevelZone.MAX_LEVELS; ++levelIndex)
+                {
+                    // offset for level IDs
+                    int levelKey = (int)LevelId.Plains1 + levelIndex;
+                    levelKey += (zoneIndex * (int)LevelZone.MAX_LEVELS);
+
+                    LevelDataBlock block = PersistentManager.Instance.GetDataBlock(zoneIndex, levelKey) as LevelDataBlock;
+                    if(block == null)
+                    {
+                        return;
+                    }
+
+                    LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelKey);
+
+                    block.StoreValues(DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
+                    block.StoreValues(DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
+                    block.StoreValues(DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
+
+                    PersistentManager.Instance.AddBlock(zoneIndex, levelKey, block);
+                }
+            }
         }
 
         #endregion

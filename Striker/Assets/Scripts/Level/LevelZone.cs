@@ -11,6 +11,12 @@ namespace Assets.Scripts.Level
     [Serializable]
     public class LevelZone : ILevelZone
     {
+        #region Constants
+
+        public const int MAX_LEVELS = 10;
+
+        #endregion
+
         #region Private Members
 
         private Dictionary<LevelId, ILevel> m_levels = new Dictionary<LevelId, ILevel>();

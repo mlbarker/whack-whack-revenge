@@ -269,17 +269,6 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            int playerKey = PersistentManager.PlayerKey;
-            int zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
-            int levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
-
-            PlayerDataBlock playerDataBlock = new PlayerDataBlock();
-            playerDataBlock.StoreValues(DataIndex.StarsCollected, 0);
-            playerDataBlock.StoreValues(DataIndex.LifetimeScore, player.playerController.LifetimeScore);
-            playerDataBlock.StoreValues(DataIndex.LifetimeWhacks, player.playerController.LifetimeWhacks);
-            playerDataBlock.StoreValues(DataIndex.LifetimeScore, player.playerController.LifetimeScore);
-            PersistentManager.Instance.AddBlock(playerKey, levelId, playerDataBlock);
-
             LevelDataBlock levelDataBlock = new LevelDataBlock();
             LevelInfo levelInfo = m_levelManager.SelectedLevelInfo;
             levelDataBlock.StoreValues(DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
@@ -287,20 +276,54 @@ namespace Assets.Scripts.Game
             levelDataBlock.StoreValues(DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
 
             // save the highest values of the stars received
-            for(int n = 0; n < Level.MAX_STARS; ++n)
+            for (int n = 0; n < Level.MAX_STARS; ++n)
             {
                 DataIndex starValueIndex = DataIndex.Star1TypeBest + n;
                 LevelStarType starType = levelInfo.levelStarInfos[n].starType;
                 int value = EvaluateBestValueForStar(starType);
 
-                if(value < 0)
+                if (value < 0)
                 {
                     continue;
                 }
-                
+
                 levelDataBlock.StoreValues(starValueIndex, value);
             }
 
+            int playerKey = PersistentManager.PlayerKey;
+            int zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
+            int levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
+
+            // check for persisted needed stars
+            List<LevelStarType> neededStarTypes = GetPersistedNeededStarTypes(zoneId, levelId);
+            int newAchievedStarCount = GetNewAchievedStarCount(neededStarTypes);
+
+            // updating player lifetime stats with end game stats
+            m_gameController.EndGameStatUpdate(newAchievedStarCount);
+
+            // only store stars if they are achieved
+            for(int index = 0; index < Level.MAX_STARS; ++index)
+            {
+                int starAchievedIndex = (int)DataIndex.Star1Achieved + index;
+                int starAchieved = m_starController.StarAchieved(levelInfo.levelStarInfos[index].starType) ? 1 : 0;
+
+                // check if the persisted star was achieved
+                LevelDataBlock tempBlock = PersistentManager.Instance.GetDataBlock(zoneId, levelId) as LevelDataBlock;
+                int persistedStarAchieved = tempBlock.GetValues()[starAchievedIndex];
+
+                if(starAchieved == 1 || persistedStarAchieved == 1)
+                {
+                    levelDataBlock.StoreValues((DataIndex)starAchievedIndex, 1);
+                }
+            }
+
+            PlayerDataBlock playerDataBlock = new PlayerDataBlock();
+            playerDataBlock.StoreValues(DataIndex.StarsCollected, player.playerController.StarsCollected);
+            playerDataBlock.StoreValues(DataIndex.LifetimeScore, player.playerController.LifetimeScore);
+            playerDataBlock.StoreValues(DataIndex.LifetimeWhacks, player.playerController.LifetimeWhacks);
+            playerDataBlock.StoreValues(DataIndex.LifetimeWhackAttempts, player.playerController.LifetimeWhackAttempts);
+
+            PersistentManager.Instance.AddBlock(playerKey, playerKey, playerDataBlock);
             PersistentManager.Instance.AddBlock(zoneId, levelId, levelDataBlock);
 
             m_dataSaved = true;
@@ -346,6 +369,51 @@ namespace Assets.Scripts.Game
             // new best value
             int newBestValue = currentStarStat;
             return newBestValue;
+        }
+
+        private List<LevelStarType> GetPersistedNeededStarTypes(int zoneId, int levelId)
+        {
+            LevelDataBlock tempLevelBlock = PersistentManager.Instance.GetDataBlock(zoneId, levelId) as LevelDataBlock;
+            if (tempLevelBlock == null)
+            {
+                return null;
+            }
+
+            List<LevelStarType> neededStarTypes = new List<LevelStarType>();
+            List<int> levelBlockValues = tempLevelBlock.GetValues();
+            for (int index = 0; index < Level.MAX_STARS; ++index)
+            {
+                int neededStarIndex = index + (int)DataIndex.Star1Achieved;
+                int neededStarTypeIndex = index + (int)DataIndex.Star1Type;
+                LevelStarType neededType = (LevelStarType)levelBlockValues[neededStarTypeIndex];
+
+                if(levelBlockValues[neededStarIndex] == 0)
+                {
+                    neededStarTypes.Add(neededType);
+                }
+            }
+
+            return neededStarTypes;
+        }
+
+        private int GetNewAchievedStarCount(List<LevelStarType> neededStarTypes)
+        {
+            if(neededStarTypes == null)
+            {
+                return 0;
+            }
+
+            int newAchievedStarCount = 0;
+            for (int index = 0; index < neededStarTypes.Count; ++index)
+            {
+                LevelStarType neededStar = neededStarTypes[index];
+                if(m_starController.StarAchieved(neededStar))
+                {
+                    ++newAchievedStarCount;
+                }
+            }
+
+            return newAchievedStarCount;
         }
 
         #endregion

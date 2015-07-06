@@ -14,14 +14,9 @@ namespace Assets.Scripts.Persistence
 
     public class PersistentManager
     {
-        #region Constants
-
-        public const int m_playerKey = 9999;
-
-        #endregion
-
         #region Fields
 
+        private const int m_playerKey = 9999;
         private const string m_filename = "/player_data.dat";
         private static PersistentManager m_instance;
 
@@ -119,6 +114,8 @@ namespace Assets.Scripts.Persistence
             string fullPath = path + m_filename;
             if (!File.Exists(fullPath))
             {
+                CreateEmptyBlocks();
+                Save(path);
                 return;
             }
 
@@ -143,6 +140,40 @@ namespace Assets.Scripts.Persistence
             }
             
             return m_blocks[key][levelKey];
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void CreateEmptyBlocks()
+        {
+            PlayerDataBlock playerBlock = new PlayerDataBlock();
+            for (int index = 0; index < (int)DataIndex.MaxAmountPlayerData; ++index)
+            {
+                playerBlock.StoreValues((DataIndex)index, 0);
+            }
+
+            int playerKey = PersistentManager.PlayerKey;
+            PersistentManager.Instance.AddBlock(playerKey, playerKey, playerBlock);
+
+            for (int zoneIndex = 0; zoneIndex < (int)LevelZoneId.MaxZones; ++zoneIndex)
+            {
+                for (int levelIndex = 0; levelIndex < LevelZone.MAX_LEVELS; ++levelIndex)
+                {
+                    LevelDataBlock levelBlock = new LevelDataBlock();
+                    for (int index = 0; index < (int)DataIndex.MaxAmountLevelData; ++index)
+                    {
+                        levelBlock.StoreValues((DataIndex)index, 0);
+                    }
+
+                    int levelKey = (int)LevelId.Plains1 + levelIndex;
+
+                    // offset for level IDs
+                    levelKey += (zoneIndex * (int)LevelZone.MAX_LEVELS);
+                    PersistentManager.Instance.AddBlock(zoneIndex, levelKey, levelBlock);
+                }
+            }
         }
 
         #endregion

@@ -179,6 +179,11 @@ namespace Assets.Scripts.Game
             m_gameTimeController.Start();
         }
 
+        public void EndGameStatUpdate(int starsAchieved)
+        {
+            UpdatePlayerStats(starsAchieved);
+        }
+
         #endregion
 
         #region Private Methods
@@ -288,14 +293,9 @@ namespace Assets.Scripts.Game
             }
         }
 
-        private void UpdateStars()
+        private void UpdatePlayerStats(int starsAchieved)
         {
-
-        }
-
-        private void UpdatePlayerStats()
-        {
-            m_playerController.UpdateLifetimeStats(m_scoreController, 0);
+            m_playerController.UpdateLifetimeStats(m_scoreController, starsAchieved);
         }
 
         private void GameTimeIsUp()

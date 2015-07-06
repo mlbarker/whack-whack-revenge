@@ -5,8 +5,10 @@
 namespace Assets.Scripts.Player
 {
     using System;
+    using System.Collections.Generic;
     using Assets.Scripts.Game;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Persistence;
     using Assets.Scripts.Score;
     using Assets.Scripts.Stars;
     using Assets.Scripts.Utilities.Timers;
@@ -65,38 +67,6 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        //public int TotalScore
-        //{
-        //    get
-        //    {
-        //        return m_scoreController.Score;
-        //    }
-        //}
-
-        //public int TotalWhacks
-        //{
-        //    get
-        //    {
-        //        return m_scoreController.Whacks;
-        //    }
-        //}
-
-        //public int TotalWhackAttempts
-        //{
-        //    get
-        //    {
-        //        return m_scoreController.WhackAttempts;
-        //    }
-        //}
-
-        //public float TotalWhackPercentage
-        //{
-        //    get
-        //    {
-        //        return m_scoreController.WhackPercentage;
-        //    }
-        //}
-
         #endregion
 
         #region IPauseController Properties
@@ -132,6 +102,7 @@ namespace Assets.Scripts.Player
         public void Initialize()
         {
             AddToPauseManager();
+            LoadLifetimeStats();
         }
 
         public void Update()
@@ -200,6 +171,28 @@ namespace Assets.Scripts.Player
             }
 
             MoleHit = m_hitController.HitDetected();
+        }
+
+        private void LoadLifetimeStats()
+        {
+            int playerKey = PersistentManager.PlayerKey;
+            PlayerDataBlock block = PersistentManager.Instance.GetDataBlock(playerKey, playerKey) as PlayerDataBlock;
+
+            if(block == null)
+            {
+                return;
+            }
+            
+            List<int> lifetimeValues = block.GetValues();
+            if(lifetimeValues == null)
+            {
+                return;
+            }
+
+            LifetimeScore = lifetimeValues[(int)DataIndex.LifetimeScore];
+            LifetimeWhackAttempts = lifetimeValues[(int)DataIndex.LifetimeWhackAttempts];
+            LifetimeWhacks = lifetimeValues[(int)DataIndex.LifetimeWhacks];
+            StarsCollected = lifetimeValues[(int)DataIndex.StarsCollected];
         }
 
         #endregion

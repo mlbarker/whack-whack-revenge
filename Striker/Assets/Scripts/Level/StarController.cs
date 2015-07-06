@@ -108,6 +108,11 @@ namespace Assets.Scripts.Level
 
             return 0;
         }
+
+        public bool StarAchieved(LevelStarType type)
+        {
+            return m_levelStarsAchieved[type];
+        }
         
 
         #endregion
