@@ -13,7 +13,7 @@ public enum DataIndex
     MaxAmountPlayerData,
 
     // level data indices
-    Lock = 0,
+    Unlocked = 0,
     Star1Type,
     Star2Type,
     Star3Type,
@@ -23,6 +23,7 @@ public enum DataIndex
     Star1Achieved,
     Star2Achieved,
     Star3Achieved,
+    Completed,
     
     MaxAmountLevelData
 }

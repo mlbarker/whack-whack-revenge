@@ -69,6 +69,12 @@ namespace Assets.Scripts.Game
             set;
         }
 
+        public bool CompletedLevel
+        {
+            get;
+            private set;
+        }
+
         public List<string> Objectives
         {
             get
@@ -315,6 +321,18 @@ namespace Assets.Scripts.Game
                 {
                     levelDataBlock.StoreValues((DataIndex)starAchievedIndex, 1);
                 }
+            }
+
+            // set level as completed
+            levelDataBlock.StoreValues(DataIndex.Completed, 1);
+
+            // unlock next level if not last level of zone
+            int nextLevelId = levelId + 1;
+            int nextZoneId = zoneId + 1;
+            int levelIdMax = (nextZoneId * LevelZone.MAX_LEVELS) + 2;
+            if (nextLevelId < levelIdMax)
+            {
+                PersistentManager.Instance.UpdateBlockValue(zoneId, nextLevelId, DataIndex.Unlocked, 1);
             }
 
             PlayerDataBlock playerDataBlock = new PlayerDataBlock();

@@ -100,7 +100,8 @@ namespace Assets.Scripts.Level
                 var zoneButton = m_zoneButtons[count];
                 var levelPanel = m_levelPanels[count];
 
-                zoneButton.onClick.AddListener(() => OnZoneSelected(levelPanel));
+                Zone zone = zoneButton.GetComponent<Zone>();
+                zoneButton.onClick.AddListener(() => OnZoneSelected(zone, levelPanel));
             }
 
             LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
@@ -125,21 +126,34 @@ namespace Assets.Scripts.Level
             LevelManager.Instance.Clear();
         }
 
-        private void OnZoneSelected(GameObject panelObject)
+        private void OnZoneSelected(Zone zone, GameObject panelObject)
         {
+            if (!IsZoneUnlocked(zone.RequiredStars))
+            {
+                Debug.LogWarning("Zone locked!");
+                return;
+            }
+
             panelObject.SetActive(true);
         }
 
         private void OnLevelSelected(Button button)
         {
+            LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
+            LevelId levelId = button.GetComponent<Level>().levelId;
+
+            // check if level is unlocked
+            if (!IsLevelUnlocked(zoneId, levelId))
+            {
+                Debug.LogWarning("Level is locked!");
+                return;
+            }
+
             // clear the pause manager of the values collected
             PauseManager.Instance.Clear();
 
             // need the star types prior to starting the game
             SaveLevelStarTypes();
-
-            LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
-            LevelId levelId = button.GetComponent<Level>().levelId;
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
             Application.LoadLevel((int)levelId);
@@ -170,6 +184,37 @@ namespace Assets.Scripts.Level
                     PersistentManager.Instance.AddBlock(zoneIndex, levelKey, block);
                 }
             }
+        }
+
+        private bool IsZoneUnlocked(int requiredStars)
+        {
+            int playerKey = PersistentManager.PlayerKey;
+            IDataBlock dataBlock = PersistentManager.Instance.GetDataBlock(playerKey, playerKey);
+            if (dataBlock == null)
+            {
+                Debug.Log("DataBlock is null");
+                return false;
+            }
+
+            List<int> values = dataBlock.GetValues();
+            int starsIndex = (int)DataIndex.StarsCollected;
+            bool unlockedZone = (values[starsIndex] >= requiredStars) ? true : false;
+            return unlockedZone;
+        }
+
+        private bool IsLevelUnlocked(LevelZoneId zoneId, LevelId levelId)
+        {
+            IDataBlock dataBlock = PersistentManager.Instance.GetDataBlock((int)zoneId, (int)levelId);
+            if (dataBlock == null)
+            {
+                Debug.Log("DataBlock is null");
+                return false;
+            }
+
+            List<int> values = dataBlock.GetValues();
+            int unlockedIndex = (int)DataIndex.Unlocked;
+            bool unlockedLevel = values[unlockedIndex] == 1 ? true : false;
+            return unlockedLevel;
         }
 
         #endregion

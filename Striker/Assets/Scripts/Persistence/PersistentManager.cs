@@ -142,6 +142,21 @@ namespace Assets.Scripts.Persistence
             return m_blocks[key][levelKey];
         }
 
+        public void UpdateBlockValue(int key1, int key2, DataIndex dataIndex, int value)
+        {
+            if(!m_blocks.ContainsKey(key1))
+            {
+                return;
+            }
+
+            if(!m_blocks[key1].ContainsKey(key2))
+            {
+                return;
+            }
+
+            m_blocks[key1][key2].StoreValues(dataIndex, value);
+        }
+
         #endregion
 
         #region Private Methods
@@ -164,13 +179,20 @@ namespace Assets.Scripts.Persistence
                     LevelDataBlock levelBlock = new LevelDataBlock();
                     for (int index = 0; index < (int)DataIndex.MaxAmountLevelData; ++index)
                     {
+                        // Unlock initial level
+                        if(levelIndex == 0 && index == (int)DataIndex.Unlocked)
+                        {
+                            levelBlock.StoreValues((DataIndex)index, 1);
+                            continue;
+                        }
+
                         levelBlock.StoreValues((DataIndex)index, 0);
                     }
 
-                    int levelKey = (int)LevelId.Plains1 + levelIndex;
-
                     // offset for level IDs
-                    levelKey += (zoneIndex * (int)LevelZone.MAX_LEVELS);
+                    int levelKey = (int)LevelId.Plains1 + levelIndex;
+                    levelKey += (zoneIndex * LevelZone.MAX_LEVELS);
+
                     PersistentManager.Instance.AddBlock(zoneIndex, levelKey, levelBlock);
                 }
             }
