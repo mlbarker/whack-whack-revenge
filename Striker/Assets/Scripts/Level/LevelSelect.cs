@@ -169,19 +169,11 @@ namespace Assets.Scripts.Level
                     int levelKey = (int)LevelId.Plains1 + levelIndex;
                     levelKey += (zoneIndex * (int)LevelZone.MAX_LEVELS);
 
-                    LevelDataBlock block = PersistentManager.Instance.GetDataBlock(zoneIndex, levelKey) as LevelDataBlock;
-                    if(block == null)
-                    {
-                        return;
-                    }
-
                     LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelKey);
 
-                    block.StoreValues(DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
-                    block.StoreValues(DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
-                    block.StoreValues(DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
-
-                    PersistentManager.Instance.AddBlock(zoneIndex, levelKey, block);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
                 }
             }
         }
@@ -189,31 +181,17 @@ namespace Assets.Scripts.Level
         private bool IsZoneUnlocked(int requiredStars)
         {
             int playerKey = PersistentManager.PlayerKey;
-            IDataBlock dataBlock = PersistentManager.Instance.GetDataBlock(playerKey, playerKey);
-            if (dataBlock == null)
-            {
-                Debug.Log("DataBlock is null");
-                return false;
-            }
-
-            List<int> values = dataBlock.GetValues();
-            int starsIndex = (int)DataIndex.StarsCollected;
-            bool unlockedZone = (values[starsIndex] >= requiredStars) ? true : false;
+            int starsCollected = PersistentManager.Instance.GetValue(playerKey, playerKey, DataIndex.StarsCollected);
+            
+            bool unlockedZone = (starsCollected >= requiredStars) ? true : false;
             return unlockedZone;
         }
 
         private bool IsLevelUnlocked(LevelZoneId zoneId, LevelId levelId)
         {
-            IDataBlock dataBlock = PersistentManager.Instance.GetDataBlock((int)zoneId, (int)levelId);
-            if (dataBlock == null)
-            {
-                Debug.Log("DataBlock is null");
-                return false;
-            }
+            int unlocked = PersistentManager.Instance.GetValue((int)zoneId, (int)levelId, DataIndex.Unlocked);
 
-            List<int> values = dataBlock.GetValues();
-            int unlockedIndex = (int)DataIndex.Unlocked;
-            bool unlockedLevel = values[unlockedIndex] == 1 ? true : false;
+            bool unlockedLevel = unlocked == 1 ? true : false;
             return unlockedLevel;
         }
 

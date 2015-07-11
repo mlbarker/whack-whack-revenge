@@ -11,7 +11,7 @@ namespace Assets.Scripts.Persistence
     using Assets.Scripts.Persistence;
 
     [Serializable]
-    public class PlayerDataBlock : IDataBlock
+    internal class PlayerDataBlock : IDataBlock
     {
         #region Fields
 

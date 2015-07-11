@@ -69,34 +69,6 @@ namespace Assets.Scripts.Persistence
 
         #region Public Methods
 
-        public void AddBlock(int key1, int key2, IDataBlock block)
-        {
-            if(block == null || m_blocks == null)
-            {
-                return;
-            }
-
-            if(!m_blocks.ContainsKey(key1))
-            {
-                Dictionary<int, IDataBlock> blocks = new Dictionary<int, IDataBlock>();
-                blocks.Add(key2, block);
-
-                m_blocks.Add(key1, blocks);
-                ModifiedData = true;
-                return;
-            }
-
-            if(!m_blocks[key1].ContainsKey(key2))
-            {
-                m_blocks[key1].Add(key2, block);
-                ModifiedData = true;
-                return;
-            }
-
-            m_blocks[key1][key2] = block;
-            ModifiedData = true;
-        }
-
         public void Save(string path)
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -127,22 +99,23 @@ namespace Assets.Scripts.Persistence
             }
         }
 
-        public IDataBlock GetDataBlock(int key, int levelKey)
+        public int GetValue(int key1, int key2, DataIndex dataIndex)
         {
-            if(!m_blocks.ContainsKey(key))
+            if (!m_blocks.ContainsKey(key1))
             {
-                return null;
+                return -1;
             }
 
-            if(!m_blocks[key].ContainsKey(levelKey))
+            if (!m_blocks[key1].ContainsKey(key2))
             {
-                return null;
+                return -1;
             }
-            
-            return m_blocks[key][levelKey];
+
+            int index = (int)dataIndex;
+            return m_blocks[key1][key2].GetValues()[index];
         }
 
-        public void UpdateBlockValue(int key1, int key2, DataIndex dataIndex, int value)
+        public void SetValue(int key1, int key2, DataIndex dataIndex, int value)
         {
             if(!m_blocks.ContainsKey(key1))
             {
@@ -196,6 +169,53 @@ namespace Assets.Scripts.Persistence
                     PersistentManager.Instance.AddBlock(zoneIndex, levelKey, levelBlock);
                 }
             }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private IDataBlock GetDataBlock(int key, int levelKey)
+        {
+            if (!m_blocks.ContainsKey(key))
+            {
+                return null;
+            }
+
+            if (!m_blocks[key].ContainsKey(levelKey))
+            {
+                return null;
+            }
+
+            return m_blocks[key][levelKey];
+        }
+
+        private void AddBlock(int key1, int key2, IDataBlock block)
+        {
+            if (block == null || m_blocks == null)
+            {
+                return;
+            }
+
+            if (!m_blocks.ContainsKey(key1))
+            {
+                Dictionary<int, IDataBlock> blocks = new Dictionary<int, IDataBlock>();
+                blocks.Add(key2, block);
+
+                m_blocks.Add(key1, blocks);
+                ModifiedData = true;
+                return;
+            }
+
+            if (!m_blocks[key1].ContainsKey(key2))
+            {
+                m_blocks[key1].Add(key2, block);
+                ModifiedData = true;
+                return;
+            }
+
+            m_blocks[key1][key2] = block;
+            ModifiedData = true;
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Persistence
     using System.Text;
 
     [Serializable]
-    public class LevelDataBlock : IDataBlock
+    internal class LevelDataBlock : IDataBlock
     {
         #region Fields
 
