@@ -50,6 +50,12 @@ namespace Assets.Scripts.Level
             }
         }
 
+        public bool GoToNextLevel 
+        {
+            get; 
+            private set;
+        }
+
         #endregion
 
         #region ILevelManager Methods
@@ -133,6 +139,16 @@ namespace Assets.Scripts.Level
 
             levelInfo.levelStarInfos = level.GetStarInfos();
             return levelInfo;
+        }
+
+        public void NextLevelSelected()
+        {
+            GoToNextLevel = true;
+        }
+
+        public void NextLevelLoaded()
+        {
+            GoToNextLevel = false;
         }
 
         public void Clear()

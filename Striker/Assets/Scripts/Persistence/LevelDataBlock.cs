@@ -8,6 +8,7 @@ namespace Assets.Scripts.Persistence
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Assets.Scripts.Level;
 
     [Serializable]
     internal class LevelDataBlock : IDataBlock

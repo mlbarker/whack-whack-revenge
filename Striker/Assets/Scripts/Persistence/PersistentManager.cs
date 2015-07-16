@@ -131,31 +131,28 @@ namespace Assets.Scripts.Persistence
             ModifiedData = true;
         }
         
-        public LevelInfo GetLevelInfoData(int key1, int key2, DataIndex dataIndex)
+        public LevelInfo GetLevelInfoData(int key1, int key2)
         {
             if (!m_blocks.ContainsKey(key1))
             {
-                LevelInfo levelInfo;
-                return levelInfo;
+                return new LevelInfo();
             }
 
             if (!m_blocks[key1].ContainsKey(key2))
             {
-                LevelInfo levelInfo;
-                return levelInfo;
+                return new LevelInfo();
             }
             
-            if(m_blocks[key1][key2] as LevelDataBlock == null)
+            LevelDataBlock levelDataBlock = m_blocks[key1][key2] as LevelDataBlock;
+            if(levelDataBlock == null)
             {
-                LevelInfo levelInfo;
-                return levelInfo;
+                return new LevelInfo();
             }
 
-            int index = (int)dataIndex;
-            return m_blocks[key1][key2].LevelInfoData;
+            return levelDataBlock.LevelInfoData;
         }
         
-        public void StoreLevelInfoData(int key1, int key2, DataIndex dataIndex, LevelInfo value)
+        public void StoreLevelInfoData(int key1, int key2, LevelInfo value)
         {
             if(!m_blocks.ContainsKey(key1))
             {
@@ -167,12 +164,18 @@ namespace Assets.Scripts.Persistence
                 return;
             }
 
-            if(m_blocks[key1][key2] as LevelDataBlock == null)
+            LevelDataBlock levelDataBlock = m_blocks[key1][key2] as LevelDataBlock;
+            if(levelDataBlock == null)
+            {
+                return;
+            }
+
+            if(levelDataBlock.LevelInfoData.levelTimeInSeconds == 0)
             {
                 return;
             }
             
-            m_blocks[key1][key2].StoreLevelInfoData(value);
+            levelDataBlock.StoreLevelInfoData(value);
             ModifiedData = true;
         }
 
@@ -216,10 +219,6 @@ namespace Assets.Scripts.Persistence
                 }
             }
         }
-
-        #endregion
-
-        #region Private Methods
 
         private IDataBlock GetDataBlock(int key, int levelKey)
         {

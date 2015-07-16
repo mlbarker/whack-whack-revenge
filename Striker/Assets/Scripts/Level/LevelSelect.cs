@@ -119,6 +119,15 @@ namespace Assets.Scripts.Level
             {
                 levelPanel.SetActive(false);
             }
+
+            if(LevelManager.Instance.GoToNextLevel)
+            {
+                LevelZoneId zoneId =LevelManager.Instance.SelectedLevelInfo.zoneId;
+                LevelId levelId = LevelManager.Instance.SelectedLevelInfo.levelId + 1;
+
+                LevelManager.Instance.NextLevelLoaded();
+                GoToSelectedLevel(zoneId, levelId);
+            }
         }
 
         private void ClearLevels()
@@ -142,6 +151,11 @@ namespace Assets.Scripts.Level
             LevelZoneId zoneId = button.GetComponent<Level>().zoneId;
             LevelId levelId = button.GetComponent<Level>().levelId;
 
+            GoToSelectedLevel(zoneId, levelId);
+        }
+
+        private void GoToSelectedLevel(LevelZoneId zoneId, LevelId levelId)
+        {
             // check if level is unlocked
             if (!IsLevelUnlocked(zoneId, levelId))
             {
@@ -153,7 +167,7 @@ namespace Assets.Scripts.Level
             PauseManager.Instance.Clear();
 
             // need the star types prior to starting the game
-            SaveLevelStarTypes();
+            SaveLevelStarTypes((int)zoneId, (int)levelId);
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
             Application.LoadLevel((int)levelId);
@@ -178,6 +192,15 @@ namespace Assets.Scripts.Level
             }
         }
 
+        private void SaveLevelStarTypes(int zoneId, int levelId)
+        {
+            LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneId, (LevelId)levelId);
+
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
+        }
+
         private bool IsZoneUnlocked(int requiredStars)
         {
             int playerKey = PersistentManager.PlayerKey;
@@ -193,6 +216,19 @@ namespace Assets.Scripts.Level
 
             bool unlockedLevel = unlocked == 1 ? true : false;
             return unlockedLevel;
+        }
+
+        private void StoreLevelInfoData()
+        {
+            for (int zoneIndex = 0; zoneIndex < (int)LevelZoneId.MaxZones; ++zoneIndex)
+            {
+                int maxLevels = (int)LevelId.Plains1 + LevelZone.MAX_LEVELS;
+                for (int levelIndex = (int)LevelId.Plains1; levelIndex < maxLevels; ++levelIndex)
+                {
+                    LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelIndex);
+                    PersistentManager.Instance.StoreLevelInfoData(zoneIndex, levelIndex, levelInfo);
+                }
+            }
         }
 
         #endregion

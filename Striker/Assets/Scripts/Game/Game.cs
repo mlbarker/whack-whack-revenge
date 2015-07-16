@@ -360,9 +360,11 @@ namespace Assets.Scripts.Game
 
         private void UnlockNextLevel()
         {
+            // first level id starts with 2
+            int firstLevelId = 2;
             int nextLevelId = m_levelId + 1;
             int nextZoneId = m_zoneId + 1;
-            int levelIdMax = (nextZoneId * LevelZone.MAX_LEVELS) + 2;
+            int levelIdMax = (nextZoneId * LevelZone.MAX_LEVELS) + firstLevelId;
             if (nextLevelId < levelIdMax)
             {
                 PersistentManager.Instance.SetValue(m_zoneId, nextLevelId, DataIndex.Unlocked, 1);
