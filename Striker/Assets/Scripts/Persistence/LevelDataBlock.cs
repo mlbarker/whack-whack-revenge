@@ -17,6 +17,17 @@ namespace Assets.Scripts.Persistence
         private List<int> m_values;
 
         #endregion
+        
+        #region Public Properties
+        
+        public LevelInfo LevelInfoData
+        {
+            get;
+            private set;
+        }
+        
+        
+        #endregion
 
         #region Constructors
 
@@ -47,6 +58,20 @@ namespace Assets.Scripts.Persistence
             return values;
         }
 
+        #endregion
+        
+        #region Public Methods
+        
+        public void StoreLevelInfoData(LevelInfo levelInfo)
+        {
+            if(levelInfo.levelId == 0)
+            {
+                return;
+            }
+            
+            LevelInfoData = levelInfo;
+        }
+        
         #endregion
     }
 }

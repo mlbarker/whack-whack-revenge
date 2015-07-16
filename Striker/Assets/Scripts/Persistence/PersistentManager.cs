@@ -128,6 +128,52 @@ namespace Assets.Scripts.Persistence
             }
 
             m_blocks[key1][key2].StoreValues(dataIndex, value);
+            ModifiedData = true;
+        }
+        
+        public LevelInfo GetLevelInfoData(int key1, int key2, DataIndex dataIndex)
+        {
+            if (!m_blocks.ContainsKey(key1))
+            {
+                LevelInfo levelInfo;
+                return levelInfo;
+            }
+
+            if (!m_blocks[key1].ContainsKey(key2))
+            {
+                LevelInfo levelInfo;
+                return levelInfo;
+            }
+            
+            if(m_blocks[key1][key2] as LevelDataBlock == null)
+            {
+                LevelInfo levelInfo;
+                return levelInfo;
+            }
+
+            int index = (int)dataIndex;
+            return m_blocks[key1][key2].LevelInfoData;
+        }
+        
+        public void StoreLevelInfoData(int key1, int key2, DataIndex dataIndex, LevelInfo value)
+        {
+            if(!m_blocks.ContainsKey(key1))
+            {
+                return;
+            }
+
+            if(!m_blocks[key1].ContainsKey(key2))
+            {
+                return;
+            }
+
+            if(m_blocks[key1][key2] as LevelDataBlock == null)
+            {
+                return;
+            }
+            
+            m_blocks[key1][key2].StoreLevelInfoData(value);
+            ModifiedData = true;
         }
 
         #endregion
