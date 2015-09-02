@@ -56,7 +56,7 @@ namespace Assets.Scripts.Level
             }
 
             m_levels[levelId].UpdateStarAchievement(starType, playerResults);
-            bool achieved = m_levels[levelId].GetStarInfo(starType).requirementAchieved;
+            bool achieved = m_levels[levelId].GetStarInfo(starType).RequirementAchieved;
             return achieved;
         }
 
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Level
         {
             if(!ContainsLevel(levelId))
             {
-                return new LevelStarInfo();
+                return null;
             }
 
             return m_levels[levelId].GetStarInfo(starType);

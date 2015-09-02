@@ -135,18 +135,18 @@ namespace Assets.Scripts.Persistence
         {
             if (!m_blocks.ContainsKey(key1))
             {
-                return new LevelInfo();
+                return null;
             }
 
             if (!m_blocks[key1].ContainsKey(key2))
             {
-                return new LevelInfo();
+                return null;
             }
             
             LevelDataBlock levelDataBlock = m_blocks[key1][key2] as LevelDataBlock;
             if(levelDataBlock == null)
             {
-                return new LevelInfo();
+                return null;
             }
 
             return levelDataBlock.LevelInfoData;
@@ -170,10 +170,10 @@ namespace Assets.Scripts.Persistence
                 return;
             }
 
-            if(levelDataBlock.LevelInfoData.levelTimeInSeconds == 0)
-            {
-                return;
-            }
+            //if(levelDataBlock.LevelInfoData.LevelTimeInSeconds == 0)
+            //{
+            //    return;
+            //}
             
             levelDataBlock.StoreLevelInfoData(value);
             ModifiedData = true;

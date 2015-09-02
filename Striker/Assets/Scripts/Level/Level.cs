@@ -80,8 +80,7 @@ namespace Assets.Scripts.Level
                 }
             }
 
-            // filled with zeros...
-            return new LevelStarInfo();
+            return null;
         }
 
         public void UpdateStarAchievement(LevelStarType starType, List<int> requirements)
@@ -131,20 +130,19 @@ namespace Assets.Scripts.Level
 
         private LevelStarInfo GetLevelStarInfo(LevelStarBase star)
         {
-            LevelStarInfo starInfo = new LevelStarInfo();
-            starInfo.objective = star.Objective;
-            starInfo.requirementAchieved = star.Achieved;
-            starInfo.starType = star.StarType;
-
-            starInfo.requirements = new List<int>();
-            starInfo.requirements.Add(star.Requirement);
+            List<int> requirements = new List<int>()
+            {
+                star.Requirement
+            };
 
             // TODO: the only star with two requirements... need to find a better way to do this
             Stars.HitPercentStar hitPercentStar = star as Stars.HitPercentStar;
             if(hitPercentStar != null)
             {
-                starInfo.requirements.Add(hitPercentStar.whackAttemptsRequired);
+                requirements.Add(hitPercentStar.whackAttemptsRequired);
             }
+
+            LevelStarInfo starInfo = new LevelStarInfo(star.Objective, requirements, star.Achieved, star.StarType);
 
             return starInfo;
         }

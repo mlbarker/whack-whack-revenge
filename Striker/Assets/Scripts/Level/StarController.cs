@@ -123,17 +123,17 @@ namespace Assets.Scripts.Level
         {
             m_levelManager = LevelManager.Instance;
             LevelInfo levelInfo = m_levelManager.SelectedLevelInfo;
-            foreach (LevelStarInfo starInfo in levelInfo.levelStarInfos)
+            foreach (LevelStarInfo starInfo in levelInfo.LevelStarInfos)
             {
-                m_objectives.Add(starInfo.objective);
+                m_objectives.Add(starInfo.Objective);
 
                 List<int> requirements = new List<int>();
-                foreach (int requirement in starInfo.requirements)
+                foreach (int requirement in starInfo.Requirements)
                 {
                     requirements.Add(requirement);
                 }
 
-                m_levelStars.Add(starInfo.starType, starInfo.requirements);
+                m_levelStars.Add(starInfo.StarType, starInfo.Requirements);
             }
         }
 
@@ -200,8 +200,8 @@ namespace Assets.Scripts.Level
                     continue;
                 }
 
-                starAchieved = m_levelManager.CheckStarRequirement(m_levelManager.SelectedLevelInfo.zoneId,
-                                                                   m_levelManager.SelectedLevelInfo.levelId,
+                starAchieved = m_levelManager.CheckStarRequirement(m_levelManager.SelectedLevelInfo.ZoneId,
+                                                                   m_levelManager.SelectedLevelInfo.LevelIdNum,
                                                                    starType,
                                                                    m_levelStarStats[starType]);
 

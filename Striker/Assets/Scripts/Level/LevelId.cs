@@ -26,6 +26,8 @@ namespace Assets.Scripts.Level
         Sports7,
         Sports8,
         Sports9,
-        Sports10
+        Sports10,
+
+        INVALID = 9999
     }
 }

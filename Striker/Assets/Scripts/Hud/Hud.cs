@@ -62,13 +62,8 @@ namespace Assets.Scripts.Hud
         {
             SavePersistence();
 
-            if(!LastLevelInZone())
-            {
-                LevelManager.Instance.NextLevelSelected();
-            }
-
-            //Application.LoadLevel((int)LevelManager.Instance.SelectedLevelInfo.levelId + 1);
-            //Application.LoadLevel(SceneIndices.LevelSelectScene);
+            int levelId = LevelManager.Instance.GetNextLevelSelected();
+            Application.LoadLevel(levelId);
         }
 
         public void CloseObjectiveWindow()
@@ -225,21 +220,6 @@ namespace Assets.Scripts.Hud
             }
 
             PersistentManager.Instance.Save(Application.persistentDataPath);
-        }
-
-        private bool LastLevelInZone()
-        {
-            // first level id starts with 2
-            int firstLevelId = 2;
-            int nextZoneId = (int)LevelManager.Instance.SelectedLevelInfo.zoneId + 1;
-            int levelIdMax = (nextZoneId * LevelZone.MAX_LEVELS) + firstLevelId;
-
-            if(nextZoneId >= levelIdMax)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         #endregion

@@ -41,6 +41,7 @@ namespace Assets.Scripts.Level
                 if(levelPanel.activeSelf)
                 {
                     levelPanel.SetActive(false);
+                    // TODO: update the panel status
                     panelWasActive = true;
                 }
             }
@@ -61,6 +62,7 @@ namespace Assets.Scripts.Level
             InitializeLevelPanels();
             InitializeLevelButtons();
             InitializeLevelManager();
+            StoreLevelInfoData();
         }
 
         private void InitializeZoneButtons()
@@ -84,9 +86,15 @@ namespace Assets.Scripts.Level
         {
             m_levelButtons = new List<Button>();
             GameObject[] levelButtons = GameObject.FindGameObjectsWithTag("Level");
-            foreach (GameObject levelButtonObject in levelButtons)
+            //foreach (GameObject levelButtonObject in levelButtons)
+            //{
+            //    Button button = levelButtonObject.GetComponent<Button>();
+            //    m_levelButtons.Add(button);
+            //}
+
+            for (int count = 0; count < levelButtons.Length; ++count)
             {
-                Button button = levelButtonObject.GetComponent<Button>();
+                Button button = levelButtons[count].GetComponent<Button>();
                 m_levelButtons.Add(button);
             }
         }
@@ -102,6 +110,7 @@ namespace Assets.Scripts.Level
 
                 Zone zone = zoneButton.GetComponent<Zone>();
                 zoneButton.onClick.AddListener(() => OnZoneSelected(zone, levelPanel));
+                // TODO: store the levelPanel name here and check if it was last active
             }
 
             LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
@@ -122,8 +131,8 @@ namespace Assets.Scripts.Level
 
             if(LevelManager.Instance.GoToNextLevel)
             {
-                LevelZoneId zoneId =LevelManager.Instance.SelectedLevelInfo.zoneId;
-                LevelId levelId = LevelManager.Instance.SelectedLevelInfo.levelId + 1;
+                LevelZoneId zoneId =LevelManager.Instance.SelectedLevelInfo.ZoneId;
+                LevelId levelId = LevelManager.Instance.SelectedLevelInfo.LevelIdNum + 1;
 
                 LevelManager.Instance.NextLevelLoaded();
                 GoToSelectedLevel(zoneId, levelId);
@@ -144,6 +153,7 @@ namespace Assets.Scripts.Level
             }
 
             panelObject.SetActive(true);
+            // TODO: check the name and store the panel's active status
         }
 
         private void OnLevelSelected(Button button)
@@ -180,14 +190,13 @@ namespace Assets.Scripts.Level
                 for (int levelIndex = 0; levelIndex < LevelZone.MAX_LEVELS; ++levelIndex)
                 {
                     // offset for level IDs
-                    int levelKey = (int)LevelId.Plains1 + levelIndex;
-                    levelKey += (zoneIndex * (int)LevelZone.MAX_LEVELS);
+                    int levelKey = (zoneIndex * (int)LevelZone.MAX_LEVELS) + (int)LevelId.Plains1;
 
                     LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelKey);
 
-                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
-                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
-                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star1Type, (int)levelInfo.LevelStarInfos[0].StarType);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star2Type, (int)levelInfo.LevelStarInfos[1].StarType);
+                    PersistentManager.Instance.SetValue(zoneIndex, levelKey, DataIndex.Star3Type, (int)levelInfo.LevelStarInfos[2].StarType);
                 }
             }
         }
@@ -196,9 +205,9 @@ namespace Assets.Scripts.Level
         {
             LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneId, (LevelId)levelId);
 
-            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star1Type, (int)levelInfo.levelStarInfos[0].starType);
-            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star2Type, (int)levelInfo.levelStarInfos[1].starType);
-            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star3Type, (int)levelInfo.levelStarInfos[2].starType);
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star1Type, (int)levelInfo.LevelStarInfos[0].StarType);
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star2Type, (int)levelInfo.LevelStarInfos[1].StarType);
+            PersistentManager.Instance.SetValue(zoneId, levelId, DataIndex.Star3Type, (int)levelInfo.LevelStarInfos[2].StarType);
         }
 
         private bool IsZoneUnlocked(int requiredStars)
@@ -222,8 +231,11 @@ namespace Assets.Scripts.Level
         {
             for (int zoneIndex = 0; zoneIndex < (int)LevelZoneId.MaxZones; ++zoneIndex)
             {
-                int maxLevels = (int)LevelId.Plains1 + LevelZone.MAX_LEVELS;
-                for (int levelIndex = (int)LevelId.Plains1; levelIndex < maxLevels; ++levelIndex)
+                int maxLevels = LevelZone.MAX_LEVELS * (zoneIndex + 1);
+                maxLevels += (int)LevelId.Plains1;
+
+                int levelIndex = (int)LevelId.Plains1 + (LevelZone.MAX_LEVELS * zoneIndex);
+                for (; levelIndex < maxLevels; ++levelIndex)
                 {
                     LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelIndex);
                     PersistentManager.Instance.StoreLevelInfoData(zoneIndex, levelIndex, levelInfo);

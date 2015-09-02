@@ -22,7 +22,6 @@ namespace Assets.Scripts.Level
         private LevelManager()
         {
             m_levelZones = new Dictionary<LevelZoneId, ILevelZone>();
-            m_selectedLevelInfo = new LevelInfo();
         }
 
         #endregion
@@ -97,7 +96,7 @@ namespace Assets.Scripts.Level
         {
             if(!ContainsLevel(levelZoneId, levelId))
             {
-                return new LevelStarInfo();
+                return null;
             }
 
             return m_levelZones[levelZoneId].GetStarRequirements(levelId, starType);
@@ -121,29 +120,50 @@ namespace Assets.Scripts.Level
         {
             Level level = m_levelZones[zoneId].GetLevel(levelId) as Level;
 
-            m_selectedLevelInfo.levelId = levelId;
-            m_selectedLevelInfo.zoneId = zoneId;
-            m_selectedLevelInfo.levelTimeInSeconds = level.LevelTimeInSeconds;
+            if(m_selectedLevelInfo != null)
+            {
+                m_selectedLevelInfo.Dispose();
+            }
 
-            m_selectedLevelInfo.levelStarInfos = level.GetStarInfos();
+            m_selectedLevelInfo = new LevelInfo(zoneId, levelId, level.GetStarInfos(), level.LevelTimeInSeconds);
         }
 
         public LevelInfo GetLevelInfo(LevelZoneId zoneId, LevelId levelId)
         {
             Level level = m_levelZones[zoneId].GetLevel(levelId) as Level;
-            LevelInfo levelInfo;
+            LevelInfo levelInfo = new LevelInfo(zoneId, levelId, level.GetStarInfos(), level.LevelTimeInSeconds);
 
-            levelInfo.levelId = levelId;
-            levelInfo.zoneId = zoneId;
-            levelInfo.levelTimeInSeconds = level.LevelTimeInSeconds;
-
-            levelInfo.levelStarInfos = level.GetStarInfos();
             return levelInfo;
         }
 
-        public void NextLevelSelected()
+        public int GetNextLevelSelected()
         {
-            GoToNextLevel = true;
+            if(m_selectedLevelInfo == null)
+            {
+                // need to throw an exception here or log statement
+                GoToNextLevel = false;
+                return SceneIndices.LevelSelectScene;
+            }
+
+            // this convoluted mess is all because the level
+            // scenes in Unity start at 2. therefore, last level
+            // in a zone ends with 1 
+            // (e.g. zone 1 -> 2-11, zone 2 -> 12-21)
+            int levelOffset = 1;
+            LevelZoneId currentZoneId = m_selectedLevelInfo.ZoneId;
+            int lastLevelInZone = (int)(currentZoneId) + levelOffset;
+            lastLevelInZone *= LevelZone.MAX_LEVELS + levelOffset;
+
+            LevelId currentLevelId = m_selectedLevelInfo.LevelIdNum;
+            if((int)currentLevelId == lastLevelInZone)
+            {
+                return SceneIndices.LevelSelectScene;
+            }
+
+            // to the next level
+            currentLevelId++;
+            StoreSelectedLevelInfo(currentZoneId, currentLevelId);
+            return (int)currentLevelId;
         }
 
         public void NextLevelLoaded()

@@ -65,7 +65,7 @@ namespace Assets.Scripts.Persistence
         
         public void StoreLevelInfoData(LevelInfo levelInfo)
         {
-            if(levelInfo.levelId == 0)
+            if(levelInfo.LevelIdNum == 0)
             {
                 return;
             }

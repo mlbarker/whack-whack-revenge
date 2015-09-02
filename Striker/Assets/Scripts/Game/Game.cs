@@ -159,9 +159,9 @@ namespace Assets.Scripts.Game
             m_dataSaved = false;
 
             m_levelManager = LevelManager.Instance;
-            m_zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
-            m_levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
-            int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.levelTimeInSeconds;
+            m_zoneId = (int)m_levelManager.SelectedLevelInfo.ZoneId;
+            m_levelId = (int)m_levelManager.SelectedLevelInfo.LevelIdNum;
+            int gameTimeInSeconds = m_levelManager.SelectedLevelInfo.LevelTimeInSeconds;
 
             m_gameController = new GameController();
             m_gameController.SetGameTime(gameTimeInSeconds);
@@ -286,8 +286,6 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            int playerKey = PersistentManager.PlayerKey;
-
             StoreStarTypes();
             StoreStarHighestValues();
 
@@ -315,7 +313,7 @@ namespace Assets.Scripts.Game
             for (int index = 0; index < Level.MAX_STARS; ++index)
             {
                 DataIndex dataIndex = DataIndex.Star1Type + index;
-                int starTypeValue = (int)levelInfo.levelStarInfos[index].starType;
+                int starTypeValue = (int)levelInfo.LevelStarInfos[index].StarType;
                 m_persistentManager.SetValue(m_zoneId, m_levelId, dataIndex, starTypeValue);
             }
         }
@@ -327,7 +325,7 @@ namespace Assets.Scripts.Game
             for (int n = 0; n < Level.MAX_STARS; ++n)
             {
                 DataIndex starValueIndex = DataIndex.Star1TypeBest + n;
-                LevelStarType starType = levelInfo.levelStarInfos[n].starType;
+                LevelStarType starType = levelInfo.LevelStarInfos[n].StarType;
                 int value = EvaluateBestValueForStar(starType);
 
                 if (value < 0)
@@ -346,7 +344,7 @@ namespace Assets.Scripts.Game
             for (int index = 0; index < Level.MAX_STARS; ++index)
             {
                 int starAchievedIndex = (int)DataIndex.Star1Achieved + index;
-                int starAchieved = m_starController.StarAchieved(levelInfo.levelStarInfos[index].starType) ? 1 : 0;
+                int starAchieved = m_starController.StarAchieved(levelInfo.LevelStarInfos[index].StarType) ? 1 : 0;
 
                 // check if the persisted star was achieved
                 int persistedStarAchieved = PersistentManager.Instance.GetValue(m_zoneId, m_levelId, (DataIndex)starAchievedIndex);
@@ -457,8 +455,8 @@ namespace Assets.Scripts.Game
 
         private List<LevelStarType> GetPersistedNeededStarTypes()
         {
-            int zoneId = (int)m_levelManager.SelectedLevelInfo.zoneId;
-            int levelId = (int)m_levelManager.SelectedLevelInfo.levelId;
+            int zoneId = (int)m_levelManager.SelectedLevelInfo.ZoneId;
+            int levelId = (int)m_levelManager.SelectedLevelInfo.LevelIdNum;
             List<LevelStarType> neededStarTypes = new List<LevelStarType>();
 
             for (int index = 0; index < Level.MAX_STARS; ++index)
