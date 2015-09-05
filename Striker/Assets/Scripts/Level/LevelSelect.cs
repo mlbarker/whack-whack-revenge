@@ -42,6 +42,7 @@ namespace Assets.Scripts.Level
                 {
                     levelPanel.SetActive(false);
                     // TODO: update the panel status
+                    StoredSelections.SetSelection(levelPanel.name, false);
                     panelWasActive = true;
                 }
             }
@@ -111,6 +112,10 @@ namespace Assets.Scripts.Level
                 Zone zone = zoneButton.GetComponent<Zone>();
                 zoneButton.onClick.AddListener(() => OnZoneSelected(zone, levelPanel));
                 // TODO: store the levelPanel name here and check if it was last active
+                if (ZonePreviouslySelected(levelPanel.name))
+                {
+                    levelPanel.SetActive(true);
+                }
             }
 
             LevelManager.Instance.AddZone(new LevelZone(), LevelZoneId.Plain);
@@ -126,7 +131,8 @@ namespace Assets.Scripts.Level
 
             foreach (GameObject levelPanel in m_levelPanels)
             {
-                levelPanel.SetActive(false);
+                bool selected = StoredSelections.GetSelection(levelPanel.name);
+                levelPanel.SetActive(selected);
             }
 
             if(LevelManager.Instance.GoToNextLevel)
@@ -137,6 +143,11 @@ namespace Assets.Scripts.Level
                 LevelManager.Instance.NextLevelLoaded();
                 GoToSelectedLevel(zoneId, levelId);
             }
+        }
+
+        private bool ZonePreviouslySelected(string zoneName)
+        {
+            return StoredSelections.GetSelection(zoneName);
         }
 
         private void ClearLevels()
@@ -154,6 +165,7 @@ namespace Assets.Scripts.Level
 
             panelObject.SetActive(true);
             // TODO: check the name and store the panel's active status
+            StoredSelections.SetSelection(panelObject.name, true);
         }
 
         private void OnLevelSelected(Button button)
