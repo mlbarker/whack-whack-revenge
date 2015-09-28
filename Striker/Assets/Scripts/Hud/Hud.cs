@@ -30,6 +30,9 @@ namespace Assets.Scripts.Hud
         private int m_gameTimer;
         private int m_starsAchievedCount;
 
+        private bool m_gameIsReady = false;
+        private bool m_objectivesSet = false;
+
         #endregion
 
         #region Unity Methods
@@ -41,6 +44,7 @@ namespace Assets.Scripts.Hud
 
         void Update()
         {
+            UpdateObjectives();
             UpdateScore();
             UpdateGameTime();
             UpdateWhackPercentage();
@@ -88,7 +92,12 @@ namespace Assets.Scripts.Hud
 
         private void InitializeGameController()
         {
+            m_gameIsReady = false;
             m_game = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>();
+            if(m_game != null)
+            {
+                m_gameIsReady = true;
+            }
         }
 
         private void InitializeHudElements()
@@ -110,7 +119,6 @@ namespace Assets.Scripts.Hud
             }
 
             m_objectiveWindow = GameObject.FindGameObjectWithTag("ObjectiveWindow");
-            SetObjectives();
         }
 
         private void InitializeResultsWindow()
@@ -126,6 +134,23 @@ namespace Assets.Scripts.Hud
             for(int index = 0; index < m_filledStars.Length; ++index)
             {
                 m_filledStars[index].SetActive(false);
+            }
+        }
+
+        private void UpdateObjectives()
+        {
+            if(m_objectivesSet)
+            {
+                return;
+            }
+
+            if(m_gameIsReady)
+            {
+                SetObjectives();
+            }
+            else
+            {
+                InitializeGameController();
             }
         }
 
@@ -196,6 +221,8 @@ namespace Assets.Scripts.Hud
             {
                 m_objectiveTexts[index].text = m_game.Objectives[index];
             }
+
+            m_objectivesSet = true;
         }
 
         private void DisplayGameResults()

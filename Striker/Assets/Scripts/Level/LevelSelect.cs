@@ -19,6 +19,8 @@ namespace Assets.Scripts.Level
         private List<Button> m_zoneButtons;
         private List<GameObject> m_levelPanels;
         private List<Button> m_levelButtons;
+        private List<Text> m_totalStarsInZone;
+        private Text m_totalStarsInGame;
 
         #endregion
 
@@ -41,7 +43,6 @@ namespace Assets.Scripts.Level
                 if(levelPanel.activeSelf)
                 {
                     levelPanel.SetActive(false);
-                    // TODO: update the panel status
                     StoredSelections.SetSelection(levelPanel.name, false);
                     panelWasActive = true;
                 }
@@ -59,6 +60,7 @@ namespace Assets.Scripts.Level
 
         private void Initialize()
         {
+            InitializeTotalStarsTexts();
             InitializeZoneButtons();
             InitializeLevelPanels();
             InitializeLevelButtons();
@@ -87,11 +89,6 @@ namespace Assets.Scripts.Level
         {
             m_levelButtons = new List<Button>();
             GameObject[] levelButtons = GameObject.FindGameObjectsWithTag("Level");
-            //foreach (GameObject levelButtonObject in levelButtons)
-            //{
-            //    Button button = levelButtonObject.GetComponent<Button>();
-            //    m_levelButtons.Add(button);
-            //}
 
             for (int count = 0; count < levelButtons.Length; ++count)
             {
@@ -111,7 +108,6 @@ namespace Assets.Scripts.Level
 
                 Zone zone = zoneButton.GetComponent<Zone>();
                 zoneButton.onClick.AddListener(() => OnZoneSelected(zone, levelPanel));
-                // TODO: store the levelPanel name here and check if it was last active
                 if (ZonePreviouslySelected(levelPanel.name))
                 {
                     levelPanel.SetActive(true);
@@ -145,6 +141,45 @@ namespace Assets.Scripts.Level
             }
         }
 
+        private void InitializeTotalStarsTexts()
+        {
+            GameObject totalStarsInGame = GameObject.FindGameObjectWithTag("TotalStarsGame");
+            m_totalStarsInGame = totalStarsInGame.GetComponent<Text>();
+
+            int playerKey = PersistentManager.PlayerKey;
+            int totalStars = PersistentManager.Instance.GetValue(playerKey, playerKey, DataIndex.StarsCollected);
+            m_totalStarsInGame.text += totalStars.ToString();
+
+            GameObject[] totalStarsInZones = GameObject.FindGameObjectsWithTag("TotalStarsZone");
+            m_totalStarsInZone = new List<Text>();
+            foreach (GameObject starsInZone in totalStarsInZones)
+            {
+                Text starsInZoneText = starsInZone.GetComponent<Text>();
+                m_totalStarsInZone.Add(starsInZoneText);
+            }
+
+            for (int index = 0; index < (int)LevelZoneId.MaxZones; ++index)
+            {
+                LevelZoneId zone = m_totalStarsInZone[index].GetComponent<ZoneDetermination>().zone;
+
+                int starsAchieved = 0;
+                int totalStarsToAchieve = Level.MAX_STARS * LevelZone.MAX_LEVELS;
+                // 
+                int maxLevels = LevelZone.MAX_LEVELS * ((int)zone + 1);
+                maxLevels += (int)LevelId.Plains1;
+
+                int levelIndex = (int)LevelId.Plains1 + (LevelZone.MAX_LEVELS * (int)zone);
+                for (; levelIndex < maxLevels; ++levelIndex)
+                {
+                    starsAchieved += PersistentManager.Instance.GetValue((int)zone, levelIndex, DataIndex.Star1Achieved);
+                    starsAchieved += PersistentManager.Instance.GetValue((int)zone, levelIndex, DataIndex.Star2Achieved);
+                    starsAchieved += PersistentManager.Instance.GetValue((int)zone, levelIndex, DataIndex.Star3Achieved);
+                }
+
+                m_totalStarsInZone[index].text = starsAchieved.ToString() + "/" + totalStarsToAchieve.ToString();
+            }
+        }
+
         private bool ZonePreviouslySelected(string zoneName)
         {
             return StoredSelections.GetSelection(zoneName);
@@ -164,7 +199,6 @@ namespace Assets.Scripts.Level
             }
 
             panelObject.SetActive(true);
-            // TODO: check the name and store the panel's active status
             StoredSelections.SetSelection(panelObject.name, true);
         }
 

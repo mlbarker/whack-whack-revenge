@@ -17,8 +17,15 @@ namespace Assets.Scripts.Menu
 
         private GameObject m_statsMenu;
         private GameObject m_optionsMenu;
+        private Text m_totalStarsText;
         private Text m_totalScoreText;
         private Text m_totalWhackPercentageText;
+
+        private int m_playerKey;
+        private int m_playerStars;
+        private int m_playerScore;
+        private int m_playerWhackAttempts;
+        private int m_playerWhacks;
 
         #endregion
 
@@ -100,6 +107,7 @@ namespace Assets.Scripts.Menu
         private void InitializeStatsPanel()
         {
             m_statsMenu = GameObject.FindGameObjectWithTag("StatsMenuPanel");
+            m_totalStarsText = GameObject.FindGameObjectWithTag("TotalWhackStars").GetComponent<Text>();
             m_totalScoreText = GameObject.FindGameObjectWithTag("TotalWhackScore").GetComponent<Text>();
             m_totalWhackPercentageText = GameObject.FindGameObjectWithTag("TotalWhackPercentage").GetComponent<Text>();
 
@@ -116,12 +124,20 @@ namespace Assets.Scripts.Menu
         private void LoadSavedData()
         {
             PersistentManager.Instance.Load(Application.persistentDataPath);
+
+            m_playerKey = PersistentManager.PlayerKey;
+            m_playerStars = PersistentManager.Instance.GetValue(m_playerKey, m_playerKey, DataIndex.StarsCollected);
+            m_playerScore = PersistentManager.Instance.GetValue(m_playerKey, m_playerKey, DataIndex.LifetimeScore);
+            m_playerWhackAttempts = PersistentManager.Instance.GetValue(m_playerKey, m_playerKey, DataIndex.LifetimeWhackAttempts);
+            m_playerWhacks = PersistentManager.Instance.GetValue(m_playerKey, m_playerKey, DataIndex.LifetimeWhacks);
         }
 
         private void UpdateStatsMenu()
         {
-            m_totalScoreText.text = "Total Score: ";
-            m_totalWhackPercentageText.text = "Total Whack %: ";
+            float whackPercentage = (float)(m_playerWhacks) / (float)(m_playerWhackAttempts) * 100.0f;
+            m_totalStarsText.text = "Total Stars: " + m_playerStars.ToString();
+            m_totalScoreText.text = "Total Score: " + m_playerScore.ToString();
+            m_totalWhackPercentageText.text = "Total Whack %: " + whackPercentage.ToString("F1");
             m_statsMenu.SetActive(true);
         }
 
