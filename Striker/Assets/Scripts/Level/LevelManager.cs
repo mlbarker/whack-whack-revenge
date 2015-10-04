@@ -118,14 +118,16 @@ namespace Assets.Scripts.Level
 
         public void StoreSelectedLevelInfo(LevelZoneId zoneId, LevelId levelId)
         {
-            Level level = m_levelZones[zoneId].GetLevel(levelId) as Level;
-
             if(m_selectedLevelInfo != null)
             {
                 m_selectedLevelInfo.Dispose();
             }
 
-            m_selectedLevelInfo = new LevelInfo(zoneId, levelId, level.GetStarInfos(), level.LevelTimeInSeconds);
+            m_selectedLevelInfo = new LevelInfo(
+                Persistence.PersistentManager.Instance.GetLevelInfoData((int)zoneId, (int)levelId).ZoneId,
+                Persistence.PersistentManager.Instance.GetLevelInfoData((int)zoneId, (int)levelId).LevelIdNum,
+                Persistence.PersistentManager.Instance.GetLevelInfoData((int)zoneId, (int)levelId).LevelStarInfos,
+                Persistence.PersistentManager.Instance.GetLevelInfoData((int)zoneId, (int)levelId).LevelTimeInSeconds);
         }
 
         public LevelInfo GetLevelInfo(LevelZoneId zoneId, LevelId levelId)
