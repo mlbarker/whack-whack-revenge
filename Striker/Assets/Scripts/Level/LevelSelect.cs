@@ -21,6 +21,7 @@ namespace Assets.Scripts.Level
         private List<Button> m_levelButtons;
         private List<Text> m_totalStarsInZone;
         private Text m_totalStarsInGame;
+        private int m_totalStarsAchieved;
 
         #endregion
 
@@ -65,6 +66,8 @@ namespace Assets.Scripts.Level
             InitializeLevelPanels();
             InitializeLevelButtons();
             InitializeLevelManager();
+            InitializeZoneLocks();
+            InitializeLevelLocks();
             StoreLevelInfoData();
         }
 
@@ -177,6 +180,54 @@ namespace Assets.Scripts.Level
                 }
 
                 m_totalStarsInZone[index].text = starsAchieved.ToString() + "/" + totalStarsToAchieve.ToString();
+                m_totalStarsAchieved += starsAchieved;
+            }
+        }
+
+        private void InitializeZoneLocks()
+        {
+            for (int index = 0; index < m_zoneButtons.Count; ++index)
+            {
+                Zone zone = m_zoneButtons[index].GetComponent<Zone>();
+                bool unlocked = IsZoneUnlocked(zone.RequiredStars);
+
+                Transform zoneTransform = m_zoneButtons[index].transform;
+                for (int childCount = 0; childCount < zoneTransform.childCount; ++childCount)
+                {
+                    Transform child = zoneTransform.GetChild(childCount);
+                    if (child.CompareTag("ZoneLock"))
+                    {
+                        child.gameObject.SetActive(!unlocked);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Not zone lock object");
+                    }
+                }
+            }
+        }
+
+        private void InitializeLevelLocks()
+        {
+            for (int index = 0; index < m_levelButtons.Count; ++index)
+            {
+                Level level = m_levelButtons[index].GetComponent<Level>();
+                bool unlocked = IsLevelUnlocked(level.zoneId, level.levelId);
+
+                Transform levelTransform = m_levelButtons[index].transform;
+                for (int childCount = 0; childCount < levelTransform.childCount; ++childCount)
+                {
+                    Transform child = levelTransform.GetChild(childCount);
+                    if (child.CompareTag("LevelLock"))
+                    {
+                        child.gameObject.SetActive(!unlocked);
+                        break;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Not level lock object");
+                    }
+                }
             }
         }
 
