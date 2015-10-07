@@ -68,6 +68,7 @@ namespace Assets.Scripts.Level
             InitializeLevelManager();
             InitializeZoneLocks();
             InitializeLevelLocks();
+            InitializeLevelStarsAchieved();
             StoreLevelInfoData();
         }
 
@@ -226,6 +227,43 @@ namespace Assets.Scripts.Level
                     else
                     {
                         Debug.LogWarning("Not level lock object");
+                    }
+                }
+            }
+        }
+
+        private void InitializeLevelStarsAchieved()
+        {
+            for (int index = 0; index < m_levelButtons.Count; ++index)
+            {
+                Level level = m_levelButtons[index].GetComponent<Level>();
+                int test = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star1Achieved);
+                bool star1Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star1Achieved) == 1 ? true : false;
+                bool star2Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star2Achieved) == 1 ? true : false;
+                bool star3Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star3Achieved) == 1 ? true : false;
+
+                Transform levelTransform = m_levelButtons[index].transform;
+                for (int childCount = 0; childCount < levelTransform.childCount; ++childCount)
+                {
+                    Transform child = levelTransform.GetChild(childCount);
+                    if (child.CompareTag("Star1Achieved"))
+                    {
+                        child.gameObject.SetActive(star1Achieved);
+                        continue;
+                    }
+                    else if (child.CompareTag("Star2Achieved"))
+                    {
+                        child.gameObject.SetActive(star2Achieved);
+                        continue;
+                    }
+                    else if (child.CompareTag("Star3Achieved"))
+                    {
+                        child.gameObject.SetActive(star3Achieved);
+                        continue;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Not star achieved object");
                     }
                 }
             }
