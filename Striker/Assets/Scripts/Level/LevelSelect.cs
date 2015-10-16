@@ -237,7 +237,6 @@ namespace Assets.Scripts.Level
             for (int index = 0; index < m_levelButtons.Count; ++index)
             {
                 Level level = m_levelButtons[index].GetComponent<Level>();
-                int test = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star1Achieved);
                 bool star1Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star1Achieved) == 1 ? true : false;
                 bool star2Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star2Achieved) == 1 ? true : false;
                 bool star3Achieved = PersistentManager.Instance.GetValue((int)level.zoneId, (int)level.levelId, DataIndex.Star3Achieved) == 1 ? true : false;
