@@ -34,6 +34,14 @@ namespace Assets.Scripts.Mole
             private set;
         }
 
+        public bool Injured
+        {
+            get
+            {
+                return Health < 1;
+            }
+        }
+
         public int ScoreValue
         {
             get;
@@ -215,6 +223,11 @@ namespace Assets.Scripts.Mole
             m_timer.StartTimer();
         }
 
+        public void TransitionInjuredToMoveIntoHole()
+        {
+            m_movementController.MoveIntoHole();
+        }
+
         #endregion
 
         #region Private Methods
@@ -237,7 +250,7 @@ namespace Assets.Scripts.Mole
             if(m_timer == null)
             {
                 int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
-                m_timer = new Timer(intervalInSeconds, TriggerMoleMovement);
+                m_timer = new Timer(intervalInSeconds, TriggerBasicMoleMovement);
             }
 
             m_timer.StopTimer();
@@ -261,7 +274,14 @@ namespace Assets.Scripts.Mole
             PauseManager.Instance.Add(GetHashCode(), this);
         }
 
-        private void TriggerMoleMovement()
+        private void TriggerInjuredMoleMovement()
+        {
+            m_movementController.MoveIntoHoleOnInjured();
+            IsUp = false;
+            IsMoving = true;
+        }
+
+        private void TriggerBasicMoleMovement()
         {
             if(IsUp)
             {
@@ -298,9 +318,9 @@ namespace Assets.Scripts.Mole
                 m_status[MoleStatus.Injured] = true;
             }
 
-            if(Health <= 0 && IsUp)
+            if(Injured && IsUp)
             {
-                TriggerMoleMovement();
+                TriggerInjuredMoleMovement();
             }
 
             if(IsUp)

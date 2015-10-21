@@ -47,6 +47,13 @@ namespace Assets.Scripts.Mole
         public void MoveOutOfHole()
         {
             moleAnimator.SetBool("IsUp", moleController.IsUp);
+            moleAnimator.SetBool("Injured", moleController.Injured);
+        }
+
+        public void MoveIntoHoleOnInjured()
+        {
+            moleAnimator.SetBool("Injured", moleController.Injured);
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
         }
 
         #endregion
@@ -95,6 +102,11 @@ namespace Assets.Scripts.Mole
         public void OnDownAnimationFinished()
         {
             moleController.StoppedMoving();
+        }
+
+        public void OnInjuredAnimationFinished()
+        {
+            moleController.TransitionInjuredToMoveIntoHole();
         }
 
         #endregion
