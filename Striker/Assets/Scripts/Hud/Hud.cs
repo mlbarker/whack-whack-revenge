@@ -19,6 +19,7 @@ namespace Assets.Scripts.Hud
         private GameObject m_resultsWindow;
         private GameObject m_objectiveWindow;
         private GameObject[] m_filledStars;
+        private GameObject[] m_playerHealthUnits;
         private List<Text> m_objectiveTexts;
         private Text m_scoreText;
         private Text m_whackPercentageText;
@@ -131,9 +132,19 @@ namespace Assets.Scripts.Hud
         {
             m_filledStars = GameObject.FindGameObjectsWithTag("StarFilled");
 
-            for(int index = 0; index < m_filledStars.Length; ++index)
+            for (int index = 0; index < m_filledStars.Length; ++index)
             {
                 m_filledStars[index].SetActive(false);
+            }
+        }
+
+        private void InitializePlayerHealth()
+        {
+            m_playerHealthUnits = GameObject.FindGameObjectsWithTag("HealthUnit");
+
+            for (int index = 0; index < m_playerHealthUnits.Length; ++index)
+            {
+
             }
         }
 

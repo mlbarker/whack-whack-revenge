@@ -20,10 +20,23 @@ namespace Assets.Scripts.Player
 
         private IHitController m_hitController;
         private IInputController m_inputController;
+        private int m_currentHealth;
         
         #endregion
 
         #region Public Properties
+
+        public int MaxHealth
+        {
+            get;
+            private set;
+        }
+
+        public int CurrentHealth
+        {
+            get;
+            private set;
+        }
 
         public bool WhackTriggered
         {
@@ -95,6 +108,8 @@ namespace Assets.Scripts.Player
 
         #region Editor Values
 
+        public int maxHealth; 
+
         #endregion
 
         #region Public Methods
@@ -103,6 +118,7 @@ namespace Assets.Scripts.Player
         {
             AddToPauseManager();
             LoadLifetimeStats();
+            InitializeHealth();
         }
 
         public void Update()
@@ -151,6 +167,12 @@ namespace Assets.Scripts.Player
         #endregion
 
         #region Private Methods
+
+        private void InitializeHealth()
+        {
+            MaxHealth = maxHealth;
+            CurrentHealth = MaxHealth;
+        }
 
         private void AddToPauseManager()
         {
