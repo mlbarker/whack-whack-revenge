@@ -20,7 +20,8 @@ namespace Assets.Scripts.Mole
         private Dictionary<MoleStatus, bool> m_status = new Dictionary<MoleStatus,bool>();
         private IMovementController m_movementController;
         private IHealthController m_healthController;
-        private Timer m_timer;
+        private IAttackController m_attackController;
+        private Timer m_movementTimer;
         private Timer m_recoveryTimer;
         private IRandom m_random;
 
@@ -106,7 +107,7 @@ namespace Assets.Scripts.Mole
 
         public void OnGamePaused()
         {
-            m_timer.StopTimer();
+            m_movementTimer.StopTimer();
             m_recoveryTimer.StopTimer();
 
             IsPaused = true;
@@ -114,7 +115,7 @@ namespace Assets.Scripts.Mole
 
         public void OnGameResumed()
         {
-            m_timer.StartTimer();
+            m_movementTimer.StartTimer();
             m_recoveryTimer.StartTimer();
 
             IsPaused = false;
@@ -218,9 +219,19 @@ namespace Assets.Scripts.Mole
             m_healthController = healthController;
         }
 
+        public void SetAttackController(IAttackController attackController)
+        {
+            if (attackController == null)
+            {
+                return;
+            }
+
+            m_attackController = attackController;
+        }
+
         public void StartMole()
         {
-            m_timer.StartTimer();
+            m_movementTimer.StartTimer();
         }
 
         public void TransitionInjuredToMoveIntoHole()
@@ -247,13 +258,13 @@ namespace Assets.Scripts.Mole
                 m_recoveryTimer = new Timer(HealthTickInSeconds, RecoverHealth);
             }
 
-            if(m_timer == null)
+            if(m_movementTimer == null)
             {
                 int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
-                m_timer = new Timer(intervalInSeconds, TriggerBasicMoleMovement);
+                m_movementTimer = new Timer(intervalInSeconds, TriggerBasicMoleMovement);
             }
 
-            m_timer.StopTimer();
+            m_movementTimer.StopTimer();
             //m_timer.StartTimer();
         }
 
@@ -295,6 +306,11 @@ namespace Assets.Scripts.Mole
                 m_movementController.MoveOutOfHole();
                 IsMoving = true;
             }
+        }
+
+        private void TriggerAttackMovement()
+        {
+            m_attackController.Attack();
         }
 
         private void RecoverHealth()
@@ -344,33 +360,33 @@ namespace Assets.Scripts.Mole
             if(GetMoleStatus(MoleStatus.Recovering) &&
                GetMoleStatus(MoleStatus.Injured))
             {
-                m_timer.StopTimer();
-                m_timer.ResetTimer();
+                m_movementTimer.StopTimer();
+                m_movementTimer.ResetTimer();
             }
 
             if(GetMoleStatus(MoleStatus.Healthy) &&
                GetMoleStatus(MoleStatus.Recovering) &&
-               !m_timer.Active())
+               !m_movementTimer.Active())
             {
                 int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
-                m_timer.SetTimer(intervalInSeconds);
-                m_timer.StartTimer();
+                m_movementTimer.SetTimer(intervalInSeconds);
+                m_movementTimer.StartTimer();
             }
 
             if(IsMoving)
             {
-                m_timer.StopTimer();
-                m_timer.ResetTimer();
+                m_movementTimer.StopTimer();
+                m_movementTimer.ResetTimer();
             }
 
-            if (IsUp && !m_timer.Active() && !IsMoving)
+            if (IsUp && !m_movementTimer.Active() && !IsMoving)
             {
                 int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
-                m_timer.SetTimer(intervalInSeconds);
-                m_timer.StartTimer();
+                m_movementTimer.SetTimer(intervalInSeconds);
+                m_movementTimer.StartTimer();
             }
 
-            m_timer.Update();
+            m_movementTimer.Update();
         }
 
         private void UpdateRecoveryTimer()
