@@ -24,10 +24,17 @@ namespace Assets.Scripts.Mole
         private Timer m_movementTimer;
         private Timer m_recoveryTimer;
         private IRandom m_random;
+        private AnimationStateMachine m_asm;
 
         #endregion
 
         #region Public Properties
+
+        public int MaxHealth
+        {
+            get;
+            private set;
+        }
         
         public int Health
         {
@@ -35,7 +42,28 @@ namespace Assets.Scripts.Mole
             private set;
         }
 
+        public bool Idle
+        {
+            get
+            {
+                return m_status[MoleStatus.Idle];
+            }
+
+            private set
+            {
+
+            }
+        }
+
         public bool Injured
+        {
+            get
+            {
+                return Health != MaxHealth && !Swoon;
+            }
+        }
+
+        public bool Swoon
         {
             get
             {
@@ -133,6 +161,7 @@ namespace Assets.Scripts.Mole
 
         #region Editor Values
 
+        public int maxHealth;
         public int health;
         public int scoreValue;
         public int healthTickInSeconds;
@@ -146,6 +175,7 @@ namespace Assets.Scripts.Mole
 
         public void Initialize()
         {
+            MaxHealth = maxHealth;
             Health = health;
             ScoreValue = scoreValue;
             HealthTickInSeconds = healthTickInSeconds;
@@ -156,6 +186,7 @@ namespace Assets.Scripts.Mole
             InitializeRandom();
             InitializeTimers();
             InitializeStatus();
+            InitializeASM();
 
             if(m_movementController == null)
             {
@@ -236,7 +267,7 @@ namespace Assets.Scripts.Mole
 
         public void TransitionInjuredToMoveIntoHole()
         {
-            m_movementController.MoveIntoHole();
+            //m_movementController.MoveIntoHole();
         }
 
         #endregion
@@ -278,6 +309,12 @@ namespace Assets.Scripts.Mole
             m_status.Add(MoleStatus.Healthy, true);
             m_status.Add(MoleStatus.Injured, false);
             m_status.Add(MoleStatus.Recovering, true);
+            m_status.Add(MoleStatus.Idle, false);
+        }
+
+        private void InitializeASM()
+        {
+            m_asm = new AnimationStateMachine();
         }
 
         private void AddToPauseManager()
@@ -285,27 +322,34 @@ namespace Assets.Scripts.Mole
             PauseManager.Instance.Add(GetHashCode(), this);
         }
 
-        private void TriggerInjuredMoleMovement()
+        private void TriggerSwoonMoleMovement()
         {
-            m_movementController.MoveIntoHoleOnInjured();
             IsUp = false;
             IsMoving = true;
+            m_movementController.MoveIntoHoleOnSwoon();
         }
 
         private void TriggerBasicMoleMovement()
         {
             if(IsUp)
             {
+                // TODO: should not set mole status here... this needs to change
+                m_status[MoleStatus.Idle] = false;
                 IsUp = false;
-                m_movementController.MoveIntoHole();
                 IsMoving = true;
+                m_movementController.MoveIntoHole();
             }
             else
             {
                 IsUp = true;
-                m_movementController.MoveOutOfHole();
                 IsMoving = true;
+                m_movementController.MoveOutOfHole();
             }
+        }
+
+        private void TriggerIdleMovement()
+        {
+            m_movementController.MoveToIdle();
         }
 
         private void TriggerAttackMovement()
@@ -332,11 +376,18 @@ namespace Assets.Scripts.Mole
             {
                 m_status[MoleStatus.Healthy] = false;
                 m_status[MoleStatus.Injured] = true;
+                m_status[MoleStatus.Idle] = false;
             }
 
-            if(Injured && IsUp)
+            if(Swoon && IsUp)
             {
-                TriggerInjuredMoleMovement();
+                TriggerSwoonMoleMovement();
+            }
+
+            if (IsUp && !IsMoving && !Idle)
+            {
+                m_status[MoleStatus.Idle] = true;
+                TriggerIdleMovement();
             }
 
             if(IsUp)
@@ -346,9 +397,10 @@ namespace Assets.Scripts.Mole
             else
             {
                 m_status[MoleStatus.Recovering] = true;
+                m_status[MoleStatus.Idle] = false;
             }
 
-            if(Health == health)
+            if(Health == MaxHealth)
             {
                 m_status[MoleStatus.Healthy] = true;
                 m_status[MoleStatus.Injured] = false;
@@ -368,7 +420,7 @@ namespace Assets.Scripts.Mole
                GetMoleStatus(MoleStatus.Recovering) &&
                !m_movementTimer.Active())
             {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
+                int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
                 m_movementTimer.SetTimer(intervalInSeconds);
                 m_movementTimer.StartTimer();
             }
@@ -379,9 +431,9 @@ namespace Assets.Scripts.Mole
                 m_movementTimer.ResetTimer();
             }
 
-            if (IsUp && !m_movementTimer.Active() && !IsMoving)
+            if (IsUp && !m_movementTimer.Active() && !IsMoving && Idle)
             {
-                int intervalInSeconds = m_random.RandomInt(MaxSecondsDown);
+                int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
                 m_movementTimer.SetTimer(intervalInSeconds);
                 m_movementTimer.StartTimer();
             }

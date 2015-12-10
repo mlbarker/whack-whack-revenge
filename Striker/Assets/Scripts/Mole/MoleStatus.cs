@@ -9,6 +9,8 @@ namespace Assets.Scripts.Mole
         Healthy = 0,
         Injured,
         Recovering,
+        Idle,
+        Swoon,
         Total
     }
 }

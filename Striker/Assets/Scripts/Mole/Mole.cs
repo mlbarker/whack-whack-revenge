@@ -41,19 +41,35 @@ namespace Assets.Scripts.Mole
 
         public void MoveIntoHole()
         {
+            moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+            Debug.Log("MoveIntoHole|IsMoving - " + moleController.IsMoving);
         }
 
         public void MoveOutOfHole()
         {
+            moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
-            moleAnimator.SetBool("Injured", moleController.Injured);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+            Debug.Log("MoveOutOfHole|IsMoving - " + moleController.IsMoving);
         }
 
-        public void MoveIntoHoleOnInjured()
+        public void MoveIntoHoleOnSwoon()
         {
-            moleAnimator.SetBool("Injured", moleController.Injured);
+            moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+
+            // TODO: need something better than this to transition to down
+            moleAnimator.SetBool("SwoonToDown", false);
+            Debug.Log("MoveIntoHoleOnSwoon|IsMoving - " + moleController.IsMoving);
+        }
+
+        public void MoveToIdle()
+        {
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
+            moleAnimator.SetBool("Idle", moleController.Idle);
         }
 
         #endregion
@@ -97,16 +113,25 @@ namespace Assets.Scripts.Mole
         public void OnUpAnimationFinished()
         {
             moleController.StoppedMoving();
+            Debug.Log("OnUpFinished|IsMoving - " + moleController.IsMoving);
         }
 
         public void OnDownAnimationFinished()
         {
             moleController.StoppedMoving();
+            Debug.Log("OnDownFinished|IsMoving - " + moleController.IsMoving);
         }
 
         public void OnInjuredAnimationFinished()
         {
             moleController.TransitionInjuredToMoveIntoHole();
+        }
+
+        public void OnSwoonAnimationFinished()
+        {
+            moleController.StoppedMoving();
+            // TODO: need something better than this to transition to down
+            moleAnimator.SetBool("SwoonToDown", true);
         }
 
         #endregion
