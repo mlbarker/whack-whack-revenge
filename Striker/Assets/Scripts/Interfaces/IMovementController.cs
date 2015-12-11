@@ -15,5 +15,6 @@ namespace Assets.Scripts.Interfaces
         void MoveOutOfHole();
         void MoveIntoHoleOnSwoon();
         void MoveToIdle();
+        void MoveOnInjured();
     }
 }

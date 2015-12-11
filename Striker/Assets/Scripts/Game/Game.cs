@@ -247,7 +247,8 @@ namespace Assets.Scripts.Game
                 }
 
                 int hitCollision2dId = mole.GetComponent<Collider2D>().GetInstanceID();
-                if (player.HitCollisionId == hitCollision2dId)
+                // TODO: My God, I'm not liking this one bit - figure out different way of doing this
+                if (player.HitCollisionId == hitCollision2dId && mole.moleController.InjuredAnimFinished)
                 {
                     mole.moleController.Hit = true;
                     break;

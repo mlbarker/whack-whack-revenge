@@ -276,8 +276,6 @@ namespace Assets.Scripts.Game
                 }
 
                 bool whackSuccessful = true;
-                m_scoreController.IncreaseScore(moleController.ScoreValue);
-                m_scoreController.RecordWhackAttempt(whackSuccessful);
                 m_scoreController.IncrementMolesWhacked();
 
                 m_playerController.UpdateStats(m_scoreController, moleController.ScoreValue, whackSuccessful);

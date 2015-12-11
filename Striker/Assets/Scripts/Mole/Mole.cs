@@ -72,6 +72,14 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("Idle", moleController.Idle);
         }
 
+        public void MoveOnInjured()
+        {
+            moleAnimator.SetBool("IsUp", moleController.IsUp);
+            moleAnimator.SetBool("Hit", moleController.Hit);
+            moleAnimator.SetBool("Swoon", moleController.Swoon);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+        }
+
         #endregion
 
         #region IHealthController Methods
@@ -124,7 +132,7 @@ namespace Assets.Scripts.Mole
 
         public void OnInjuredAnimationFinished()
         {
-            moleController.TransitionInjuredToMoveIntoHole();
+            moleController.TransitionInjuredToIdle();
         }
 
         public void OnSwoonAnimationFinished()

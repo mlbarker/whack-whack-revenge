@@ -63,6 +63,12 @@ namespace Assets.Scripts.Mole
             }
         }
 
+        public bool InjuredAnimFinished
+        {
+            get;
+            private set;
+        }
+
         public bool Swoon
         {
             get
@@ -265,9 +271,15 @@ namespace Assets.Scripts.Mole
             m_movementTimer.StartTimer();
         }
 
-        public void TransitionInjuredToMoveIntoHole()
+        public void TransitionInjuredToIdle()
         {
-            //m_movementController.MoveIntoHole();
+
+            m_status[MoleStatus.Idle] = true;
+
+            // called to reset injured animation vars
+            TriggerInjuredMoleMovement();
+            StoppedMoving();
+            InjuredAnimFinished = true;
         }
 
         #endregion
@@ -310,6 +322,8 @@ namespace Assets.Scripts.Mole
             m_status.Add(MoleStatus.Injured, false);
             m_status.Add(MoleStatus.Recovering, true);
             m_status.Add(MoleStatus.Idle, false);
+
+            InjuredAnimFinished = true;
         }
 
         private void InitializeASM()
@@ -357,6 +371,13 @@ namespace Assets.Scripts.Mole
             m_attackController.Attack();
         }
 
+        private void TriggerInjuredMoleMovement()
+        {
+            IsMoving = true;
+            InjuredAnimFinished = false;
+            m_movementController.MoveOnInjured();
+        }
+
         private void RecoverHealth()
         {
             m_healthController.RecoverHealth();
@@ -383,8 +404,11 @@ namespace Assets.Scripts.Mole
             {
                 TriggerSwoonMoleMovement();
             }
-
-            if (IsUp && !IsMoving && !Idle)
+            else if(!Swoon && IsUp && Hit)
+            {
+                TriggerInjuredMoleMovement();
+            }
+            else if(IsUp && !IsMoving && !Idle)
             {
                 m_status[MoleStatus.Idle] = true;
                 TriggerIdleMovement();
