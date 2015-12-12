@@ -11,9 +11,9 @@ namespace Assets.Scripts.Mole
 
     public class Mole : MonoBehaviour, IMovementController, IHealthController
     {
-        #region Private Members
+        #region Protected Members
 
-        private Animator moleAnimator;
+        protected Animator moleAnimator;
 
         #endregion
 
@@ -98,7 +98,7 @@ namespace Assets.Scripts.Mole
 
         #region Public Methods
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             moleController.SetMovementController(this);
             moleController.SetHealthController(this);
@@ -117,6 +117,10 @@ namespace Assets.Scripts.Mole
             moleAnimator.Play("MoveDown", 0, 6.0f);
             moleController.StartMole();
         }
+
+        #endregion
+
+        #region Animation Event Methods
 
         public void OnUpAnimationFinished()
         {

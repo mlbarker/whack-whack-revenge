@@ -11,6 +11,7 @@ namespace Assets.Scripts.Mole
         Recovering,
         Idle,
         Swoon,
+        Attack,
         Total
     }
 }

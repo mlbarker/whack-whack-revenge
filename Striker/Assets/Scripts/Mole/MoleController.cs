@@ -23,6 +23,7 @@ namespace Assets.Scripts.Mole
         private IAttackController m_attackController;
         private Timer m_movementTimer;
         private Timer m_recoveryTimer;
+        private Timer m_attackTimer;
         private IRandom m_random;
         private AnimationStateMachine m_asm;
 
@@ -77,6 +78,14 @@ namespace Assets.Scripts.Mole
             }
         }
 
+        public bool Attack
+        {
+            get
+            {
+                return m_status[MoleStatus.Attack];
+            }
+        }
+
         public int ScoreValue
         {
             get;
@@ -120,6 +129,12 @@ namespace Assets.Scripts.Mole
         }
 
         public int MaxSecondsUp
+        {
+            get;
+            private set;
+        }
+
+        public int SecondsTillAttack
         {
             get;
             private set;
@@ -174,6 +189,7 @@ namespace Assets.Scripts.Mole
         public int healthPerTick;
         public int maxSecondsDown;
         public int maxSecondsUp;
+        public int secondsTillAttack;
 
         #endregion
 
@@ -188,6 +204,7 @@ namespace Assets.Scripts.Mole
             HealthPerTick = healthPerTick;
             MaxSecondsDown = maxSecondsDown;
             MaxSecondsUp = maxSecondsUp;
+            SecondsTillAttack = secondsTillAttack;
 
             InitializeRandom();
             InitializeTimers();
@@ -211,6 +228,7 @@ namespace Assets.Scripts.Mole
 
             UpdateHealth();
             UpdateStatus();
+            UpdateAttackTimer();
             UpdateMoveTimer();
             UpdateRecoveryTimer();
             ClearHit();
@@ -307,6 +325,14 @@ namespace Assets.Scripts.Mole
                 m_movementTimer = new Timer(intervalInSeconds, TriggerBasicMoleMovement);
             }
 
+            if(m_attackController != null)
+            { 
+                if(m_attackTimer == null)
+                {
+                    m_attackTimer = new Timer(SecondsTillAttack, StartAttackSequence);
+                }
+            }
+
             m_movementTimer.StopTimer();
             //m_timer.StartTimer();
         }
@@ -322,6 +348,7 @@ namespace Assets.Scripts.Mole
             m_status.Add(MoleStatus.Injured, false);
             m_status.Add(MoleStatus.Recovering, true);
             m_status.Add(MoleStatus.Idle, false);
+            m_status.Add(MoleStatus.Attack, false);
 
             InjuredAnimFinished = true;
         }
@@ -334,6 +361,11 @@ namespace Assets.Scripts.Mole
         private void AddToPauseManager()
         {
             PauseManager.Instance.Add(GetHashCode(), this);
+        }
+
+        private void StartAttackSequence()
+        {
+            m_status[MoleStatus.Attack] = true;
         }
 
         private void TriggerSwoonMoleMovement()
@@ -349,6 +381,7 @@ namespace Assets.Scripts.Mole
             {
                 // TODO: should not set mole status here... this needs to change
                 m_status[MoleStatus.Idle] = false;
+                m_status[MoleStatus.Attack] = false;
                 IsUp = false;
                 IsMoving = true;
                 m_movementController.MoveIntoHole();
@@ -368,6 +401,9 @@ namespace Assets.Scripts.Mole
 
         private void TriggerAttackMovement()
         {
+            IsMoving = true;
+            m_status[MoleStatus.Attack] = true;
+            m_status[MoleStatus.Idle] = false;
             m_attackController.Attack();
         }
 
@@ -408,10 +444,15 @@ namespace Assets.Scripts.Mole
             {
                 TriggerInjuredMoleMovement();
             }
-            else if(IsUp && !IsMoving && !Idle)
+            else if(IsUp && !IsMoving && !Idle && !Attack)
             {
                 m_status[MoleStatus.Idle] = true;
                 TriggerIdleMovement();
+            }
+            else if(Attack)
+            {
+                // TriggerAttack(); - Make sure to set IsMoving to true inside of method
+                TriggerAttackMovement();
             }
 
             if(IsUp)
@@ -434,7 +475,8 @@ namespace Assets.Scripts.Mole
         private void UpdateMoveTimer()
         {
             if(GetMoleStatus(MoleStatus.Recovering) &&
-               GetMoleStatus(MoleStatus.Injured))
+               GetMoleStatus(MoleStatus.Injured) || 
+               GetMoleStatus(MoleStatus.Attack))
             {
                 m_movementTimer.StopTimer();
                 m_movementTimer.ResetTimer();
@@ -455,7 +497,11 @@ namespace Assets.Scripts.Mole
                 m_movementTimer.ResetTimer();
             }
 
-            if (IsUp && !m_movementTimer.Active() && !IsMoving && Idle)
+            if (IsUp && 
+                Idle &&
+                !Attack &&
+                !IsMoving &&
+                !m_movementTimer.Active())
             {
                 int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
                 m_movementTimer.SetTimer(intervalInSeconds);
@@ -489,12 +535,53 @@ namespace Assets.Scripts.Mole
             m_recoveryTimer.Update();
         }
 
+        private void UpdateAttackTimer()
+        {
+            if(m_attackController == null)
+            {
+                return;
+            }
+
+            if(Idle &&
+               IsUp &&
+               m_movementTimer.TimeHasElapsed &&
+               !IsMoving && 
+               !m_attackTimer.Active())
+            {
+                m_attackTimer.StartTimer();
+
+                // TODO: Don't want to pollute this attack timer
+                // TODO: method with a different timer. Find a better way....
+                m_movementTimer.StopTimer();
+                m_movementTimer.ResetTimer();
+            }
+
+            if(GetMoleStatus(MoleStatus.Attack))
+            {
+                m_attackTimer.StopTimer();
+                m_attackTimer.ResetTimer();
+            }
+
+            m_attackTimer.Update();
+        }
+
         private void ClearHit()
         {
             if(Hit)
             {
                 Hit = false;
             }
+        }
+
+        internal void ClearAttack()
+        {
+            m_status[MoleStatus.Attack] = false;
+            m_status[MoleStatus.Idle] = true;
+
+            // TODO: There's gotta be a better way...
+            m_movementTimer.StartTimer();
+            m_attackTimer.StopTimer();
+            m_attackTimer.ResetTimer();
         }
 
         #endregion
