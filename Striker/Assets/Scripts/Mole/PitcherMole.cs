@@ -8,10 +8,42 @@ namespace Assets.Scripts.Mole
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using UnityEngine;
     using Assets.Scripts.Interfaces;
+    using Assets.Scripts.Projectile;
 
     public class PitcherMole : Mole, IAttackController
     {
+        #region Fields
+
+        private GameObject m_clone;
+
+        #endregion
+
+        #region Editor Values
+
+        public GameObject baseball;
+
+        #endregion
+
+        #region Unity Methods
+
+        void Update()
+        {
+            if(m_clone == null)
+            {
+                return;
+            }
+
+            if(m_clone.GetComponent<Projectile>().TravelTimeElapsed)
+            {
+                Destroy(m_clone);
+                m_clone = null;
+            }
+        }
+
+        #endregion
+
         #region IAttackController Methods
 
         public void Attack()
@@ -25,7 +57,8 @@ namespace Assets.Scripts.Mole
 
         public void OnAttackMidway()
         {
-            // create baseball and update somehow
+            // create baseball and update
+            m_clone = (GameObject)Instantiate(baseball, transform.position, transform.rotation);
         }
 
         public void OnAttackAnimationFinished()
