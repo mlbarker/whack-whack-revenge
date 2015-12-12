@@ -179,6 +179,11 @@ namespace Assets.Scripts.Game
             m_gameTimeController.Start();
         }
 
+        public void StopGame()
+        {
+            m_gameTimeController.Stop();
+        }
+
         public void EndGameStatUpdate(int starsAchieved)
         {
             UpdatePlayerStats(starsAchieved);
@@ -258,7 +263,7 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            if(!m_playerController.MoleHit)
+            if(!m_playerController.ObjectHit)
             {
                 return;
             }
@@ -277,7 +282,6 @@ namespace Assets.Scripts.Game
 
                 bool whackSuccessful = true;
                 m_scoreController.IncrementMolesWhacked();
-
                 m_playerController.UpdateStats(m_scoreController, moleController.ScoreValue, whackSuccessful);
                 return;
             }
@@ -286,7 +290,6 @@ namespace Assets.Scripts.Game
             {
                 bool whackSuccessful = false;
                 m_scoreController.RecordWhackAttempt(whackSuccessful);
-
                 m_playerController.UpdateStats(m_scoreController, 0, whackSuccessful);
             }
         }

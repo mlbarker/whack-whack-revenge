@@ -118,6 +118,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerControllerException.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerException.cs" />
+    <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreController.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreControllerException.cs" />
     <Compile Include="Assets\Scripts\Stars\HitPercentStar.cs" />

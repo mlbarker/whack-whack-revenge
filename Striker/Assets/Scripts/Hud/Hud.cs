@@ -50,6 +50,7 @@ namespace Assets.Scripts.Hud
             UpdateGameTime();
             UpdateWhackPercentage();
             UpdateStarAchievements();
+            UpdatePlayerHealthUnits();
             DisplayGameResults();
         }
 
@@ -89,6 +90,7 @@ namespace Assets.Scripts.Hud
             InitializeResultsWindow();
             InitializeGameController();
             InitializeObjectiveWindow();
+            InitializePlayerHealth();
         }
 
         private void InitializeGameController()
@@ -140,11 +142,11 @@ namespace Assets.Scripts.Hud
 
         private void InitializePlayerHealth()
         {
-            m_playerHealthUnits = GameObject.FindGameObjectsWithTag("HealthUnit");
+            m_playerHealthUnits = GameObject.FindGameObjectsWithTag("HealthUnitFilled");
 
             for (int index = 0; index < m_playerHealthUnits.Length; ++index)
             {
-
+                m_playerHealthUnits[index].SetActive(true);
             }
         }
 
@@ -223,6 +225,22 @@ namespace Assets.Scripts.Hud
                 --m_starsAchievedCount;
                 m_filledStars[m_starsAchievedCount].SetActive(false);
                 return;
+            }
+        }
+
+        private void UpdatePlayerHealthUnits()
+        {
+            if (GameIsFinished() || m_game.PlayerHits == 0)
+            {
+                return;
+            }
+
+            for (int index = 0; index < m_game.PlayerHits; ++index)
+            {
+                if(m_playerHealthUnits[index].activeSelf)
+                {
+                    m_playerHealthUnits[index].SetActive(false);
+                }
             }
         }
 
