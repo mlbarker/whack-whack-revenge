@@ -11,6 +11,7 @@ namespace Assets.Scripts.Game
     using Assets.Scripts.Mole;
     using Assets.Scripts.Persistence;
     using Assets.Scripts.Player;
+    using Assets.Scripts.Projectile;
     using Assets.Scripts.Score;
     using Assets.Scripts.Utilities.Timers;
 
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Game
         private bool m_dataSaved;
         private int m_zoneId;
         private int m_levelId;
+        private string m_projectileTag = "Projectile";
 
         #endregion
 
@@ -92,6 +94,12 @@ namespace Assets.Scripts.Game
             {
                 return m_starController.StarsAchievedCount;
             }
+        }
+
+        public int PlayerHits
+        {
+            get;
+            private set;
         }
 
         #endregion
@@ -222,19 +230,73 @@ namespace Assets.Scripts.Game
                 return;
             }
 
+            UpdatePlayerHealth();
+            UpdateProjectileWasWhacked();
             UpdateMoleWasWhacked();
             UpdateGameController();
             UpdateStarsAchievements();
         }
 
-        private void UpdateMoleWasWhacked()
+        private void UpdatePlayerHealth()
         {
-            if(DisplayGameResults)
+            // Reset player's previous damage
+            PlayerHits = 0;
+
+            GameObject[] projectiles = GameObject.FindGameObjectsWithTag(m_projectileTag);
+
+            foreach(GameObject projectile in projectiles)
+            {
+                Projectile proj = projectile.GetComponent<Projectile>();
+                if (proj == null)
+                {
+                    continue;
+                }
+
+                bool playerWasHit = proj.TravelTimeElapsed;
+                if(playerWasHit)
+                {
+                    player.AdjustHealth();
+                    ++PlayerHits;
+                }
+            }
+
+            if(player.playerController.CurrentHealth < 1)
+            {
+                m_gameController.StopGame();
+                GameIsOver();
+            }
+        }
+
+        private void UpdateProjectileWasWhacked()
+        {
+            if (DisplayGameResults || player.HitCollisionId == -1)
             {
                 return;
             }
 
-            if (player.HitCollisionId == -1)
+            // check if any existing projectiles were hit by player
+            GameObject[] projectiles = GameObject.FindGameObjectsWithTag(m_projectileTag);
+            foreach (GameObject projectile in projectiles)
+            {
+                if(projectile.GetComponent<Collider2D>() == null)
+                {
+                    continue;
+                }
+
+                int hitCollision2dId = projectile.GetComponent<Collider2D>().GetInstanceID();
+                if (player.HitCollisionId == hitCollision2dId)
+                {
+                    projectile.GetComponent<Projectile>().DecrementHealth();
+                    break;
+                }
+            }
+
+            player.ClearHitCollisionId();
+        }
+
+        private void UpdateMoleWasWhacked()
+        {
+            if (DisplayGameResults || player.HitCollisionId == -1)
             {
                 return;
             }

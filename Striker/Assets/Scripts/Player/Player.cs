@@ -9,7 +9,7 @@ namespace Assets.Scripts.Player
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Player;
 
-    public class Player : MonoBehaviour, IInputController, IHitController
+    public class Player : MonoBehaviour, IInputController, IHitController, IHealthController
     {
         #region Public Properties
 
@@ -62,7 +62,22 @@ namespace Assets.Scripts.Player
 
         public bool HitDetected()
         {
-            return MoleWasHit();
+            return ObjectWasHit();
+        }
+
+        #endregion
+
+        #region IHealthController Methods
+
+        public void AdjustHealth()
+        {
+            // TODO: update to match a damage value
+            playerController.DecrementHealth(1);
+        }
+
+        public void RecoverHealth()
+        {
+            // TODO: health restore functionality in the future....
         }
 
         #endregion
@@ -130,9 +145,9 @@ namespace Assets.Scripts.Player
             return false;
         }
 
-        private bool MoleWasHit()
+        private bool ObjectWasHit()
         {
-            if (!IsInputOverMole())
+            if (!IsInputOverObject())
             {
                 return false;
             }
@@ -141,7 +156,7 @@ namespace Assets.Scripts.Player
             return true;
         }
 
-        private bool IsInputOverMole()
+        private bool IsInputOverObject()
         {
             if (PlatformSupportsMouseInput())
             {
@@ -161,8 +176,7 @@ namespace Assets.Scripts.Player
                 HitCollisionId = hit.collider.GetInstanceID();
                 return true;
             }
-            else
-                if (PlatformSupportsTouchInput())
+            else if (PlatformSupportsTouchInput())
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
 

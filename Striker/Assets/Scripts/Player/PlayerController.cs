@@ -44,7 +44,8 @@ namespace Assets.Scripts.Player
             private set;
         }
 
-        public bool MoleHit
+        // either a mole or projectile was hit
+        public bool ObjectHit
         {
             get;
             private set;
@@ -164,6 +165,11 @@ namespace Assets.Scripts.Player
             }
         }
 
+        public void DecrementHealth(int value)
+        {
+            m_currentHealth -= value;
+        }
+
         #endregion
 
         #region Private Methods
@@ -188,11 +194,11 @@ namespace Assets.Scripts.Player
         {
             if(!WhackTriggered)
             {
-                MoleHit = false;
+                ObjectHit = false;
                 return;
             }
 
-            MoleHit = m_hitController.HitDetected();
+            ObjectHit = m_hitController.HitDetected();
         }
 
         private void LoadLifetimeStats()
