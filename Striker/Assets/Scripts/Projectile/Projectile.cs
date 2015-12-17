@@ -92,6 +92,7 @@ namespace Assets.Scripts.Projectile
         {
             UpdateDefaultSwoonAnimation();
             UpdateScale();
+            ClearHit();
         }
 
         #endregion
@@ -108,6 +109,7 @@ namespace Assets.Scripts.Projectile
             if (!Swoon)
             {
                 --Health;
+                Hit = true;
             }
         }
 
@@ -177,6 +179,11 @@ namespace Assets.Scripts.Projectile
                     DestroyProjectile();
                 }
             }
+        }
+
+        private void ClearHit()
+        {
+            Hit = false;
         }
 
         #endregion

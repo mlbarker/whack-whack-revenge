@@ -183,7 +183,6 @@ namespace Assets.Scripts.Mole
         #region Editor Values
 
         public int maxHealth;
-        public int health;
         public int scoreValue;
         public int healthTickInSeconds;
         public int healthPerTick;
@@ -198,7 +197,7 @@ namespace Assets.Scripts.Mole
         public void Initialize()
         {
             MaxHealth = maxHealth;
-            Health = health;
+            Health = maxHealth;
             ScoreValue = scoreValue;
             HealthTickInSeconds = healthTickInSeconds;
             HealthPerTick = healthPerTick;

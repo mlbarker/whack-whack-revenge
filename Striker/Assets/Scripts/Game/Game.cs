@@ -23,6 +23,7 @@ namespace Assets.Scripts.Game
         private StarController m_starController;
         private LevelManager m_levelManager;
         private PersistentManager m_persistentManager;
+        private List<GameObject> m_projectileObjects;
         private bool m_dataSaved;
         private int m_zoneId;
         private int m_levelId;
@@ -176,6 +177,8 @@ namespace Assets.Scripts.Game
             m_gameController.SetOnGameEndCallback(GameIsOver);
             m_gameController.AddPlayerController(player.playerController);
 
+            m_projectileObjects = new List<GameObject>();
+
             foreach(Mole mole in moles)
             {
                 m_gameController.AddMoleController(mole.moleController);
@@ -230,12 +233,32 @@ namespace Assets.Scripts.Game
                 return;
             }
 
+            UpdateProjectilesList();
             UpdatePlayerHealth();
             UpdateProjectileWasWhacked();
             UpdateMoleWasWhacked();
             ClearPlayerHitCollision();
             UpdateGameController();
             UpdateStarsAchievements();
+        }
+
+        private void UpdateProjectilesList()
+        {
+            GameObject[] projectileObjects = GameObject.FindGameObjectsWithTag(m_projectileTag);
+            if(projectileObjects.Length != 0)
+            {
+                m_projectileObjects.Clear();
+                m_projectileObjects.AddRange(projectileObjects);
+
+                // send the list to the game controller
+                List<Projectile> projectiles = new List<Projectile>();
+                foreach(GameObject projectileObject in m_projectileObjects)
+                {
+                    projectiles.Add(projectileObject.GetComponent<Projectile>());
+                }
+
+                m_gameController.GetProjectilesList(projectiles);
+            }
         }
 
         private void UpdatePlayerHealth()

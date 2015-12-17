@@ -20,7 +20,6 @@ namespace Assets.Scripts.Player
 
         private IHitController m_hitController;
         private IInputController m_inputController;
-        private int m_currentHealth;
         
         #endregion
 
@@ -167,7 +166,7 @@ namespace Assets.Scripts.Player
 
         public void DecrementHealth(int value)
         {
-            m_currentHealth -= value;
+            CurrentHealth -= value;
         }
 
         #endregion

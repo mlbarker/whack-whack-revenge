@@ -230,18 +230,13 @@ namespace Assets.Scripts.Hud
 
         private void UpdatePlayerHealthUnits()
         {
-            if (GameIsFinished() || m_game.PlayerHits == 0)
+            int playerHealth = m_game.player.playerController.CurrentHealth;
+            if (GameIsFinished() || playerHealth < 1 || m_game.PlayerHits == 0)
             {
                 return;
             }
 
-            for (int index = 0; index < m_game.PlayerHits; ++index)
-            {
-                if(m_playerHealthUnits[index].activeSelf)
-                {
-                    m_playerHealthUnits[index].SetActive(false);
-                }
-            }
+            m_playerHealthUnits[playerHealth - 1].SetActive(false);
         }
 
         private void SetObjectives()

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Game
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
     using Assets.Scripts.Player;
+    using Assets.Scripts.Projectile;
     using Assets.Scripts.Score;
 
     [Serializable]
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Game
         private ScoreController m_scoreController;
         private List<MoleController> m_moleControllers;
         private PlayerController m_playerController;
+        private List<Projectile> m_projectiles;
 
         #endregion
 
@@ -117,6 +119,7 @@ namespace Assets.Scripts.Game
             InitializeScore();
             InitializePlayer();
             InitializeMoles();
+            InitializeProjectiles();
             InitializeGameTime();
             AddToPauseManager();
         }
@@ -189,6 +192,15 @@ namespace Assets.Scripts.Game
             UpdatePlayerStats(starsAchieved);
         }
 
+        public void GetProjectilesList(List<Projectile> projectiles)
+        {
+            if(projectiles.Count != 0)
+            {
+                m_projectiles.Clear();
+                m_projectiles.AddRange(projectiles);
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -233,6 +245,11 @@ namespace Assets.Scripts.Game
             }
         }
 
+        private void InitializeProjectiles()
+        {
+            m_projectiles = new List<Projectile>();
+        }
+
         private void AddToPauseManager()
         {
             PauseManager.Instance.Add(GetHashCode(), this);
@@ -273,6 +290,7 @@ namespace Assets.Scripts.Game
 
         private void UpdateScore()
         {
+            // UpdateScoreMoles()
             foreach (MoleController moleController in m_moleControllers)
             {
                 if (!moleController.Hit)
@@ -285,7 +303,19 @@ namespace Assets.Scripts.Game
                 m_playerController.UpdateStats(m_scoreController, moleController.ScoreValue, whackSuccessful);
                 return;
             }
+            // UpdateScoreProjectile()
+            foreach(Projectile projectile in m_projectiles)
+            {
+                if (!projectile.Hit)
+                {
+                    continue;
+                }
 
+                bool whackSuccessful = true;
+                m_playerController.UpdateStats(m_scoreController, 0, whackSuccessful);
+                return;
+            }
+            // UpdateScoreMiss()
             if (m_playerController.WhackTriggered)
             {
                 bool whackSuccessful = false;
