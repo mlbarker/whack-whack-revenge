@@ -60,6 +60,7 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             moleAnimator.SetBool("Idle", moleController.Idle);
+            moleAnimator.SetBool("Attack", moleController.Attack);
 
             // TODO: need something better than this to transition to down
             moleAnimator.SetBool("SwoonToDown", false);

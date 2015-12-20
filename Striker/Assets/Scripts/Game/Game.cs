@@ -7,6 +7,7 @@ namespace Assets.Scripts.Game
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+    using Assets.Scripts.Formation;
     using Assets.Scripts.Level;
     using Assets.Scripts.Mole;
     using Assets.Scripts.Persistence;
@@ -109,6 +110,7 @@ namespace Assets.Scripts.Game
 
         public Mole [] moles;
         public Player player;
+        public BaseFormation formation;
 
         #endregion
 

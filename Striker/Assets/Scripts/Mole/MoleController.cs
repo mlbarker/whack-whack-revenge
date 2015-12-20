@@ -288,6 +288,12 @@ namespace Assets.Scripts.Mole
             m_movementTimer.StartTimer();
         }
 
+        /* public void StopMole()
+         * {
+         *      // Set status to match in-hole variables
+         * }
+         */ 
+
         public void TransitionInjuredToIdle()
         {
 
@@ -348,6 +354,7 @@ namespace Assets.Scripts.Mole
             m_status.Add(MoleStatus.Recovering, true);
             m_status.Add(MoleStatus.Idle, false);
             m_status.Add(MoleStatus.Attack, false);
+            m_status.Add(MoleStatus.Swoon, false);
 
             InjuredAnimFinished = true;
         }
@@ -364,13 +371,17 @@ namespace Assets.Scripts.Mole
 
         private void StartAttackSequence()
         {
-            m_status[MoleStatus.Attack] = true;
+            if (!Swoon)
+            {
+                m_status[MoleStatus.Attack] = true;
+            }
         }
 
         private void TriggerSwoonMoleMovement()
         {
             IsUp = false;
             IsMoving = true;
+            m_status[MoleStatus.Attack] = false;
             m_movementController.MoveIntoHoleOnSwoon();
         }
 
