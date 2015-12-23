@@ -26,6 +26,8 @@ namespace Assets.Scripts.Mole
         private Timer m_attackTimer;
         private IRandom m_random;
         private AnimationStateMachine m_asm;
+        private int m_upCount;
+        private int m_downCount;
 
         #endregion
 
@@ -48,11 +50,6 @@ namespace Assets.Scripts.Mole
             get
             {
                 return m_status[MoleStatus.Idle];
-            }
-
-            private set
-            {
-
             }
         }
 
@@ -138,6 +135,14 @@ namespace Assets.Scripts.Mole
         {
             get;
             private set;
+        }
+
+        public bool CompletedCycle
+        {
+            get
+            {
+                return m_upCount + m_downCount == 2;
+            }
         }
 
         #endregion
@@ -285,15 +290,29 @@ namespace Assets.Scripts.Mole
 
         public void StartMole()
         {
+            ResetStatus();
+
+            int intervalInSeconds = m_random.RandomInt(1, MaxSecondsDown);
+            m_movementTimer.SetTimer(intervalInSeconds);
             m_movementTimer.StartTimer();
         }
 
-        /* public void StopMole()
-         * {
-         *      // Set status to match in-hole variables
-         * }
-         */ 
+        public void StopMole()
+        {
+            // Set status to match in-hole variables
+            m_movementTimer.StopTimer();
+            m_recoveryTimer.StopTimer();
+            
+            if(m_attackTimer != null)
+            {
+                m_attackTimer.StopTimer();
+            }
 
+            ResetStatus();
+
+            Health = MaxHealth;
+        }
+         
         public void TransitionInjuredToIdle()
         {
 
@@ -303,6 +322,12 @@ namespace Assets.Scripts.Mole
             TriggerInjuredMoleMovement();
             StoppedMoving();
             InjuredAnimFinished = true;
+        }
+
+        public void ClearCycle()
+        {
+            m_upCount = 0;
+            m_downCount = 0;
         }
 
         #endregion
@@ -379,10 +404,12 @@ namespace Assets.Scripts.Mole
 
         private void TriggerSwoonMoleMovement()
         {
+            // downCount++;
             IsUp = false;
             IsMoving = true;
             m_status[MoleStatus.Attack] = false;
             m_movementController.MoveIntoHoleOnSwoon();
+            m_downCount++;
         }
 
         private void TriggerBasicMoleMovement()
@@ -395,12 +422,15 @@ namespace Assets.Scripts.Mole
                 IsUp = false;
                 IsMoving = true;
                 m_movementController.MoveIntoHole();
+                m_downCount++;
             }
             else
             {
+                // upCount++;
                 IsUp = true;
                 IsMoving = true;
                 m_movementController.MoveOutOfHole();
+                m_upCount++;
             }
         }
 
@@ -573,6 +603,16 @@ namespace Assets.Scripts.Mole
             }
 
             m_attackTimer.Update();
+        }
+
+        private void ResetStatus()
+        {
+            m_status[MoleStatus.Healthy] = true;
+            m_status[MoleStatus.Injured] = false;
+            m_status[MoleStatus.Recovering] = true;
+            m_status[MoleStatus.Idle] = false;
+            m_status[MoleStatus.Attack] = false;
+            m_status[MoleStatus.Swoon] = false;
         }
 
         private void ClearHit()

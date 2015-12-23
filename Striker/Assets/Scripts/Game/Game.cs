@@ -25,6 +25,7 @@ namespace Assets.Scripts.Game
         private LevelManager m_levelManager;
         private PersistentManager m_persistentManager;
         private List<GameObject> m_projectileObjects;
+        private Mole[] m_moles;
         private bool m_dataSaved;
         private int m_zoneId;
         private int m_levelId;
@@ -108,7 +109,6 @@ namespace Assets.Scripts.Game
 
         #region Editor Values
 
-        public Mole [] moles;
         public Player player;
         public BaseFormation formation;
 
@@ -132,6 +132,7 @@ namespace Assets.Scripts.Game
 
         private void Initialize()
         {
+            InitializeFormation();
             InitializeMoles();
             InitializePlayer();
             InitializeGame();
@@ -139,14 +140,25 @@ namespace Assets.Scripts.Game
             InitializePersistence();
         }
 
+        private void InitializeFormation()
+        {
+            if(formation == null)
+            {
+                throw new NullReferenceException("BaseFormation object is null");
+            }
+
+            formation.InitializePositions();
+            m_moles = formation.Moles;
+        }
+
         private void InitializeMoles()
         {
-            if (moles == null)
+            if (m_moles == null)
             {
                 throw new MoleException();
             }
 
-            foreach (Mole mole in moles)
+            foreach (Mole mole in m_moles)
             {
                 mole.Initialize();
             }
@@ -181,7 +193,7 @@ namespace Assets.Scripts.Game
 
             m_projectileObjects = new List<GameObject>();
 
-            foreach(Mole mole in moles)
+            foreach(Mole mole in m_moles)
             {
                 m_gameController.AddMoleController(mole.moleController);
             }
@@ -325,7 +337,7 @@ namespace Assets.Scripts.Game
                 return;
             }
 
-            foreach (Mole mole in moles)
+            foreach (Mole mole in m_moles)
             {
                 if (mole.GetComponent<Collider2D>() == null)
                 {

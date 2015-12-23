@@ -23,6 +23,18 @@ namespace Assets.Scripts.Mole
 
         #endregion
 
+        #region Public Properties
+
+        public bool ReadyForPositionChange
+        {
+            get
+            {
+                return moleController.CompletedCycle && !moleController.IsMoving;
+            }
+        }
+
+        #endregion
+
         #region Unity Methods
 
         void Start()
@@ -109,14 +121,22 @@ namespace Assets.Scripts.Mole
             {
                 throw new UnassignedReferenceException();
             }
-
-            //moleAnimator.Play("MoveDown", 0, 6.0f);
         }
 
         public void StartMole()
         {
-            moleAnimator.Play("MoveDown", 0, 6.0f);
+            moleAnimator.Play("Down", 0, 6.0f);
             moleController.StartMole();
+        }
+
+        public void StopMole()
+        {
+            moleController.StopMole();
+        }
+
+        public void ClearPositionChangeFlag()
+        {
+            moleController.ClearCycle();
         }
 
         #endregion

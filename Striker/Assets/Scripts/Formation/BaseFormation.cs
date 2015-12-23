@@ -6,6 +6,7 @@ namespace Assets.Scripts.Formation
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Mole;
@@ -14,16 +15,25 @@ namespace Assets.Scripts.Formation
     {
         #region Fields
 
-        protected Dictionary<int, List<Mole>> m_positionedMoles;
+        protected FormationController m_formationController;
+        protected Dictionary<Location, List<Mole>> m_positionedMoles = new Dictionary<Location, List<Mole>>();
+        protected List<Mole> m_moles = new List<Mole>();
 
         #endregion
 
         #region Public Properties
+
+        public Mole[] Moles
+        {
+            get
+            {
+                return m_moles.ToArray();
+            }
+        }
+
         #endregion
 
         #region Editor Values
-
-        public PositionMoles[] positionMoles;
 
         #endregion
 
@@ -31,7 +41,6 @@ namespace Assets.Scripts.Formation
 
         void Start()
         {
-            InitializePositions();
         }
 
         #endregion
@@ -40,30 +49,52 @@ namespace Assets.Scripts.Formation
 
         public virtual void InitializePositions()
         {
-            if (positionMoles == null)
+            GameObject[] positions = GameObject.FindGameObjectsWithTag("Position");
+            if(positions == null)
             {
-                throw new NullReferenceException("Moles and positions not set in editor");
+                throw new NullReferenceException("Position[] GameObject is null");
             }
 
-            //// initialize the dictionary of moles with positions and empty lists
-            //for (int index = 0; index < MAX_SIZE; ++index)
-            //{
-            //    m_positionedMoles.Add(index, new List<Mole>());
-            //}
+            foreach (GameObject positionObject in positions)
+            {
+                Position position = positionObject.GetComponent<Position>();
+                if(position == null)
+                {
+                    throw new NullReferenceException("Position Component is null");
+                }
 
-            //// store moles for each position
-            //foreach (PositionMoles positionMole in positionMoles)
-            //{
-            //    if (positionMole.position < MAX_SIZE)
-            //    {
-            //        m_positionedMoles[positionMole.position].Add(positionMole.mole);
-            //    }
-            //}
+                Mole[] moles = positionObject.GetComponentsInChildren<Mole>();
+                if(moles == null)
+                {
+                    throw new NullReferenceException("Mole[] Component is null");
+                }
+
+                // TODO: need to remove inactive moles
+                m_moles.AddRange(moles);
+
+                Location location = position.location;                
+                m_positionedMoles.Add(location, new List<Mole>(moles));
+            }
         }
 
         #endregion
 
         #region Public Methods
+        #endregion
+
+        #region Protected Methods
+
+        protected void InitializeFormationController()
+        {
+            m_formationController = new FormationController();
+            m_formationController.Initialize(m_positionedMoles);
+        }
+
+        protected virtual void UpdateFormation()
+        {
+            m_formationController.UpdatePosition();
+        }
+
         #endregion
 
         #region Private Methods
