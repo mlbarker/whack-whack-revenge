@@ -65,6 +65,7 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             moleAnimator.SetBool("Idle", moleController.Idle);
             Debug.Log("MoveOutOfHole|IsMoving - " + moleController.IsMoving);
+            Debug.Log("IsUp State = " + moleAnimator.GetBool("IsUp"));
         }
 
         public void MoveIntoHoleOnSwoon()
@@ -125,7 +126,8 @@ namespace Assets.Scripts.Mole
 
         public void StartMole()
         {
-            moleAnimator.Play("Down", 0, 6.0f);
+            //moleAnimator.Play("Down", 0, 6.0f);
+            moleAnimator.Rebind();
             moleController.StartMole();
         }
 
@@ -167,6 +169,12 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("SwoonToDown", true);
         }
 
+        public void SetActive(bool active)
+        {
+            moleController.SetActive(active);
+            GetComponent<BoxCollider2D>().enabled = active;
+        }
+
         #endregion
 
         #region Private Methods
@@ -174,6 +182,16 @@ namespace Assets.Scripts.Mole
         private void UpdateMole()
         {
             moleController.Update();
+            //UpdateCollider();
+        }
+
+        private void UpdateCollider()
+        {
+            BoxCollider2D collider = GetComponent<BoxCollider2D>();
+            if(collider != null)
+            {
+                collider.enabled = moleController.Active;
+            }
         }
 
         #endregion

@@ -145,6 +145,12 @@ namespace Assets.Scripts.Mole
             }
         }
 
+        public bool Active
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region IPauseController Properties
@@ -230,6 +236,13 @@ namespace Assets.Scripts.Mole
                 return;
             }
 
+            if(!Active)
+            {
+                StopAllTimers();
+                ResetStatus();
+                return;
+            }
+
             UpdateHealth();
             UpdateStatus();
             UpdateAttackTimer();
@@ -311,6 +324,11 @@ namespace Assets.Scripts.Mole
             ResetStatus();
 
             Health = MaxHealth;
+        }
+
+        public void SetActive(bool active)
+        {
+            Active = active;
         }
          
         public void TransitionInjuredToIdle()
@@ -613,6 +631,21 @@ namespace Assets.Scripts.Mole
             m_status[MoleStatus.Idle] = false;
             m_status[MoleStatus.Attack] = false;
             m_status[MoleStatus.Swoon] = false;
+        }
+
+        private void StopAllTimers()
+        {
+            m_movementTimer.StopTimer();
+            m_movementTimer.ResetTimer();
+
+            m_recoveryTimer.StopTimer();
+            m_recoveryTimer.ResetTimer();
+
+            if(m_attackController != null)
+            {
+                m_attackTimer.StopTimer();
+                m_attackTimer.ResetTimer();
+            }
         }
 
         private void ClearHit()
