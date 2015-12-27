@@ -31,6 +31,14 @@ namespace Assets.Scripts.Player
             private set;
         }
 
+        public int Health
+        {
+            get
+            {
+                return playerController.CurrentHealth;
+            }
+        }
+
         #endregion
 
         #region Private Properties

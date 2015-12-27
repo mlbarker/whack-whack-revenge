@@ -71,6 +71,12 @@ namespace Assets.Scripts.Game
             private set; 
         }
 
+        public bool DisplayDefeatedGameResults
+        {
+            get;
+            private set;
+        }
+
         public bool DisplayObjectives
         {
             get;
@@ -103,6 +109,14 @@ namespace Assets.Scripts.Game
         {
             get;
             private set;
+        }
+
+        public bool PlayerDefeated
+        {
+            get
+            {
+                return player.Health < 1;
+            }
         }
 
         #endregion
@@ -298,7 +312,7 @@ namespace Assets.Scripts.Game
                 }
             }
 
-            if(player.playerController.CurrentHealth < 1)
+            if(player.Health < 1)
             {
                 m_gameController.StopGame();
                 GameIsOver();
@@ -307,7 +321,7 @@ namespace Assets.Scripts.Game
 
         private void UpdateProjectileWasWhacked()
         {
-            if (DisplayGameResults || player.HitCollisionId == -1)
+            if (DisplayGameResults || DisplayDefeatedGameResults || player.HitCollisionId == -1)
             {
                 return;
             }
@@ -332,7 +346,7 @@ namespace Assets.Scripts.Game
 
         private void UpdateMoleWasWhacked()
         {
-            if (DisplayGameResults || player.HitCollisionId == -1)
+            if (DisplayGameResults || DisplayDefeatedGameResults || player.HitCollisionId == -1)
             {
                 return;
             }
@@ -361,7 +375,7 @@ namespace Assets.Scripts.Game
 
         private void UpdateGameController()
         {
-            if (DisplayGameResults)
+            if (DisplayGameResults || DisplayDefeatedGameResults)
             {
                 return;
             }
@@ -376,6 +390,12 @@ namespace Assets.Scripts.Game
 
         private void GameIsOver()
         {
+            if(PlayerDefeated)
+            {
+                DisplayDefeatedGameResults = true;
+                return;
+            }
+
             DisplayGameResults = true;
 
             Save();

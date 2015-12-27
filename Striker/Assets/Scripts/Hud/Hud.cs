@@ -17,6 +17,7 @@ namespace Assets.Scripts.Hud
 
         private Game m_game;
         private GameObject m_resultsWindow;
+        private GameObject m_defeatResultsWindow;
         private GameObject m_objectiveWindow;
         private GameObject[] m_filledStars;
         private GameObject[] m_playerHealthUnits;
@@ -52,6 +53,7 @@ namespace Assets.Scripts.Hud
             UpdateStarAchievements();
             UpdatePlayerHealthUnits();
             DisplayGameResults();
+            DisplayDefeatedGameResults();
         }
 
         #endregion
@@ -72,6 +74,14 @@ namespace Assets.Scripts.Hud
             Application.LoadLevel(levelId);
         }
 
+        public void RetryLevel()
+        {
+            SavePersistence();
+
+            int levelId = Application.loadedLevel;
+            Application.LoadLevel(levelId);
+        }
+
         public void CloseObjectiveWindow()
         {
             m_objectiveWindow.SetActive(false);
@@ -88,6 +98,7 @@ namespace Assets.Scripts.Hud
             InitializeStars();
             InitializeHudElements();
             InitializeResultsWindow();
+            InitializeDefeatResultsWindow();
             InitializeGameController();
             InitializeObjectiveWindow();
             InitializePlayerHealth();
@@ -128,6 +139,12 @@ namespace Assets.Scripts.Hud
         {
             m_resultsWindow = GameObject.FindGameObjectWithTag("ResultsWindow");
             m_resultsWindow.SetActive(false);
+        }
+
+        private void InitializeDefeatResultsWindow()
+        {
+            m_defeatResultsWindow = GameObject.FindGameObjectWithTag("DefeatResultsWindow");
+            m_defeatResultsWindow.SetActive(false);
         }
 
         private void InitializeStars()
@@ -258,9 +275,18 @@ namespace Assets.Scripts.Hud
             m_resultsWindow.SetActive(active);
         }
 
+        private void DisplayDefeatedGameResults()
+        {
+            m_scoreResultText.text = "Final Score - " + m_scoreText.text;
+            m_whackPercentageResultText.text = "Final Whack % - " + m_whackPercentageText.text;
+
+            bool active = m_game.DisplayDefeatedGameResults;
+            m_defeatResultsWindow.SetActive(active);
+        }
+
         private bool GameIsFinished()
         {
-            return m_game.DisplayGameResults;
+            return m_game.DisplayGameResults || m_game.DisplayDefeatedGameResults;
         }
 
         private void SavePersistence()

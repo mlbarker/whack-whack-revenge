@@ -635,13 +635,19 @@ namespace Assets.Scripts.Mole
 
         private void StopAllTimers()
         {
-            m_movementTimer.StopTimer();
-            m_movementTimer.ResetTimer();
+            if (m_movementTimer != null)
+            {
+                m_movementTimer.StopTimer();
+                m_movementTimer.ResetTimer();
+            }
 
-            m_recoveryTimer.StopTimer();
-            m_recoveryTimer.ResetTimer();
+            if (m_recoveryTimer != null)
+            {
+                m_recoveryTimer.StopTimer();
+                m_recoveryTimer.ResetTimer();
+            }
 
-            if(m_attackController != null)
+            if (m_attackTimer != null)
             {
                 m_attackTimer.StopTimer();
                 m_attackTimer.ResetTimer();
