@@ -42,6 +42,11 @@ namespace Assets.Scripts.Menu
             Initialize();
         }
 
+        void Update()
+        {
+            OnBackButtonPressed();
+        }
+
         #endregion
 
         #region IMenuNavigationController Methods
@@ -154,6 +159,21 @@ namespace Assets.Scripts.Menu
         private void DeactivateOptionsMenu()
         {
             m_optionsMenu.SetActive(false);
+        }
+
+        private void OnBackButtonPressed()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(!m_optionsMenu.activeSelf && !m_statsMenu.activeSelf)
+                {
+                    Application.Quit();
+                }
+                else
+                {
+                    BackToPreviousMenu();
+                }
+            }
         }
 
         #endregion

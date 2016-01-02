@@ -34,6 +34,7 @@ namespace Assets.Scripts.Hud
 
         private bool m_gameIsReady = false;
         private bool m_objectivesSet = false;
+        private bool m_resultsFilled = false;
 
         #endregion
 
@@ -54,6 +55,7 @@ namespace Assets.Scripts.Hud
             UpdatePlayerHealthUnits();
             DisplayGameResults();
             DisplayDefeatedGameResults();
+            OnBackButtonPressed();
         }
 
         #endregion
@@ -268,18 +270,20 @@ namespace Assets.Scripts.Hud
 
         private void DisplayGameResults()
         {
-            m_scoreResultText.text = "Final Score - " + m_scoreText.text;
-            m_whackPercentageResultText.text = "Final Whack % - " + m_whackPercentageText.text;
-
             bool active = m_game.DisplayGameResults;
-            m_resultsWindow.SetActive(active);
+
+            if (active && !m_resultsFilled)
+            {
+                m_scoreResultText.text = "Final Score - " + m_scoreText.text;
+                m_whackPercentageResultText.text = "Final Whack % - " + m_whackPercentageText.text;
+                m_resultsFilled = true;
+
+                m_resultsWindow.SetActive(active);
+            }
         }
 
         private void DisplayDefeatedGameResults()
         {
-            m_scoreResultText.text = "Final Score - " + m_scoreText.text;
-            m_whackPercentageResultText.text = "Final Whack % - " + m_whackPercentageText.text;
-
             bool active = m_game.DisplayDefeatedGameResults;
             m_defeatResultsWindow.SetActive(active);
         }
@@ -297,6 +301,14 @@ namespace Assets.Scripts.Hud
             }
 
             PersistentManager.Instance.Save(Application.persistentDataPath);
+        }
+
+        private void OnBackButtonPressed()
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                BackToLevelSelect();
+            }
         }
 
         #endregion

@@ -32,6 +32,11 @@ namespace Assets.Scripts.Level
             Initialize();
         }
 
+        void Update()
+        {
+            BackButtonPressed();
+        }
+
         #endregion
 
         #region Public Methods
@@ -374,6 +379,14 @@ namespace Assets.Scripts.Level
                     LevelInfo levelInfo = LevelManager.Instance.GetLevelInfo((LevelZoneId)zoneIndex, (LevelId)levelIndex);
                     PersistentManager.Instance.StoreLevelInfoData(zoneIndex, levelIndex, levelInfo);
                 }
+            }
+        }
+
+        private void BackButtonPressed()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnBackButtonPressed();
             }
         }
 
