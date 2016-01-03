@@ -306,6 +306,11 @@ namespace Assets.Scripts.Game
             // UpdateScoreProjectile()
             foreach(Projectile projectile in m_projectiles)
             {
+                if (projectile == null)
+                {
+                    continue;
+                }
+
                 if (!projectile.Hit)
                 {
                     continue;
