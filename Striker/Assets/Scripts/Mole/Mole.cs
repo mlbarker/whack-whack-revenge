@@ -173,6 +173,7 @@ namespace Assets.Scripts.Mole
         {
             moleController.SetActive(active);
             GetComponent<BoxCollider2D>().enabled = active;
+            GetComponent<Renderer>().enabled = active;
         }
 
         #endregion
