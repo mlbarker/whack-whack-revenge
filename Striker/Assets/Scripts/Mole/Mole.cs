@@ -1,5 +1,5 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014-2015
+// ImperfectlyCoded © 2014-2016
 //-----------------------------
 
 namespace Assets.Scripts.Mole
@@ -9,7 +9,7 @@ namespace Assets.Scripts.Mole
     using Assets.Scripts.Interfaces;
     using Assets.Scripts.Utilities.Timers;
 
-    public class Mole : MonoBehaviour, IMovementController, IHealthController
+    public class Mole : MonoBehaviour, IMovementController, IHealthController, IEndGame
     {
         #region Protected Members
 
@@ -56,7 +56,6 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             moleAnimator.SetBool("Idle", moleController.Idle);
-            Debug.Log("MoveIntoHole|IsMoving - " + moleController.IsMoving);
         }
 
         public void MoveOutOfHole()
@@ -64,8 +63,6 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("Swoon", moleController.Swoon);
             moleAnimator.SetBool("IsUp", moleController.IsUp);
             moleAnimator.SetBool("Idle", moleController.Idle);
-            Debug.Log("MoveOutOfHole|IsMoving - " + moleController.IsMoving);
-            Debug.Log("IsUp State = " + moleAnimator.GetBool("IsUp"));
         }
 
         public void MoveIntoHoleOnSwoon()
@@ -77,7 +74,6 @@ namespace Assets.Scripts.Mole
 
             // TODO: need something better than this to transition to down
             moleAnimator.SetBool("SwoonToDown", false);
-            Debug.Log("MoveIntoHoleOnSwoon|IsMoving - " + moleController.IsMoving);
         }
 
         public void MoveToIdle()
@@ -110,6 +106,15 @@ namespace Assets.Scripts.Mole
 
         #endregion
 
+        #region IEndGame Methods
+
+        public void OnEndGame()
+        {
+            moleAnimator.SetBool("Celebrate", true);
+        }
+
+        #endregion
+
         #region Public Methods
 
         public virtual void Initialize()
@@ -122,12 +127,12 @@ namespace Assets.Scripts.Mole
             {
                 throw new UnassignedReferenceException();
             }
+
+            Game.EndGameManager.Instance.Add(GetHashCode(), this);
         }
 
         public void StartMole()
         {
-            //moleAnimator.Play("Down", 0, 6.0f);
-            moleAnimator.Rebind();
             moleController.StartMole();
         }
 
@@ -148,13 +153,11 @@ namespace Assets.Scripts.Mole
         public void OnUpAnimationFinished()
         {
             moleController.StoppedMoving();
-            Debug.Log("OnUpFinished|IsMoving - " + moleController.IsMoving);
         }
 
         public void OnDownAnimationFinished()
         {
             moleController.StoppedMoving();
-            Debug.Log("OnDownFinished|IsMoving - " + moleController.IsMoving);
         }
 
         public void OnInjuredAnimationFinished()
@@ -183,16 +186,6 @@ namespace Assets.Scripts.Mole
         private void UpdateMole()
         {
             moleController.Update();
-            //UpdateCollider();
-        }
-
-        private void UpdateCollider()
-        {
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-            if(collider != null)
-            {
-                collider.enabled = moleController.Active;
-            }
         }
 
         #endregion
