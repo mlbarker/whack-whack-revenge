@@ -202,7 +202,7 @@ namespace Assets.Scripts.Game
 
             m_gameController = new GameController();
             m_gameController.SetGameTime(gameTimeInSeconds);
-            m_gameController.SetOnGameEndCallback(GameIsOver);
+            m_gameController.SetOnGameEndCallback(EndGame);
             m_gameController.AddPlayerController(player.playerController);
 
             m_projectileObjects = new List<GameObject>();
@@ -268,6 +268,7 @@ namespace Assets.Scripts.Game
             ClearPlayerHitCollision();
             UpdateGameController();
             UpdateStarsAchievements();
+            CheckEndGameFinished();
         }
 
         private void UpdateProjectilesList()
@@ -315,7 +316,7 @@ namespace Assets.Scripts.Game
             if(player.Health < 1)
             {
                 m_gameController.StopGame();
-                GameIsOver();
+                EndGame();
             }
         }
 
@@ -399,6 +400,19 @@ namespace Assets.Scripts.Game
             DisplayGameResults = true;
 
             Save();
+        }
+
+        private void EndGame()
+        {
+            EndGameManager.Instance.RunEndGame(PlayerDefeated);
+        }
+
+        private void CheckEndGameFinished()
+        {
+            if(EndGameManager.Instance.IsEndGameTimeDone)
+            {
+                GameIsOver();
+            }
         }
 
         private void Save()

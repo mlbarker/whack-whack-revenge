@@ -6,6 +6,6 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IEndGame
     {
-        void OnEndGame();
+        void OnEndGame(bool playerDefeated);
     }
 }

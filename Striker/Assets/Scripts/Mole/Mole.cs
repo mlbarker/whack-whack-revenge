@@ -108,9 +108,11 @@ namespace Assets.Scripts.Mole
 
         #region IEndGame Methods
 
-        public void OnEndGame()
+        public void OnEndGame(bool playerDefeated)
         {
-            moleAnimator.SetBool("Celebrate", true);
+            StopMole();
+            moleAnimator.SetBool("Celebrate", playerDefeated);
+            moleAnimator.SetBool("Defeated", !playerDefeated);
         }
 
         #endregion

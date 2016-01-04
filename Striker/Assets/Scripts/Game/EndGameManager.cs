@@ -83,14 +83,17 @@ namespace Assets.Scripts.Game
             m_endGameObjects.Clear();
         }
 
-        public void RunEndGame()
+        public void RunEndGame(bool playerDefeated)
         {
             foreach (KeyValuePair<int, IEndGame> endGameObject in m_endGameObjects)
             {
-                endGameObject.Value.OnEndGame();
+                endGameObject.Value.OnEndGame(playerDefeated);
             }
 
-            m_endGameTimer.StartTimer();
+            if (!m_endGameTimer.Active())
+            {
+                m_endGameTimer.StartTimer();
+            }
         }
 
         #endregion
