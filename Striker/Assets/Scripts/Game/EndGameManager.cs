@@ -68,6 +68,8 @@ namespace Assets.Scripts.Game
             {
                 m_endGameObjects.Add(hashCode, endGameObject);
             }
+
+            m_endGameTimer.ResetTimer();
         }
 
         public void Remove(int hashCode)
@@ -80,6 +82,9 @@ namespace Assets.Scripts.Game
 
         public void Clear()
         {
+            IsEndGameTimeDone = false;
+            m_endGameTimer.StopTimer();
+            m_endGameTimer.ResetTimer();
             m_endGameObjects.Clear();
         }
 
@@ -89,10 +94,15 @@ namespace Assets.Scripts.Game
             {
                 endGameObject.Value.OnEndGame(playerDefeated);
             }
+            
+            m_endGameTimer.StartTimer();
+        }
 
-            if (!m_endGameTimer.Active())
+        public void Update()
+        {
+            if(m_endGameTimer.Active())
             {
-                m_endGameTimer.StartTimer();
+                m_endGameTimer.Update();
             }
         }
 

@@ -412,7 +412,10 @@ namespace Assets.Scripts.Game
             if(EndGameManager.Instance.IsEndGameTimeDone)
             {
                 GameIsOver();
+                return;
             }
+
+            EndGameManager.Instance.Update();
         }
 
         private void Save()

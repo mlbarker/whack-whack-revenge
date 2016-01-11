@@ -1,9 +1,10 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2015
+// ImperfectlyCoded © 2015-2016
 //-----------------------------
 
 namespace Assets.Scripts.Hud
 {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
@@ -79,6 +80,9 @@ namespace Assets.Scripts.Hud
         public void RetryLevel()
         {
             SavePersistence();
+
+            // clear out endgame manager
+            EndGameManager.Instance.Clear();
 
             int levelId = Application.loadedLevel;
             Application.LoadLevel(levelId);
@@ -162,6 +166,11 @@ namespace Assets.Scripts.Hud
         private void InitializePlayerHealth()
         {
             m_playerHealthUnits = GameObject.FindGameObjectsWithTag("HealthUnitFilled");
+
+            if(m_playerHealthUnits == null)
+            {
+                throw new NullReferenceException("Hud.HealthUnitFilled Game Object is null");
+            }
 
             for (int index = 0; index < m_playerHealthUnits.Length; ++index)
             {
@@ -250,12 +259,25 @@ namespace Assets.Scripts.Hud
         private void UpdatePlayerHealthUnits()
         {
             int playerHealth = m_game.player.playerController.CurrentHealth;
-            if (GameIsFinished() || playerHealth < 1 || m_game.PlayerHits == 0)
+            if (GameIsFinished() || m_game.PlayerHits == 0)
             {
                 return;
             }
 
-            m_playerHealthUnits[playerHealth - 1].SetActive(false);
+            // TODO: need a better way to do this as health units might increase
+            foreach (GameObject healthUnit in m_playerHealthUnits)
+            {
+                HealthUI healthUi = healthUnit.GetComponentInParent<HealthUI>();
+                if(healthUi == null)
+                {
+                    throw new NullReferenceException("HealthUI component is null");
+                }
+
+                if (healthUi.HealthIndex == playerHealth + 1)
+                {
+                    healthUnit.gameObject.GetComponent<Image>().enabled = false;
+                }
+            }
         }
 
         private void SetObjectives()
