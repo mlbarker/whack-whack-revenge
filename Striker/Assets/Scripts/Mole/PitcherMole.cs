@@ -53,6 +53,12 @@ namespace Assets.Scripts.Mole
 
         #endregion
 
+        public override void OnEndGame(bool playerDefeated)
+        {
+            // TODO: make sure all projectiles stop
+            base.OnEndGame(playerDefeated);
+        }
+
         #region Animation Event Methods
 
         public void OnAttackMidway()

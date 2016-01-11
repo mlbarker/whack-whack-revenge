@@ -108,7 +108,7 @@ namespace Assets.Scripts.Mole
 
         #region IEndGame Methods
 
-        public void OnEndGame(bool playerDefeated)
+        public virtual void OnEndGame(bool playerDefeated)
         {
             StopMole();
             moleAnimator.SetBool("Celebrate", playerDefeated);

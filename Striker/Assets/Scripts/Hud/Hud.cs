@@ -73,6 +73,7 @@ namespace Assets.Scripts.Hud
         {
             SavePersistence();
 
+            EndGameManager.Instance.Clear();
             int levelId = LevelManager.Instance.GetNextLevelSelected();
             Application.LoadLevel(levelId);
         }
