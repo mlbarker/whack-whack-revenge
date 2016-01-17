@@ -55,7 +55,12 @@ namespace Assets.Scripts.Mole
 
         public override void OnEndGame(bool playerDefeated)
         {
-            // TODO: make sure all projectiles stop
+            // Destroy the projectile if it exists
+            if (m_clone != null)
+            {
+                m_clone.GetComponent<Projectile>().DestroyProjectile();
+            }
+
             base.OnEndGame(playerDefeated);
         }
 
