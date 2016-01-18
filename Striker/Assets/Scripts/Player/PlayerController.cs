@@ -186,7 +186,15 @@ namespace Assets.Scripts.Player
 
         private void UpdateInput()
         {
-            WhackTriggered = m_inputController.AttackButton();
+            if (!EndGameManager.Instance.IsEndGameActive && !EndGameManager.Instance.IsEndGameTimeDone)
+            {
+                WhackTriggered = m_inputController.AttackButton();
+            }
+            else
+            {
+                int test = 0;
+                test++;
+            }
         }
 
         private void UpdateHit()

@@ -145,7 +145,7 @@ namespace Assets.Scripts.Player
                 return true;
             }
 
-            if(TouchInputReceived())
+            if (TouchInputReceived())
             {
                 return true;
             }

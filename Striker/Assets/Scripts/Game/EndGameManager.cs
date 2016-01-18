@@ -42,6 +42,12 @@ namespace Assets.Scripts.Game
             }
         }
 
+        public bool IsEndGameActive
+        {
+            get;
+            private set;
+        }
+
         public bool IsEndGameTimeDone
         {
             get;
@@ -55,6 +61,7 @@ namespace Assets.Scripts.Game
         private EndGameManager()
         {
             IsEndGameTimeDone = false;
+            IsEndGameActive = false;
             m_endGameTimer = new Timer(MAX_END_GAME_TIME, EndGameIsDone);
         }
 
@@ -83,6 +90,7 @@ namespace Assets.Scripts.Game
         public void Clear()
         {
             IsEndGameTimeDone = false;
+            IsEndGameActive = false;
             m_endGameTimer.StopTimer();
             m_endGameTimer.ResetTimer();
             m_endGameObjects.Clear();
@@ -96,6 +104,7 @@ namespace Assets.Scripts.Game
             }
             
             m_endGameTimer.StartTimer();
+            IsEndGameActive = true;
         }
 
         public void Update()
@@ -103,6 +112,10 @@ namespace Assets.Scripts.Game
             if(m_endGameTimer.Active())
             {
                 m_endGameTimer.Update();
+            }
+            else
+            {
+                IsEndGameActive = false;
             }
         }
 
