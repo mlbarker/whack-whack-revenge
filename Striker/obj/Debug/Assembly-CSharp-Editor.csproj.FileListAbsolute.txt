@@ -1,0 +1,3 @@
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\Assembly-CSharp-Editor.dll
+C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\obj\Debug\Assembly-CSharp-Editor.pdb

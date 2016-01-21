@@ -6,10 +6,9 @@ namespace Assets.Scripts.Level
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
     using Assets.Scripts.Game;
-    using Assets.Scripts.Interfaces;
-    using Assets.Scripts.Level;
     using Assets.Scripts.Persistence;
 
     public class LevelSelect : MonoBehaviour
@@ -56,7 +55,7 @@ namespace Assets.Scripts.Level
 
             if(!panelWasActive)
             {
-                Application.LoadLevel(SceneIndices.MainMenuScene);
+                SceneManager.LoadScene(SceneIndices.MainMenuScene);
             }
         }
 
@@ -319,7 +318,7 @@ namespace Assets.Scripts.Level
             SaveLevelStarTypes((int)zoneId, (int)levelId);
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
-            Application.LoadLevel((int)levelId);
+            SceneManager.LoadScene((int)levelId);
         }
 
         private void SaveLevelStarTypes()

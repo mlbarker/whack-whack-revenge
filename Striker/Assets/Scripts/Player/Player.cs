@@ -168,7 +168,11 @@ namespace Assets.Scripts.Player
         {
             if (PlatformSupportsMouseInput())
             {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPoint.z = Camera.main.transform.position.z;
+                Ray ray = new Ray(worldPoint, new Vector3(0, 0, 1));
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
                 if (!hit)
                 {
@@ -180,6 +184,8 @@ namespace Assets.Scripts.Player
                 {
                     throw new PlayerException();
                 }
+
+                Debug.Log("DET" + hit.collider.tag + " | " + hit.collider.GetInstanceID());
 
                 HitCollisionId = hit.collider.GetInstanceID();
                 return true;

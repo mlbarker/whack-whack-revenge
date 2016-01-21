@@ -7,6 +7,7 @@ namespace Assets.Scripts.Hud
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
     using Assets.Scripts.Level;
     using Assets.Scripts.Game;
@@ -66,7 +67,8 @@ namespace Assets.Scripts.Hud
         public void BackToLevelSelect()
         {
             SavePersistence();
-            Application.LoadLevel(SceneIndices.LevelSelectScene);
+            EndGameManager.Instance.Clear();
+            SceneManager.LoadScene(SceneIndices.LevelSelectScene);
         }
 
         public void ContinueToNextLevel()
@@ -75,7 +77,7 @@ namespace Assets.Scripts.Hud
 
             EndGameManager.Instance.Clear();
             int levelId = LevelManager.Instance.GetNextLevelSelected();
-            Application.LoadLevel(levelId);
+            SceneManager.LoadScene(levelId);
         }
 
         public void RetryLevel()
@@ -85,8 +87,8 @@ namespace Assets.Scripts.Hud
             // clear out endgame manager
             EndGameManager.Instance.Clear();
 
-            int levelId = Application.loadedLevel;
-            Application.LoadLevel(levelId);
+            int levelId = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(levelId);
         }
 
         public void CloseObjectiveWindow()
