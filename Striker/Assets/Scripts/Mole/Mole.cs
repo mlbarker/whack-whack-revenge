@@ -33,6 +33,22 @@ namespace Assets.Scripts.Mole
             }
         }
 
+        public bool Hit
+        {
+            get
+            {
+                return moleController.Hit;
+            }
+        }
+
+        public int Health
+        {
+            get
+            {
+                return moleController.Health;
+            }
+        }
+
         #endregion
 
         #region Unity Methods
@@ -45,6 +61,14 @@ namespace Assets.Scripts.Mole
         void Update()
         {
             UpdateMole();
+        }
+
+        void OnMouseDown()
+        {
+            if (moleController.IsUp)
+            {
+                moleController.RegisterHit();
+            }
         }
 
         #endregion
@@ -146,6 +170,11 @@ namespace Assets.Scripts.Mole
         public void ClearPositionChangeFlag()
         {
             moleController.ClearCycle();
+        }
+
+        public void ClearHit()
+        {
+            moleController.ClearHit();
         }
 
         #endregion

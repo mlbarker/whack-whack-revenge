@@ -131,9 +131,9 @@ namespace Assets.Scripts.Game
                 return;
             }
 
+            UpdatePlayer();
             UpdateGameStatus();
             UpdateScore();
-            UpdatePlayer();
             UpdateMole();
             UpdateTime();
             GameTimeIsUp();
@@ -352,7 +352,7 @@ namespace Assets.Scripts.Game
             {
                 if (!moleController.IsUp && moleController.Hit)
                 {
-                    moleController.Hit = false;
+                    //moleController.Hit = false;
                 }
             }
         }

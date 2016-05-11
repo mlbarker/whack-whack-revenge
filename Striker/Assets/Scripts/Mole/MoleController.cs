@@ -98,7 +98,7 @@ namespace Assets.Scripts.Mole
         public bool Hit
         {
             get;
-            set;
+            private set;
         }
 
         public bool IsMoving
@@ -248,7 +248,7 @@ namespace Assets.Scripts.Mole
             UpdateAttackTimer();
             UpdateMoveTimer();
             UpdateRecoveryTimer();
-            ClearHit();
+            //ClearHit();
         }
 
         public void DecrementHealth(int amount)
@@ -654,12 +654,17 @@ namespace Assets.Scripts.Mole
             }
         }
 
-        private void ClearHit()
+        internal void ClearHit()
         {
             if(Hit)
             {
                 Hit = false;
             }
+        }
+
+        internal void RegisterHit()
+        {
+            Hit = true;
         }
 
         internal void ClearAttack()

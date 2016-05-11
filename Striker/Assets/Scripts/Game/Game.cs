@@ -263,11 +263,14 @@ namespace Assets.Scripts.Game
 
             UpdateProjectilesList();
             UpdatePlayerHealth();
-            UpdateProjectileWasWhacked();
-            UpdateMoleWasWhacked();
-            ClearPlayerHitCollision();
+            UpdateWhackedObjects();
+            //UpdateProjectileWasWhacked();
+            //UpdateMoleWasWhacked();
+            //ClearPlayerHitCollision();
             UpdateGameController();
             UpdateStarsAchievements();
+            ClearObjectHit();
+            ClearMoleHit();
             CheckEndGameFinished();
         }
 
@@ -320,6 +323,34 @@ namespace Assets.Scripts.Game
             }
         }
 
+        private void UpdateWhackedObjects()
+        {
+            foreach (GameObject projectileObject in m_projectileObjects)
+            {
+                if (projectileObject == null)
+                {
+                    continue;
+                }
+
+                bool hit = projectileObject.GetComponent<Projectile>().Hit;
+                int health = projectileObject.GetComponent<Projectile>().Health;
+                if (hit)
+                {
+                    player.ObjectWasHit(true);
+                    return;
+                }
+            }
+
+            foreach (Mole mole in m_moles)
+            {
+                if (mole.Hit)
+                {
+                    player.ObjectWasHit(true);
+                    return;
+                }
+            }
+        }
+
         private void UpdateProjectileWasWhacked()
         {
             if (DisplayGameResults || DisplayDefeatedGameResults || player.HitCollisionId == -1)
@@ -340,7 +371,7 @@ namespace Assets.Scripts.Game
                 if (player.HitCollisionId == hitCollision2dId)
                 {
                     Debug.Log("HIT " + projectile.GetComponent<Collider2D>().tag + " | " + hitCollision2dId);
-                    projectile.GetComponent<Projectile>().DecrementHealth();
+                    //projectile.GetComponent<Projectile>().DecrementHealth();
                     break;
                 }
             }
@@ -365,7 +396,7 @@ namespace Assets.Scripts.Game
                 if (player.HitCollisionId == hitCollision2dId && mole.moleController.InjuredAnimFinished)
                 {
                     Debug.Log("HIT " + mole.GetComponent<Collider2D>().tag + " | " + hitCollision2dId);
-                    mole.moleController.Hit = true;
+                    //mole.moleController.Hit = true;
                     break;
                 }
             }
@@ -376,6 +407,19 @@ namespace Assets.Scripts.Game
             player.ClearHitCollisionId();
         }
 
+        private void ClearObjectHit()
+        {
+            player.ClearObjectHit();
+        }
+
+        private void ClearMoleHit()
+        {
+            foreach (Mole mole in m_moles)
+            {
+                mole.ClearHit();
+            }
+        }
+
         private void UpdateGameController()
         {
             if (DisplayGameResults || DisplayDefeatedGameResults)
@@ -384,6 +428,7 @@ namespace Assets.Scripts.Game
             }
 
             m_gameController.Update();
+
         }
 
         private void UpdateStarsAchievements()

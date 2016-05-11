@@ -95,6 +95,12 @@ namespace Assets.Scripts.Projectile
             ClearHit();
         }
 
+        void OnMouseDown()
+        {
+            DecrementHealth();
+            Hit = true;
+        }
+
         #endregion
 
         #region Public Methods
@@ -104,14 +110,7 @@ namespace Assets.Scripts.Projectile
             // animator controller calls here
         }
 
-        public virtual void DecrementHealth()
-        {
-            if (!Swoon)
-            {
-                --Health;
-                Hit = true;
-            }
-        }
+        
 
         public void DestroyProjectile()
         {
@@ -140,6 +139,15 @@ namespace Assets.Scripts.Projectile
             m_destroyTimer.StopTimer();
 
             DefaultSwoonAnimation = true;
+        }
+
+        protected virtual void DecrementHealth()
+        {
+            if (!Swoon)
+            {
+                --Health;
+                //Hit = true;
+            }
         }
 
         #endregion

@@ -1,5 +1,5 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014-2015
+// ImperfectlyCoded © 2014-2016
 //-----------------------------
 
 namespace Assets.Scripts.Player
@@ -11,6 +11,13 @@ namespace Assets.Scripts.Player
 
     public class Player : MonoBehaviour, IInputController, IHitController, IHealthController
     {
+        #region Fields
+
+        const int MAX_RESULTS = 5;
+        RaycastHit2D[] m_results;
+
+        #endregion
+
         #region Public Properties
 
         public int HitCollisionId
@@ -37,6 +44,12 @@ namespace Assets.Scripts.Player
             {
                 return playerController.CurrentHealth;
             }
+        }
+
+        public bool ObjectHit
+        {
+            get;
+            private set;
         }
 
         #endregion
@@ -116,11 +129,23 @@ namespace Assets.Scripts.Player
             playerController.SetInputController(this);
             playerController.SetHitController(this);
             HitCollisionId = -1;
+
+            m_results = new RaycastHit2D[MAX_RESULTS];
         }
 
         public void ClearHitCollisionId()
         {
             HitCollisionId = -1;
+        }
+
+        public void ObjectWasHit(bool hit)
+        {
+            ObjectHit = hit;
+        }
+
+        public void ClearObjectHit()
+        {
+            ObjectHit = false;
         }
 
         #endregion
@@ -145,17 +170,12 @@ namespace Assets.Scripts.Player
                 return true;
             }
 
-            if (TouchInputReceived())
-            {
-                return true;
-            }
-
             return false;
         }
 
         private bool ObjectWasHit()
         {
-            if (!IsInputOverObject())
+            if (!ObjectHit)
             {
                 return false;
             }
@@ -173,6 +193,16 @@ namespace Assets.Scripts.Player
                 worldPoint.z = Camera.main.transform.position.z;
                 Ray ray = new Ray(worldPoint, new Vector3(0, 0, 1));
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+                Array.Clear(m_results, 0, m_results.Length);
+                int amountHit = Physics2D.GetRayIntersectionNonAlloc(ray, m_results);
+                foreach (RaycastHit2D result in m_results)
+                {
+                    if (result.collider.tag == "Projectile" && result != null)
+                    {
+                        Debug.Log("DET | " + result.collider.tag + " | Using GetRayIntersectionNonAlloc");
+                    }
+                }
 
                 if (!hit)
                 {
