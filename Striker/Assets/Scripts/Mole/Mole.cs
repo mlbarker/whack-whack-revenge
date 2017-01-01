@@ -63,14 +63,13 @@ namespace Assets.Scripts.Mole
             UpdateMole();
         }
 
-        //void OnMouseDown()
-        //{
-        //    if (moleController.IsUp)
-        //    {
-        //        Debug.Log("HIT - MOLE");
-        //        moleController.RegisterHit();
-        //    }
-        //}
+        void OnMouseDown()
+        {
+            if (moleController.IsUp)
+            {
+                moleController.RegisterHit();
+            }
+        }
 
         #endregion
 
@@ -217,7 +216,6 @@ namespace Assets.Scripts.Mole
 
         private void UpdateMole()
         {
-            Debug.DrawLine(GetComponent<BoxCollider2D>().bounds.min, GetComponent<Collider2D>().bounds.max, Color.magenta, Time.deltaTime, false);
             moleController.Update();
         }
 

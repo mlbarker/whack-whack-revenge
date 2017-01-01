@@ -1,5 +1,5 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2014-2016
+// ImperfectlyCoded © 2014-2015
 //-----------------------------
 
 namespace Assets.Scripts.Game
@@ -263,12 +263,12 @@ namespace Assets.Scripts.Game
 
             UpdateProjectilesList();
             UpdatePlayerHealth();
-            UpdateGameControllerPlayer();
-            UpdateProjectileWasWhacked();
-            UpdateMoleWasWhacked();
+            UpdateWhackedObjects();
+            //UpdateProjectileWasWhacked();
+            //UpdateMoleWasWhacked();
+            //ClearPlayerHitCollision();
             UpdateGameController();
             UpdateStarsAchievements();
-            ClearPlayerHitCollision();
             ClearObjectHit();
             ClearMoleHit();
             CheckEndGameFinished();
@@ -371,7 +371,7 @@ namespace Assets.Scripts.Game
                 if (player.HitCollisionId == hitCollision2dId)
                 {
                     Debug.Log("HIT " + projectile.GetComponent<Collider2D>().tag + " | " + hitCollision2dId);
-                    projectile.GetComponent<Projectile>().RegisterHit();
+                    //projectile.GetComponent<Projectile>().DecrementHealth();
                     break;
                 }
             }
@@ -393,12 +393,10 @@ namespace Assets.Scripts.Game
 
                 int hitCollision2dId = mole.GetComponent<Collider2D>().GetInstanceID();
                 // TODO: My God, I'm not liking this one bit - figure out different way of doing this
-                // This is basically a buffer to make sure that the mole cannot be hit until his injured
-                // animation has finished.
                 if (player.HitCollisionId == hitCollision2dId && mole.moleController.InjuredAnimFinished)
                 {
                     Debug.Log("HIT " + mole.GetComponent<Collider2D>().tag + " | " + hitCollision2dId);
-                    mole.moleController.RegisterHit();
+                    //mole.moleController.Hit = true;
                     break;
                 }
             }
@@ -420,17 +418,6 @@ namespace Assets.Scripts.Game
             {
                 mole.ClearHit();
             }
-        }
-
-        private void UpdateGameControllerPlayer()
-        {
-            if (DisplayGameResults || DisplayDefeatedGameResults)
-            {
-                return;
-            }
-
-            m_gameController.UpdatePlayerStatus();
-
         }
 
         private void UpdateGameController()

@@ -90,20 +90,16 @@ namespace Assets.Scripts.Projectile
 
         void Update()
         {
-            Debug.DrawLine(GetComponent<CircleCollider2D>().bounds.min, GetComponent<Collider2D>().bounds.max, Color.black, Time.deltaTime, false);
             UpdateDefaultSwoonAnimation();
             UpdateScale();
-            UpdateHealth();
-            //ClearHit();
+            ClearHit();
         }
 
-        //void OnMouseDown()
-        //{
-        //    Debug.Log("HIT - PROJECTILE");
-        //    Debug.Log("TravelTimeElapsed = " + TravelTimeElapsed);
-        //    DecrementHealth();
-        //    Hit = true;
-        //}
+        void OnMouseDown()
+        {
+            DecrementHealth();
+            Hit = true;
+        }
 
         #endregion
 
@@ -150,6 +146,7 @@ namespace Assets.Scripts.Projectile
             if (!Swoon)
             {
                 --Health;
+                //Hit = true;
             }
         }
 
@@ -168,7 +165,7 @@ namespace Assets.Scripts.Projectile
                 }
 
                 transform.localScale += new Vector3(scale, scale);
-                transform.Rotate(Vector3.forward * Time.deltaTime);
+                transform.Rotate(Vector3.forward * Time.time);
             }
         }
 
@@ -192,27 +189,9 @@ namespace Assets.Scripts.Projectile
             }
         }
 
-        private void UpdateHealth()
-        {
-            if (Hit)
-            {
-                DecrementHealth();
-                ClearHit();
-            }
-        }
-
         private void ClearHit()
         {
             Hit = false;
-        }
-
-        #endregion
-
-        #region Internal Methods
-
-        internal void RegisterHit()
-        {
-            Hit = true;
         }
 
         #endregion
