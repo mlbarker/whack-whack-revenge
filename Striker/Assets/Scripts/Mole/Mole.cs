@@ -33,6 +33,22 @@ namespace Assets.Scripts.Mole
             }
         }
 
+        public bool Hit
+        {
+            get
+            {
+                return moleController.Hit;
+            }
+        }
+
+        public int Health
+        {
+            get
+            {
+                return moleController.Health;
+            }
+        }
+
         #endregion
 
         #region Unity Methods
@@ -46,6 +62,15 @@ namespace Assets.Scripts.Mole
         {
             UpdateMole();
         }
+
+        //void OnMouseDown()
+        //{
+        //    if (moleController.IsUp)
+        //    {
+        //        Debug.Log("HIT - MOLE");
+        //        moleController.RegisterHit();
+        //    }
+        //}
 
         #endregion
 
@@ -148,6 +173,11 @@ namespace Assets.Scripts.Mole
             moleController.ClearCycle();
         }
 
+        public void ClearHit()
+        {
+            moleController.ClearHit();
+        }
+
         #endregion
 
         #region Animation Event Methods
@@ -187,6 +217,7 @@ namespace Assets.Scripts.Mole
 
         private void UpdateMole()
         {
+            Debug.DrawLine(GetComponent<BoxCollider2D>().bounds.min, GetComponent<Collider2D>().bounds.max, Color.magenta, Time.deltaTime, false);
             moleController.Update();
         }
 

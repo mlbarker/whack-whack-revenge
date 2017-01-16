@@ -190,11 +190,6 @@ namespace Assets.Scripts.Player
             {
                 WhackTriggered = m_inputController.AttackButton();
             }
-            else
-            {
-                int test = 0;
-                test++;
-            }
         }
 
         private void UpdateHit()

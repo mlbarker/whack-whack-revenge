@@ -117,6 +117,8 @@ namespace Assets.Scripts.Score
             }
 
             ++WhackAttempts;
+
+            UnityEngine.Debug.Log("Percentage = " + Whacks + "/" + WhackAttempts);
         }
 
         #endregion
