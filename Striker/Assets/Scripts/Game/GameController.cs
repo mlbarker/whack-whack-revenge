@@ -124,6 +124,12 @@ namespace Assets.Scripts.Game
             AddToPauseManager();
         }
 
+        // 
+        public void UpdatePlayerStatus()
+        {
+            UpdatePlayer();
+        }
+
         public void Update()
         {
             if(IsPaused)

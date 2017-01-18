@@ -6,7 +6,6 @@ namespace Assets.Scripts.Menu
 {
     using System;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
     using Assets.Scripts.Level;
     using Assets.Scripts.Interfaces;
@@ -61,12 +60,12 @@ namespace Assets.Scripts.Menu
 
         public void RunMainMenu()
         {
-            SceneManager.LoadScene(SceneIndices.MainMenuScene);
+            Application.LoadLevel(SceneIndices.MainMenuScene);
         }
 
         public void RunStartGame()
         {
-            SceneManager.LoadScene(SceneIndices.LevelSelectScene);
+            Application.LoadLevel(SceneIndices.LevelSelectScene);
         }
 
         public void RunStats()

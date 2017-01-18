@@ -6,7 +6,6 @@ namespace Assets.Scripts.Level
 {
     using System.Collections.Generic;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
     using Assets.Scripts.Game;
     using Assets.Scripts.Persistence;
@@ -55,7 +54,7 @@ namespace Assets.Scripts.Level
 
             if(!panelWasActive)
             {
-                SceneManager.LoadScene(SceneIndices.MainMenuScene);
+                Application.LoadLevel(SceneIndices.MainMenuScene);
             }
         }
 
@@ -318,7 +317,7 @@ namespace Assets.Scripts.Level
             SaveLevelStarTypes((int)zoneId, (int)levelId);
 
             LevelManager.Instance.StoreSelectedLevelInfo(zoneId, levelId);
-            SceneManager.LoadScene((int)levelId);
+            Application.LoadLevel((int)levelId);
         }
 
         private void SaveLevelStarTypes()

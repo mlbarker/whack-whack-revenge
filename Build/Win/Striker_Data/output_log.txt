@@ -1,0 +1,1986 @@
+Initialize engine version: 5.0.1f1 (5a2e8fe35a68)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: Intel(R) HD Graphics 3000 (ID=0x116)
+    Vendor:   Intel
+    VRAM:     816 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.642 seconds
+desktop: 1024x768 60Hz; virtual: 1024x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Swashy-B\Documents\whack-whack-revenge\Build\Win\Striker_Data\Managed\System.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 21.036573 ms
+System memory in use before: 11.3 MB.
+System memory in use after: 11.3 MB.
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 894.
+Total: 0.696563 ms (FindLiveObjects: 0.065149 ms CreateObjectMapping: 0.037037 ms MarkObjects: 0.585898 ms  DeleteObjects: 0.007139 ms)
+
+10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+09
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+08
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+07
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+06
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+05
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+04
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+03
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+02
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+01
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+09
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+08
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+07
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+06
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+05
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+04
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+03
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+02
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+01
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+Not zone lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeZoneLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:208)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:72)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 208)
+
+Not zone lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeZoneLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:208)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:72)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 208)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.758585 ms
+System memory in use before: 11.9 MB.
+System memory in use after: 12.0 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 602.
+Total: 0.810798 ms (FindLiveObjects: 0.067380 ms CreateObjectMapping: 0.052655 ms MarkObjects: 0.666219 ms  DeleteObjects: 0.020972 ms)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+HIT Mole | 11992
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateMoleWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:400)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:268)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 400)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+Percentage = 1/1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:309)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10166
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 2/2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+HIT Mole | 11992
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateMoleWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:400)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:268)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 400)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+Percentage = 3/3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:309)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10192
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 4/4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10208
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 5/5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+Percentage = 5/6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:333)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+Percentage = 5/7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:334)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10234
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Mole | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:228)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 228)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 6/8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10260
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 7/9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:UpdatePlayerStatus() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:130)
+Assets.Scripts.Game.Game:UpdateGameControllerPlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:432)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:266)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+HIT Projectile | -10276
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Game.Game:UpdateProjectileWasWhacked() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:373)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:267)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Game/Game.cs Line: 373)
+
+DETECTED | Projectile | Using GetRayIntersectionNonAlloc
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Player.Player:IsInputOverObject() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:222)
+Assets.Scripts.Player.Player:AttackButtonPressed() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:162)
+Assets.Scripts.Player.Player:AttackButton() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\Player.cs:77)
+Assets.Scripts.Player.PlayerController:UpdateInput() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:191)
+Assets.Scripts.Player.PlayerController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:131)
+Assets.Scripts.Game.GameController:UpdatePlayer() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:279)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:140)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Player/Player.cs Line: 222)
+
+Percentage = 8/10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Score.ScoreController:RecordWhackAttempt(Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Score\ScoreController.cs:121)
+Assets.Scripts.Player.PlayerController:UpdateStats(ScoreController, Int32, Boolean) (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Player\PlayerController.cs:138)
+Assets.Scripts.Game.GameController:UpdateScore() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:326)
+Assets.Scripts.Game.GameController:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\GameController.cs:142)
+Assets.Scripts.Game.Game:UpdateGameController() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:443)
+Assets.Scripts.Game.Game:UpdateGame() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:269)
+Assets.Scripts.Game.Game:Update() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Game\Game.cs:140)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Score/ScoreController.cs Line: 121)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.767959 ms
+System memory in use before: 12.1 MB.
+System memory in use after: 12.1 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 602.
+Total: 1.233376 ms (FindLiveObjects: 0.124944 ms CreateObjectMapping: 0.056671 ms MarkObjects: 1.037482 ms  DeleteObjects: 0.011601 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.628735 ms
+System memory in use before: 12.1 MB.
+System memory in use after: 12.1 MB.
+
+Unloading 78 unused Assets to reduce memory usage. Loaded Objects now: 904.
+Total: 1.109771 ms (FindLiveObjects: 0.071842 ms CreateObjectMapping: 0.034805 ms MarkObjects: 0.757696 ms  DeleteObjects: 0.244087 ms)
+
+10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+09
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+08
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+07
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+06
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+05
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+04
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+03
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+02
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+01
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+09
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+08
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+07
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+06
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+05
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+04
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+03
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+02
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+01
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Scripts.Level.Level:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:121)
+Assets.Scripts.Level.Level:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\Level.cs:49)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/Level.cs Line: 121)
+
+Not zone lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeZoneLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:208)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:72)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 208)
+
+Not zone lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeZoneLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:208)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:72)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 208)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not level lock object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelLocks() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:232)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:73)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 232)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Not star achieved object
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:LogWarning(Object)
+Assets.Scripts.Level.LevelSelect:InitializeLevelStarsAchieved() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:268)
+Assets.Scripts.Level.LevelSelect:Initialize() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:74)
+Assets.Scripts.Level.LevelSelect:Start() (at C:\Users\Swashy-B\Documents\whack-whack-revenge\Striker\Assets\Scripts\Level\LevelSelect.cs:30)
+ 
+(Filename: C:/Users/Swashy-B/Documents/whack-whack-revenge/Striker/Assets/Scripts/Level/LevelSelect.cs Line: 268)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.577865 ms
+System memory in use before: 11.8 MB.
+System memory in use after: 11.8 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 315.
+Total: 1.154840 ms (FindLiveObjects: 0.081659 ms CreateObjectMapping: 0.029004 ms MarkObjects: 0.997321 ms  DeleteObjects: 0.043730 ms)
+

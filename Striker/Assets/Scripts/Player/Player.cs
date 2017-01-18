@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player
         #region Fields
 
         const int MAX_RESULTS = 5;
-        RaycastHit2D[] m_results;
+        private RaycastHit2D[] m_results;
 
         #endregion
 
@@ -159,6 +159,11 @@ namespace Assets.Scripts.Player
                 return false;
             }
 
+            if(!IsInputOverObject())
+            {
+                return false;
+            }
+
             ++WhackAttempts;
             return true;
         }
@@ -186,78 +191,94 @@ namespace Assets.Scripts.Player
 
         private bool IsInputOverObject()
         {
-            if (PlatformSupportsMouseInput())
+            //if (PlatformSupportsMouseInput())
             {
                 //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPoint.z = Camera.main.transform.position.z;
                 Ray ray = new Ray(worldPoint, new Vector3(0, 0, 1));
-                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+                //RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
                 Array.Clear(m_results, 0, m_results.Length);
                 int amountHit = Physics2D.GetRayIntersectionNonAlloc(ray, m_results);
+
+                if (m_results.Length == 0)
+                {
+                    HitCollisionId = -1;
+                    return ObjectHit;
+                }
+
                 foreach (RaycastHit2D result in m_results)
                 {
-                    if (result.collider.tag == "Projectile" && result != null)
+                    if (!result)
                     {
-                        Debug.Log("DET | " + result.collider.tag + " | Using GetRayIntersectionNonAlloc");
+                        continue;
+                    }
+
+                    // leave the loop if this is a projectile... they take precedence
+                    if (result.collider.tag == "Projectile")
+                    {
+                        HitCollisionId = result.collider.GetInstanceID();
+                        Debug.Log("DETECTED | " + result.collider.tag + " | Using GetRayIntersectionNonAlloc");
+                        break;
+                    }
+                    else
+                    {
+                        HitCollisionId = result.collider.GetInstanceID();
+                        Debug.Log("DETECTED | " + result.collider.tag + " | Using GetRayIntersectionNonAlloc");
                     }
                 }
 
-                if (!hit)
-                {
-                    HitCollisionId = -1;
-                    return false;
-                }
+                //if (!hit)
+                //{
+                //    HitCollisionId = -1;
+                //    return false;
+                //}
 
-                if (hit.collider == null)
-                {
-                    throw new PlayerException();
-                }
+                //if (hit.collider == null)
+                //{
+                //    throw new PlayerException();
+                //}
 
-                Debug.Log("DET" + hit.collider.tag + " | " + hit.collider.GetInstanceID());
+                //Debug.Log("ACTUAL | " + hit.collider.tag + " | " + hit.collider.GetInstanceID());
 
-                HitCollisionId = hit.collider.GetInstanceID();
-                return true;
+                //HitCollisionId = hit.collider.GetInstanceID();
+                ObjectHit = true;
+                return ObjectHit;
             }
-            else if (PlatformSupportsTouchInput())
-            {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
+            //else if (PlatformSupportsTouchInput())
+            //{
+            //    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
 
-                if (!hit)
-                {
-                    HitCollisionId = -1;
-                    return false;
-                }
+            //    if (!hit)
+            //    {
+            //        HitCollisionId = -1;
+            //        return false;
+            //    }
 
-                HitCollisionId = hit.collider.GetInstanceID();
-                return true;
-            }
+            //    HitCollisionId = hit.collider.GetInstanceID();
+            //    return true;
+            //}
 
-            HitCollisionId = -1;
-            return false;
+            //HitCollisionId = -1;
+            //return false;
         }
 
         private bool MouseInputReceived()
         {
-            if (!PlatformSupportsMouseInput())
-            {
-                return false;
-            }
+            //if (!PlatformSupportsMouseInput())
+            //{
+            //    return false;
+            //}
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                return true;
-            }
-
-            return false;
+            return Input.GetMouseButtonDown(0);
         }
 
-        private bool PlatformSupportsMouseInput()
-        {
-            return Application.platform == RuntimePlatform.WindowsPlayer ||
-                   Application.platform == RuntimePlatform.WindowsEditor;
-        }
+        //private bool PlatformSupportsMouseInput()
+        //{
+        //    return Application.platform == RuntimePlatform.WindowsPlayer ||
+        //           Application.platform == RuntimePlatform.WindowsEditor;
+        //}
 
         private bool TouchInputReceived()
         {
