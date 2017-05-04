@@ -12,6 +12,8 @@ namespace Assets.Scripts.Mole
         Idle,
         Swoon,
         Attack,
+        CounterStance,
+        CounterAttack,
         Total
     }
 }

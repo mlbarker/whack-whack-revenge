@@ -1,14 +1,9 @@
 ﻿//-----------------------------
-// ImperfectlyCoded © 2015
+// ImperfectlyCoded © 2015-2017
 //-----------------------------
 
 namespace Assets.Scripts.Interfaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public interface IAttackController
     {
         void Attack();
