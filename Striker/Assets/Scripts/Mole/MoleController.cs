@@ -22,15 +22,18 @@ namespace Assets.Scripts.Mole
         private IHealthController m_healthController;
         private IAttackController m_attackController;
         private ICounterController m_counterController;
-        private Timer m_movementTimer;
-        private Timer m_recoveryTimer;
-        private Timer m_attackTimer;
-        private Timer m_counterStanceTimer;
+        private Timer m_movementTimer;          // the amount of time b/f movement
+        private Timer m_recoveryTimer;          // the amount of time for recovery
+        private Timer m_attackTimer;            // the amount of time till attack
+        private Timer m_toCounterStanceTimer;   // for the amount of time b/f counter stance
+        private Timer m_counterStanceTimer;     // for the amount of time in counter stance
         private IRandom m_random;
         private AnimationStateMachine m_asm;
         private int m_upCount;
         private int m_downCount;
         private string m_moleType;
+        private bool m_toCounterStanceDone;
+        private bool m_CounterStanceDone;
 
         #endregion
 
@@ -247,6 +250,9 @@ namespace Assets.Scripts.Mole
             MaxSecondsUp = maxSecondsUp;
             SecondsTillAttack = secondsTillAttack;
 
+            m_toCounterStanceDone = false;
+            m_CounterStanceDone = false;
+
             InitializeRandom();
             InitializeTimers();
             InitializeStatus();
@@ -279,6 +285,7 @@ namespace Assets.Scripts.Mole
             UpdateHealth();
             UpdateStatus();
             UpdateAttackTimer();
+            UpdateCounterStanceTimer();
             UpdateMoveTimer();
             UpdateRecoveryTimer();
             //ClearHit();
@@ -369,6 +376,11 @@ namespace Assets.Scripts.Mole
                 m_counterStanceTimer.StopTimer();
             }
 
+            if(m_toCounterStanceTimer != null)
+            {
+                m_toCounterStanceTimer.StopTimer();
+            }
+
             ResetStatus();
 
             Health = MaxHealth;
@@ -442,7 +454,12 @@ namespace Assets.Scripts.Mole
             {
                 if (m_counterStanceTimer == null)
                 {
-                    m_counterStanceTimer = new Timer(CounterStanceSeconds, StartCounterStanceSequence);
+                    m_counterStanceTimer = new Timer(5/*CounterStanceSeconds*/, TriggerCounterStanceEndMovement/*StartCounterStanceSequence*/);
+                }
+
+                if (m_toCounterStanceTimer == null)
+                {
+                    m_toCounterStanceTimer = new Timer(1, StartCounterStanceSequence);
                 }
             }
 
@@ -492,6 +509,7 @@ namespace Assets.Scripts.Mole
             if (!Swoon)
             {
                 m_status[MoleStatus.CounterStance] = true;
+                m_counterStanceTimer.StartTimer();
             }
         }
 
@@ -520,6 +538,8 @@ namespace Assets.Scripts.Mole
                 // TODO: should not set mole status here... this needs to change
                 m_status[MoleStatus.Idle] = false;
                 m_status[MoleStatus.Attack] = false;
+                m_status[MoleStatus.CounterStance] = false;
+                m_status[MoleStatus.CounterAttack] = false;
                 IsUp = false;
                 IsMoving = true;
                 m_movementController.MoveIntoHole();
@@ -548,11 +568,23 @@ namespace Assets.Scripts.Mole
             m_attackController.Attack();
         }
 
-        private void TriggerCounterStanceMovement()
+        private void TriggerCounterStanceStartMovement()
         {
             IsMoving = true;
             m_status[MoleStatus.CounterStance] = true;
             m_status[MoleStatus.Idle] = false;
+            m_counterStanceTimer.StartTimer();
+            m_counterController.CounterStanceStart();
+        }
+
+        private void TriggerCounterStanceEndMovement()
+        {
+            IsMoving = true;
+            m_status[MoleStatus.CounterStance] = false;
+            m_status[MoleStatus.Idle] = true;
+            m_counterStanceTimer.StopTimer();
+            m_counterStanceTimer.ResetTimer();
+            m_counterController.CounterStanceEnd();
         }
 
         private void TriggerInjuredMoleMovement()
@@ -602,9 +634,13 @@ namespace Assets.Scripts.Mole
                 // TriggerAttack(); - Make sure to set IsMoving to true inside of method
                 TriggerAttackMovement();
             }
-            else if (CounterStance)
+            else if (Idle && (m_counterController != null) && !IsMoving && CounterStance)//(CounterStance && Idle)
             {
-                //TriggerCounterStanceMovement();
+                if (!m_toCounterStanceTimer.Active())
+                {
+                    m_status[MoleStatus.Idle] = false;
+                    TriggerCounterStanceStartMovement();
+                }
             }
             else if (CounterAttack)
             {
@@ -739,9 +775,9 @@ namespace Assets.Scripts.Mole
                IsUp &&
                m_movementTimer.TimeHasElapsed &&
                !IsMoving &&
-               !m_counterStanceTimer.Active())
+               !m_toCounterStanceTimer.Active())
             {
-                m_counterStanceTimer.StartTimer();
+                m_toCounterStanceTimer.StartTimer();
 
                 // TODO: Don't want to pollute this timer
                 // TODO: method with a different timer. Find a better way....
@@ -751,12 +787,24 @@ namespace Assets.Scripts.Mole
 
             // Counter stance timer runs to indicate amount of time
             // the mole will be in his counter stance
-            if (m_counterStanceTimer.TimeHasElapsed)
+            if (m_toCounterStanceTimer.TimeHasElapsed && !m_toCounterStanceDone)
+            {
+                m_toCounterStanceTimer.StopTimer();
+                m_toCounterStanceTimer.ResetTimer();
+                //m_status[MoleStatus.CounterStance] = true; - Set in StartCounterStanceSequence()
+                m_status[MoleStatus.Idle] = false;
+                m_toCounterStanceDone = true;
+            }
+
+            if (m_counterStanceTimer.TimeHasElapsed && !m_CounterStanceDone)
             {
                 m_counterStanceTimer.StopTimer();
                 m_counterStanceTimer.ResetTimer();
+                m_status[MoleStatus.Idle] = true;
+                m_CounterStanceDone = true;
             }
 
+            m_toCounterStanceTimer.Update();
             m_counterStanceTimer.Update();
         }
 
@@ -768,6 +816,8 @@ namespace Assets.Scripts.Mole
             m_status[MoleStatus.Idle] = false;
             m_status[MoleStatus.Attack] = false;
             m_status[MoleStatus.Swoon] = false;
+            m_status[MoleStatus.CounterStance] = false;
+            m_status[MoleStatus.CounterAttack] = false;
         }
 
         private void StopAllTimers()
@@ -788,6 +838,18 @@ namespace Assets.Scripts.Mole
             {
                 m_attackTimer.StopTimer();
                 m_attackTimer.ResetTimer();
+            }
+
+            if (m_counterStanceTimer != null)
+            {
+                m_counterStanceTimer.StopTimer();
+                m_counterStanceTimer.ResetTimer();
+            }
+
+            if (m_toCounterStanceTimer != null)
+            {
+                m_toCounterStanceTimer.StopTimer();
+                m_toCounterStanceTimer.ResetTimer();
             }
         }
 
@@ -813,6 +875,22 @@ namespace Assets.Scripts.Mole
             m_movementTimer.StartTimer();
             m_attackTimer.StopTimer();
             m_attackTimer.ResetTimer();
+        }
+
+        internal void ClearCounterStance()
+        {
+            m_status[MoleStatus.CounterStance] = false;
+            m_status[MoleStatus.CounterAttack] = false;
+            m_status[MoleStatus.Idle] = true;
+
+            m_movementTimer.StartTimer();
+            m_toCounterStanceTimer.StopTimer();
+            m_toCounterStanceTimer.ResetTimer();
+            m_counterStanceTimer.StopTimer();
+            m_counterStanceTimer.ResetTimer();
+
+            m_toCounterStanceDone = false;
+            m_CounterStanceDone = false;
         }
 
         #endregion

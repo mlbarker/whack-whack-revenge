@@ -27,14 +27,42 @@ namespace Assets.Scripts.Mole
 
         #region ICounterController Methods
 
-        public void CounterStance()
+        public void CounterStanceStart()
         {
+            // CounterStance should be true in this method
             moleAnimator.SetBool("CounterStance", moleController.CounterStance);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+        }
+
+        public void CounterStanceEnd()
+        {
+            // CounterStance should be false in this method
+            moleAnimator.SetBool("CounterStance", moleController.CounterStance);
+            moleAnimator.SetBool("Idle", moleController.Idle);
         }
 
         public void CounterAttack()
         {
             moleAnimator.SetBool("CounterAttack", moleController.CounterAttack);
+        }
+
+        #endregion
+
+        #region Animation Event Methods
+
+        public void OnCounterStanceAnimationFinished()
+        {
+            moleController.StoppedMoving();
+        }
+
+        public void OnCounterStanceEndAnimationFinished()
+        {
+            moleController.StoppedMoving();
+            moleController.ClearCounterStance();
+
+            moleAnimator.SetBool("CounterStance", moleController.CounterStance);
+            moleAnimator.SetBool("CounterAttack", moleController.CounterAttack);
+            moleAnimator.SetBool("Idle", moleController.Idle);
         }
 
         #endregion

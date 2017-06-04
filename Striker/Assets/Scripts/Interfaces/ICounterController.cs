@@ -6,7 +6,8 @@ namespace Assets.Scripts.Interfaces
 {
     public interface ICounterController
     {
-        void CounterStance();
+        void CounterStanceStart();
+        void CounterStanceEnd();
         void CounterAttack();
     }
 }
