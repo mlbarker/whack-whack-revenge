@@ -44,6 +44,9 @@ namespace Assets.Scripts.Mole
         public void CounterAttack()
         {
             moleAnimator.SetBool("CounterAttack", moleController.CounterAttack);
+            moleAnimator.SetBool("CounterStance", moleController.CounterStance);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+            moleAnimator.SetBool("Hit", moleController.Hit);
         }
 
         #endregion
@@ -63,6 +66,17 @@ namespace Assets.Scripts.Mole
             moleAnimator.SetBool("CounterStance", moleController.CounterStance);
             moleAnimator.SetBool("CounterAttack", moleController.CounterAttack);
             moleAnimator.SetBool("Idle", moleController.Idle);
+        }
+
+        public void OnCounterAttackAnimationFinished()
+        {
+            moleController.StoppedMoving();
+            moleController.ClearCounterAttack();
+
+            moleAnimator.SetBool("CounterStance", moleController.CounterStance);
+            moleAnimator.SetBool("CounterAttack", moleController.CounterAttack);
+            moleAnimator.SetBool("Idle", moleController.Idle);
+            moleAnimator.SetBool("Hit", moleController.Hit);
         }
 
         #endregion

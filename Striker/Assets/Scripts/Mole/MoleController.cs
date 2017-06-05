@@ -587,6 +587,15 @@ namespace Assets.Scripts.Mole
             m_counterController.CounterStanceEnd();
         }
 
+        private void TriggerCounterAttackMovement()
+        {
+            IsMoving = true;
+            m_status[MoleStatus.CounterAttack] = true;
+            m_status[MoleStatus.CounterStance] = true;
+            m_status[MoleStatus.Idle] = false;
+            m_counterController.CounterAttack();
+        }
+
         private void TriggerInjuredMoleMovement()
         {
             IsMoving = true;
@@ -620,7 +629,7 @@ namespace Assets.Scripts.Mole
             {
                 TriggerSwoonMoleMovement();
             }
-            else if (!Swoon && IsUp && Hit)
+            else if (!Swoon && IsUp && Hit && !CounterStance)
             {
                 TriggerInjuredMoleMovement();
             }
@@ -642,10 +651,10 @@ namespace Assets.Scripts.Mole
                     TriggerCounterStanceStartMovement();
                 }
             }
-            else if (CounterAttack)
+            else if (CounterAttack && CounterStance && Hit)
             {
                 // TriggerCounterAttackMovement(); - Make sure to set IsMoving to true inside of method
-                //TriggerCounterAttackMovement();
+                TriggerCounterAttackMovement();
             }
 
             if(IsUp)
@@ -864,6 +873,11 @@ namespace Assets.Scripts.Mole
         internal void RegisterHit()
         {
             Hit = true;
+
+            if (CounterStance)
+            {
+                m_status[MoleStatus.CounterAttack] = true;
+            }
         }
 
         internal void ClearAttack()
@@ -891,6 +905,13 @@ namespace Assets.Scripts.Mole
 
             m_toCounterStanceDone = false;
             m_CounterStanceDone = false;
+        }
+
+        internal void ClearCounterAttack()
+        {
+            m_status[MoleStatus.CounterStance] = true;
+            m_status[MoleStatus.CounterAttack] = false;
+            m_status[MoleStatus.Idle] = false;
         }
 
         #endregion
