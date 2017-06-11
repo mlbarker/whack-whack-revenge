@@ -14,6 +14,7 @@ namespace Assets.Scripts.Mole
         #region Protected Members
 
         protected Animator moleAnimator;
+        protected string moleTypeName;
 
         #endregion
 
@@ -24,6 +25,14 @@ namespace Assets.Scripts.Mole
         #endregion
 
         #region Public Properties
+
+        public string MoleTypeName
+        {
+            get
+            {
+                return moleTypeName;
+            }
+        }
 
         public bool ReadyForPositionChange
         {
@@ -209,6 +218,23 @@ namespace Assets.Scripts.Mole
             moleController.SetActive(active);
             GetComponent<BoxCollider2D>().enabled = active;
             GetComponent<Renderer>().enabled = active;
+        }
+
+        #endregion
+
+        #region Protected Methods
+
+        protected void SetMoleType(string type)
+        {
+            if (type == string.Empty)
+            {
+                moleTypeName = MoleType.BASE_MOLE;
+            }
+
+            if (moleController != null)
+            {
+                moleController.SetMoleType(moleTypeName);
+            }
         }
 
         #endregion

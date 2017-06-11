@@ -87,6 +87,7 @@ namespace Assets.Scripts.Mole
         {
             // Initialize from base Mole
             base.Initialize();
+            SetMoleType(MoleType.PITCHER_MOLE);
             moleController.SetAttackController(this);
         }
 

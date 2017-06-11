@@ -262,10 +262,11 @@ namespace Assets.Scripts.Game
             }
 
             UpdateProjectilesList();
-            UpdatePlayerHealth();
+            UpdatePlayerHealth_ProjectileAttacks();
             UpdateGameControllerPlayer();
             UpdateProjectileWasWhacked();
             UpdateMoleWasWhacked();
+            UpdatePlayerHealth_CounterAttacks();
             UpdateGameController();
             UpdateStarsAchievements();
             ClearPlayerHitCollision();
@@ -293,7 +294,7 @@ namespace Assets.Scripts.Game
             }
         }
 
-        private void UpdatePlayerHealth()
+        private void UpdatePlayerHealth_ProjectileAttacks()
         {
             // Reset player's previous damage
             PlayerHits = 0;
@@ -317,6 +318,37 @@ namespace Assets.Scripts.Game
             }
 
             if(player.Health < 1)
+            {
+                m_gameController.StopGame();
+                EndGame();
+            }
+        }
+
+        private void UpdatePlayerHealth_CounterAttacks()
+        {
+            // Reset player's previous damage
+            PlayerHits = 0;
+
+            bool playerWasHit = false;
+
+            foreach (Mole mole in m_moles)
+            {
+                // mole was hit but there was a counter attack, therefore,
+                // the player was hit also.
+                if (mole.moleController.Hit && mole.moleController.CounterStance)
+                {
+                    playerWasHit = true;
+                    break;
+                }
+            }
+
+            if (playerWasHit)
+            {
+                player.AdjustHealth();
+                ++PlayerHits;
+            }
+
+            if (player.Health < 1)
             {
                 m_gameController.StopGame();
                 EndGame();
@@ -399,6 +431,7 @@ namespace Assets.Scripts.Game
                 {
                     Debug.Log("HIT " + mole.GetComponent<Collider2D>().tag + " | " + hitCollision2dId);
                     mole.moleController.RegisterHit();
+                    // CounterHit = mole.moleController.IsCounterHit();
                     break;
                 }
             }
